@@ -53,6 +53,12 @@ namespace SocialNetwork.web.Controllers
             return View(model);
         }
 
+        // GET: Account/Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if(disposing && _client != null)
