@@ -13,6 +13,8 @@ namespace SocialNetwork.web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("Login", "log-in", new { controller = "Account", Action = "LogIn" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
