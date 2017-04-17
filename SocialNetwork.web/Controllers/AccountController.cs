@@ -1,4 +1,5 @@
-﻿using SocialNetwork.web.Models.Account;
+﻿using Newtonsoft.Json.Linq;
+using SocialNetwork.web.Models.Account;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +58,40 @@ namespace SocialNetwork.web.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+
+        // POST: Account/Login
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var data = new Dictionary<string, string>()
+                {
+                    {"grant_type", "password" },
+                    {"username", model.Email },
+                    {"password", model.Password}
+                };
+
+                using (var requestContent = new FormUrlEncodedContent(data))
+                {
+                    var response = await _client.PostAsync("/Token", requestContent);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var responseContent = await response.Content.ReadAsStringAsync();
+
+                        var tokenData = JObject.Parse(responseContent);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("","");
+                    }
+                }
+            }
+
+            return View(model);
         }
 
         protected override void Dispose(bool disposing)
