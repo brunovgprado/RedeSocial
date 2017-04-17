@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using SocialNetwork.web.Helpers;
 using SocialNetwork.web.Models.Account;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace SocialNetwork.web.Controllers
     public class AccountController : Controller
     {
         private HttpClient _client;
+        private TokenHelper _tokenHelper;
 
         public AccountController()
         {
@@ -24,6 +26,8 @@ namespace SocialNetwork.web.Controllers
 
             var mediaType = new MediaTypeWithQualityHeaderValue("application/json");
             _client.DefaultRequestHeaders.Accept.Add(mediaType);
+
+            _tokenHelper = new TokenHelper();
         }
 
         // GET: Account
@@ -83,6 +87,8 @@ namespace SocialNetwork.web.Controllers
                         var responseContent = await response.Content.ReadAsStringAsync();
 
                         var tokenData = JObject.Parse(responseContent);
+
+                        _tokenHelper.AccessToken = tokenData["access_token"];
                     }
                     else
                     {
