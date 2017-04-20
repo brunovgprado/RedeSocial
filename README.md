@@ -25,5 +25,5 @@ Neste momento a HortoHome está no inicio de sua criação.
 -[SocialNetwork.data](https://github.com/brunovitorprado/RedeSocial/tree/master/SocialNetwork.data) que irá representar a camada de acesso a dados.  
 
 
-#### Quem é o responsável pelo projeto?
+### Quem é o responsável pelo projeto?
 **[Bruno Prado](https://github.com/brunovitorprado)**, Estudante de Engenharia de Software no instituto INFNET
