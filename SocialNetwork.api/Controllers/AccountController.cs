@@ -31,12 +31,6 @@ namespace SocialNetwork.api.Controllers
             }
         }
 
-        // GET: Account TESTE
-        public void Register()
-        {
-            
-        }
-
         //  POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]

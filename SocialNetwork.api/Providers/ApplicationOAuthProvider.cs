@@ -15,6 +15,7 @@ namespace SocialNetwork.api.Providers
         {
             context.Validated();
         }
+
         public override async Task GrantResourceOwnerCredentials(
             OAuthGrantResourceOwnerCredentialsContext context)
         {
