@@ -27,10 +27,13 @@ namespace SocialNetwork.api
             {
                 Provider = new ApplicationOAuthProvider(),
                 TokenEndpointPath = new PathString("/Token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1)
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+
+                // Nota: Remover esta linha antes de colocar em produção
+                AllowInsecureHttp = true
             };
 
-
+       
             app.UseOAuthBearerTokens(OAuthOptions);
         }
     }

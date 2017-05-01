@@ -47,7 +47,7 @@ namespace SocialNetwork.web.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    //ToDo
+                    return RedirectToAction("Login");
                 }
                 else
                 {
@@ -86,9 +86,15 @@ namespace SocialNetwork.web.Controllers
                     {
                         var responseContent = await response.Content.ReadAsStringAsync();
 
-                        var tokenData = JObject.Parse(responseContent);
+                       var tokenData = JObject.Parse(responseContent);
 
                         _tokenHelper.AccessToken = tokenData["access_token"];
+
+                        // Testanto se o usuário está autenticado
+                        var idSecao = HttpContext.User.Identity.AuthenticationType;
+                        var teste = HttpContext.User.Identity.IsAuthenticated;
+                        return RedirectToAction("DashBoard", "Application");
+                        
                     }
                     else
                     {
@@ -100,6 +106,13 @@ namespace SocialNetwork.web.Controllers
             return View(model);
         }
 
+        // GET: Account/Logout
+        public ActionResult Logout()
+        {
+            _tokenHelper.AccessToken = null;
+            return RedirectToAction("Login", "Account");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if(disposing && _client != null)
@@ -109,6 +122,13 @@ namespace SocialNetwork.web.Controllers
             }
 
             base.Dispose(disposing);
+        }
+
+        // GET: Account/Teste
+        [Authorize]
+        public ActionResult Teste()
+        {
+            return View();
         }
     }
 }
