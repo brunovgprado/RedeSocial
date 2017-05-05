@@ -4,6 +4,7 @@ using SocialNetwork.web.Models.Account;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -91,8 +92,7 @@ namespace SocialNetwork.web.Controllers
                         _tokenHelper.AccessToken = tokenData["access_token"];
 
                         // Testanto se o usuário está autenticado
-                        var idSecao = HttpContext.User.Identity.AuthenticationType;
-                        var teste = HttpContext.User.Identity.IsAuthenticated;
+
                         return RedirectToAction("DashBoard", "Application");
                         
                     }
@@ -109,6 +109,7 @@ namespace SocialNetwork.web.Controllers
         // GET: Account/Logout
         public ActionResult Logout()
         {
+            
             _tokenHelper.AccessToken = null;
             return RedirectToAction("Login", "Account");
         }
