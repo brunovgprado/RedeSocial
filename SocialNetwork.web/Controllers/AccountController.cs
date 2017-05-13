@@ -22,7 +22,7 @@ namespace SocialNetwork.web.Controllers
         {
             _client = new HttpClient();
 
-            _client.BaseAddress = new Uri("https://localhost:44355/");
+            _client.BaseAddress = new Uri("http://localhost:55538/");
             _client.DefaultRequestHeaders.Accept.Clear();
 
             var mediaType = new MediaTypeWithQualityHeaderValue("application/json");
@@ -108,8 +108,7 @@ namespace SocialNetwork.web.Controllers
 
         // GET: Account/Logout
         public ActionResult Logout()
-        {
-            
+        {            
             _tokenHelper.AccessToken = null;
             return RedirectToAction("Login", "Account");
         }
@@ -125,11 +124,5 @@ namespace SocialNetwork.web.Controllers
             base.Dispose(disposing);
         }
 
-        // GET: Account/Teste
-        [Authorize]
-        public ActionResult Teste()
-        {
-            return View();
-        }
     }
 }

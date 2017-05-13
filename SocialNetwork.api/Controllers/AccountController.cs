@@ -31,6 +31,7 @@ namespace SocialNetwork.api.Controllers
             }
         }
 
+
         //  POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]

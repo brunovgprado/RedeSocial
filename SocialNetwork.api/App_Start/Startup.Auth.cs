@@ -19,7 +19,7 @@ namespace SocialNetwork.api
         public void ConfigureAuth(IAppBuilder app)
         {
 
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
+             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
 
