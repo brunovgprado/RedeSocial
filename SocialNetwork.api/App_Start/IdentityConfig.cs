@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using SocialNetwork.api.Models;
+using SocialNetwork.api.Services;
 
 namespace SocialNetwork.api.App_Start
 {
@@ -11,6 +12,7 @@ namespace SocialNetwork.api.App_Start
         public ApplicationUserManager(IUserStore<ApplicationUser> store) 
             : base(store)
         {
+            EmailService = new EmailService();
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options,

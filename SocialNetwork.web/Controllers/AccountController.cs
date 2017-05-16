@@ -44,6 +44,9 @@ namespace SocialNetwork.web.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.CallbackUrl = Url.Action("ConfirmEmail", "Account",
+               null, protocol: Request.Url.Scheme);
+
                 var response = await _client.PostAsJsonAsync("api/Account/Register", model);
 
                 if (response.IsSuccessStatusCode)
@@ -57,6 +60,11 @@ namespace SocialNetwork.web.Controllers
             }
 
             return View(model);
+        }
+
+        public ActionResult ConfirmEmail(string userId = "", string code = "")
+        {
+            return View();
         }
 
         // GET: Account/Login

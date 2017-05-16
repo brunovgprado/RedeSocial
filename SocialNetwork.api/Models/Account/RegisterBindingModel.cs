@@ -16,5 +16,7 @@ namespace SocialNetwork.api.Models
         [DataType(DataType.Password)]
         [StringLength(100, MinimumLength = 6)]
         public string Password { get; set; }
+
+        public string CallbackUrl { get; set; }
     }
 }

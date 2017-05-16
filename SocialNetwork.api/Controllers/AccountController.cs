@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Hosting;
 using System.Web.Http;
 
@@ -41,7 +42,7 @@ namespace SocialNetwork.api.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+           
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email};
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
@@ -51,8 +52,37 @@ namespace SocialNetwork.api.Controllers
                 return GetErrorResult(result);
             }
 
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+            
+            await UserManager.SendEmailAsync(user.Id,
+               "Confirm your account", "Please confirm your account by clicking <a href=\""
+               + model.CallbackUrl + $"?userId={user.Id}&code={code}"  + "\">here</a>");
+
             return Ok();
         }
+
+        [HttpGet]
+        [Route("ConfirmEmail", Name = "ConfirmEmailRoute")]
+        public async Task<IHttpActionResult> ConfirmEmail(string userId = "", string code = "")
+        {
+            if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(code))
+            {
+                ModelState.AddModelError("", "User Id and Code are required");
+                return BadRequest(ModelState);
+            }
+
+            IdentityResult result = await this.UserManager.ConfirmEmailAsync(userId, code);
+
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+            else
+            {
+                return GetErrorResult(result);
+            }
+        }
+
 
         private IHttpActionResult GetErrorResult(IdentityResult result)
         {
