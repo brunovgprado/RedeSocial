@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using SocialNetwork.api.Models.Account;
 using SocialNetwork.web.Helpers;
 using SocialNetwork.web.Models.Account;
 using System;
@@ -64,6 +65,13 @@ namespace SocialNetwork.web.Controllers
 
         public ActionResult ConfirmEmail(string userId = "", string code = "")
         {
+            ArgumentosConfirm confirm = new ArgumentosConfirm();
+
+            confirm.userId = userId;
+            confirm.code = code;
+
+            _client.PostAsJsonAsync("api/Account/ConfirmEmail", confirm);
+
             return View();
         }
 

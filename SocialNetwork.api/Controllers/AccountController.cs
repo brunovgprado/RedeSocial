@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.Owin;
 using SocialNetwork.api.App_Start;
 using SocialNetwork.api.Models;
+using SocialNetwork.api.Models.Account;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,15 +64,15 @@ namespace SocialNetwork.api.Controllers
 
         [HttpGet]
         [Route("ConfirmEmail", Name = "ConfirmEmailRoute")]
-        public async Task<IHttpActionResult> ConfirmEmail(string userId = "", string code = "")
+        public async Task<IHttpActionResult> ConfirmEmail(ArgumentosConfirm confirm)
         {
-            if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(code))
+            if (string.IsNullOrWhiteSpace(confirm.userId) || string.IsNullOrWhiteSpace(confirm.code))
             {
                 ModelState.AddModelError("", "User Id and Code are required");
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await this.UserManager.ConfirmEmailAsync(userId, code);
+            IdentityResult result = await this.UserManager.ConfirmEmailAsync(confirm.userId, confirm.code);
 
             if (result.Succeeded)
             {
