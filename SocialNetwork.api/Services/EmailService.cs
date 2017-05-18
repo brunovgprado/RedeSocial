@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using SendGrid.Helpers.Mail;
 using SendGrid;
+using System;
 
 namespace SocialNetwork.api.Services
 {
@@ -34,7 +35,14 @@ namespace SocialNetwork.api.Services
             // Send the email.
             if (client != null)
             {
-                await client.SendEmailAsync(myMessage);
+                try
+                { 
+                    await client.SendEmailAsync(myMessage);
+                }
+                catch(Exception e)
+                {
+                   
+                }
             }
             else
             {
