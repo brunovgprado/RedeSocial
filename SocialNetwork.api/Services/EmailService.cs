@@ -23,7 +23,7 @@ namespace SocialNetwork.api.Services
             var myMessage = new SendGridMessage();
             myMessage.AddTo(message.Destination);
             myMessage.From = new EmailAddress(
-                                "Joe@contoso.com", "Joe S.");
+                                "Joe@contoso.com", "PeludoBook.");
             myMessage.Subject = message.Subject;
             myMessage.PlainTextContent = message.Body;
             myMessage.HtmlContent = message.Body;

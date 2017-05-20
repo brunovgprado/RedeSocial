@@ -54,13 +54,15 @@ namespace SocialNetwork.api.Controllers
             }
 
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-  
+            code = HttpUtility.UrlEncode(code);
             await UserManager.SendEmailAsync(user.Id,
                "Confirme seu e-mail ", "Por favor, confirme seu e-mail clicando <a href=\""
                + model.CallbackUrl + $"?userId={user.Id}&code={code}"  + "\">aqui</a>");
 
             return Ok();
         }
+
+
 
 
         [AllowAnonymous]
@@ -72,8 +74,8 @@ namespace SocialNetwork.api.Controllers
                 ModelState.AddModelError("", "User Id and Code are required");
                 return BadRequest(ModelState);
             }
-
-            IdentityResult result = await this.UserManager.ConfirmEmailAsync(confirm.userId, confirm.code);
+            string code = HttpUtility.UrlDecode(confirm.code);
+            IdentityResult result = await this.UserManager.ConfirmEmailAsync(confirm.userId, code);
 
             if (result.Succeeded)
             {
