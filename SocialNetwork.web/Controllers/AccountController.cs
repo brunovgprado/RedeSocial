@@ -63,14 +63,21 @@ namespace SocialNetwork.web.Controllers
             return View(model);
         }
 
-        public ActionResult ConfirmEmail(string userId = "", string code = "")
+        
+        public async Task<ActionResult> ConfirmEmail(string userId = "", string code = "")
         {
             ArgumentosConfirm confirm = new ArgumentosConfirm();
 
             confirm.userId = userId;
             confirm.code = code;
+            try
+            {
+                var response = await _client.PostAsJsonAsync("api/Account/ConfirmEmail", confirm);
+            }
+            catch(Exception e)
+            {
 
-            _client.PostAsJsonAsync("api/Account/ConfirmEmail", confirm);
+            }
 
             return View();
         }

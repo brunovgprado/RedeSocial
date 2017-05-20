@@ -13,6 +13,7 @@ namespace SocialNetwork.api.Services
     {
         public async Task SendAsync(IdentityMessage message)
         {
+            
             await configSendGridasync(message);
         }
 
@@ -28,7 +29,7 @@ namespace SocialNetwork.api.Services
             myMessage.HtmlContent = message.Body;
 
             var credentials = ConfigurationManager.AppSettings["apiKey"];
-
+            
             // Create a Web transport for sending email.
             var client = new SendGridClient(credentials);
 

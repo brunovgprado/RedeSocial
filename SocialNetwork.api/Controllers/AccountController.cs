@@ -34,7 +34,7 @@ namespace SocialNetwork.api.Controllers
         }
 
 
-        //  POST api/Account/Register
+        //POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
@@ -54,16 +54,17 @@ namespace SocialNetwork.api.Controllers
             }
 
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-            
+  
             await UserManager.SendEmailAsync(user.Id,
-               "Confirm your account", "Please confirm your account by clicking <a href=\""
-               + model.CallbackUrl + $"?userId={user.Id}&code={code}"  + "\">here</a>");
+               "Confirme seu e-mail ", "Por favor, confirme seu e-mail clicando <a href=\""
+               + model.CallbackUrl + $"?userId={user.Id}&code={code}"  + "\">aqui</a>");
 
             return Ok();
         }
 
-        [HttpGet]
-        [Route("ConfirmEmail", Name = "ConfirmEmailRoute")]
+
+        [AllowAnonymous]
+        [Route("ConfirmEmail")]
         public async Task<IHttpActionResult> ConfirmEmail(ArgumentosConfirm confirm)
         {
             if (string.IsNullOrWhiteSpace(confirm.userId) || string.IsNullOrWhiteSpace(confirm.code))
