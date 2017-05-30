@@ -63,8 +63,23 @@ namespace SocialNetwork.api.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
+        [Route("EmailIsConfirmed")]
+        public async Task<IHttpActionResult> EmailIsConfirmed(string userEmail)
+        {
+            var user = await UserManager.FindByNameAsync(userEmail);
 
+            if (user != null)
+            {
+                if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                {
+                    return null;
+                }
+                return null;
+            }
 
+            return Ok();
+        }
 
         [AllowAnonymous]
         [Route("ConfirmEmail")]
@@ -87,7 +102,6 @@ namespace SocialNetwork.api.Controllers
                 return GetErrorResult(result);
             }
         }
-
 
         private IHttpActionResult GetErrorResult(IdentityResult result)
         {

@@ -147,6 +147,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\Account\ArgumentosConfirm.cs" />
+    <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Account\RegisterBindingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
