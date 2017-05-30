@@ -95,7 +95,7 @@ namespace SocialNetwork.web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var emailIsConfirmed = await _client.PostAsJsonAsync("api/Account/EmailIsConfirmed", model.Email);
+               // var emailIsConfirmed = await _client.PostAsJsonAsync("api/Account/EmailIsConfirmed", model.Email);
 
                 var data = new Dictionary<string, string>()
                 {
