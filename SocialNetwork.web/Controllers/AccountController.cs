@@ -127,7 +127,7 @@ namespace SocialNetwork.web.Controllers
                     }
                 }
             }
-
+            
             return View(model);
         }
 
