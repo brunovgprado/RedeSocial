@@ -134,7 +134,6 @@
     <Compile Include="Helpers\TokenHelper.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
     <Compile Include="Models\Account\RegisterViewModel.cs" />
-    <Compile Include="Models\Perfil\Perfil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -160,9 +159,21 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data\SocialNetwork.data.csproj">
+      <Project>{dce9aa08-4634-460e-bc19-891404ca54e2}</Project>
+      <Name>SocialNetwork.data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SocialNetwork.api\SocialNetwork.api.csproj">
       <Project>{b6389fdf-6eb5-4b59-ad00-f3422ebc269a}</Project>
       <Name>SocialNetwork.api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialNetwork.core\SocialNetwork.negocio.csproj">
+      <Project>{3c6c8d77-1013-4653-9a3a-167a4bcb31b4}</Project>
+      <Name>SocialNetwork.negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialNetwork.data\SocialNetwork.servico.csproj">
+      <Project>{b210bc73-e626-4266-be71-c9ef1047a78c}</Project>
+      <Name>SocialNetwork.servico</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

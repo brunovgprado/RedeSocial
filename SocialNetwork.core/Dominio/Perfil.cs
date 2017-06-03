@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SocialNetwork.web.Models
+namespace SocialNetwork.negocio.Dominio
 {
     public class Perfil
     {
