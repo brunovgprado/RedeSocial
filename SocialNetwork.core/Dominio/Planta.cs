@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SocialNetwork.core.Dominio
 {
-    class Planta
+    public class Planta
     {
         public int id { get; set; }
         public int HortaId { get; set; }
