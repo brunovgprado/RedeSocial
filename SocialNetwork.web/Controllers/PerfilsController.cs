@@ -5,9 +5,11 @@ using System.Web.Mvc;
 using SocialNetwork.data;
 using SocialNetwork.negocio.Dominio;
 using Data;
+using SocialNetwork.web.Attributes;
 
 namespace SocialNetwork.web.Controllers
 {
+    [Authentication]
     public class PerfilsController : Controller
     {
         private PerfilServico servico;
@@ -20,6 +22,7 @@ namespace SocialNetwork.web.Controllers
         // GET: Perfils
         public ActionResult Index()
         {
+
             var lista = servico.RetornaPerfis();
             return View(lista);
         }

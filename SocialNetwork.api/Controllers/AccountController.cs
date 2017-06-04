@@ -77,7 +77,7 @@ namespace SocialNetwork.api.Controllers
                 }
                 return null;
             }
-
+            var id = user.Id;
             return Ok();
         }
 

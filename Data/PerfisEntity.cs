@@ -13,6 +13,11 @@ namespace Data
     {
         SocialNetworkContext db = new SocialNetworkContext();
 
+        public Perfil ObterPerfilUnico()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Perfil> ObterPerfis()
         {           
             List<Perfil> perfis = db.Perfils.ToList();

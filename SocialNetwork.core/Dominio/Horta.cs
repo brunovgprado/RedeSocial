@@ -9,7 +9,7 @@ namespace SocialNetwork.core.Dominio
     public class Horta
     {
         public int id { get; set; }
-        public int UserID { get; set; }
+        public int PerfilID { get; set; }
         public List<Planta> Plantas { get; set; }
     }
 }

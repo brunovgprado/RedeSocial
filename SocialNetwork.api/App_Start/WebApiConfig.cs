@@ -15,6 +15,12 @@ namespace SocialNetwork.api
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "EmailIsConfirmed",
+                routeTemplate: "api/{controller}/EmailIsConfirmed/{id}",
+                defaults: new { id = RouteParameter.Optional, type = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
