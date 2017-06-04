@@ -4,19 +4,26 @@ using System.Net;
 using System.Web.Mvc;
 using SocialNetwork.data;
 using SocialNetwork.negocio.Dominio;
+using Data;
 
 namespace SocialNetwork.web.Controllers
 {
     public class PerfilsController : Controller
     {
-        private SocialNetworkContext db = new SocialNetworkContext();
+        private PerfilServico servico;
+
+        public PerfilsController()
+        {
+            servico = new PerfilServico(new PerfisEntity());
+        }
 
         // GET: Perfils
         public ActionResult Index()
         {
-            return View(db.Perfils.ToList());
+            var lista = servico.RetornaPerfis();
+            return View(lista);
         }
-
+        /*
         // GET: Perfils/Details/5
         public ActionResult Details(int? id)
         {
@@ -30,7 +37,7 @@ namespace SocialNetwork.web.Controllers
                 return HttpNotFound();
             }
             return View(perfil);
-        }
+        }*/
 
         // GET: Perfils/Create
         public ActionResult Create()
@@ -47,14 +54,13 @@ namespace SocialNetwork.web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Perfils.Add(perfil);
-                db.SaveChanges();
+                servico.CriaPerfil(perfil);
                 return RedirectToAction("Index");
             }
 
             return View(perfil);
         }
-
+        /*
         // GET: Perfils/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -120,5 +126,6 @@ namespace SocialNetwork.web.Controllers
             }
             base.Dispose(disposing);
         }
+        */
     }
 }

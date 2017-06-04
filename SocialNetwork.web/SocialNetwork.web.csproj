@@ -150,7 +150,6 @@
     <Compile Include="Models\Account\LoginViewModel.cs" />
     <Compile Include="Models\Account\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SocialNetwork\data\SocialNetworkContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

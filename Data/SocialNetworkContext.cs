@@ -19,6 +19,6 @@ namespace SocialNetwork.data
         {
         }
 
-        public System.Data.Entity.DbSet<SocialNetwork.negocio.Dominio.Perfil> Perfils { get; set; }
+        public DbSet<negocio.Dominio.Perfil> Perfils { get; set; }
     }
 }
