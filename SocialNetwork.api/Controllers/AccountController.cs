@@ -3,14 +3,9 @@ using Microsoft.AspNet.Identity.Owin;
 using SocialNetwork.api.App_Start;
 using SocialNetwork.api.Models;
 using SocialNetwork.api.Models.Account;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Hosting;
 using System.Web.Http;
 
 namespace SocialNetwork.api.Controllers
@@ -78,7 +73,7 @@ namespace SocialNetwork.api.Controllers
                 return null;
             }
             var id = user.Id;
-            return Ok();
+            return Ok(id);
         }
 
         [AllowAnonymous]

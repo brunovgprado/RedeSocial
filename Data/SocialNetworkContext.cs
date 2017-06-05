@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
-
+﻿using System.Data.Entity;
+using SocialNetwork.negocio;
 namespace SocialNetwork.data
 {
     public class SocialNetworkContext : DbContext
@@ -20,5 +16,7 @@ namespace SocialNetwork.data
         }
 
         public DbSet<negocio.Dominio.Perfil> Perfils { get; set; }
+
+        public DbSet<core.Dominio.Horta> Hortas { get; set; }
     }
 }

@@ -4,12 +4,9 @@ using SocialNetwork.web.Helpers;
 using SocialNetwork.web.Models.Account;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SocialNetwork.web.Controllers
@@ -45,7 +42,7 @@ namespace SocialNetwork.web.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.CallbackUrl = Url.Action("ConfirmEmail", "Account",
+               model.CallbackUrl = Url.Action("ConfirmEmail", "Account",
                null, protocol: Request.Url.Scheme);
 
                 var response = await _client.PostAsJsonAsync("api/Account/Register", model);
@@ -96,7 +93,7 @@ namespace SocialNetwork.web.Controllers
             if (ModelState.IsValid)
             {
                // var emailIsConfirmed = await _client.PostAsJsonAsync("api/Account/EmailIsConfirmed", model.Email);
-
+                
                 var data = new Dictionary<string, string>()
                 {
                     {"grant_type", "password" },
@@ -117,7 +114,7 @@ namespace SocialNetwork.web.Controllers
                         _tokenHelper.AccessToken = tokenData["access_token"];
 
                         // Testanto se o usuário está autenticado
-
+                        var sessao = Session.Contents;
                         return RedirectToAction("DashBoard", "Application");
                         
                     }

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="HortasEntity.cs" />
     <Compile Include="PerfisEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SocialNetworkContext.cs" />

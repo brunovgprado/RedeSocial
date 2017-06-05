@@ -1,109 +1,113 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using SocialNetwork.core.Dominio;
 using SocialNetwork.data;
-using SocialNetwork.negocio.Dominio;
 using Data;
-using SocialNetwork.web.Attributes;
 
 namespace SocialNetwork.web.Controllers
 {
-    [Authentication]
-    public class PerfilsController : Controller
+    public class HortasController : Controller
     {
-        private PerfilServico servico;
+        private HortaServico servico;
 
-        
 
-        public PerfilsController()
+        public HortasController()
         {
-            servico = new PerfilServico(new PerfisEntity());
+            servico = new HortaServico(new HortasEntity());
         }
 
-        // GET: Perfils
+        // GET: Hortas
         public ActionResult Index()
-        {              
-            var lista = servico.RetornaPerfis();
+        {
+            var lista = servico.RetornaHortas();
             return View(lista);
         }
-        
-        // GET: Perfils/Details/5
+
+        // GET: Hortas/Details/5
         public ActionResult Details(int id)
         {
-            Perfil perfil = servico.RetornaPerfilUnico(id);
-            if (perfil == null)
+            Horta horta = servico.RetornaHortaUnica(id);
+            if (horta == null)
             {
                 return HttpNotFound();
             }
-            return View(perfil);
+            return View(horta);
         }
 
-        // GET: Perfils/Create
+        // GET: Hortas/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Perfils/Create
+        // POST: Hortas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PerfilId,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
+        public ActionResult Create([Bind(Include = "id,PerfilID")] Horta horta)
         {
             if (ModelState.IsValid)
             {
-                servico.CriaPerfil(perfil);
+                servico.CriaHorta(horta);
                 return RedirectToAction("Index");
             }
 
-            return View(perfil);
+            return View(horta);
         }
-       
-        // GET: Perfils/Edit/5
+
+        // GET: Hortas/Edit/5
         public ActionResult Edit(int id)
         {
-            Perfil perfil = servico.RetornaPerfilUnico(id);
-            if (perfil == null)
+            Horta horta = servico.RetornaHortaUnica(id);
+            if (horta == null)
             {
                 return HttpNotFound();
             }
-            return View(perfil);
+            return View(horta);
         }
- 
-        // POST: Perfils/Edit/5
+
+        // POST: Hortas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PerfilId,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
+        public ActionResult Edit([Bind(Include = "id,PerfilID")] Horta horta)
         {
             if (ModelState.IsValid)
             {
-                servico.EditaPerfil(perfil);
+                servico.EditaHorta(horta);
                 return RedirectToAction("Index");
             }
-            return View(perfil);
+            return View(horta);
         }
 
-        // GET: Perfils/Delete/5
+        // GET: Hortas/Delete/5
         public ActionResult Delete(int id)
         {
-            Perfil perfil = servico.RetornaPerfilUnico(id);
-            if (perfil == null)
+            Horta horta = servico.RetornaHortaUnica(id);
+            if (horta == null)
             {
                 return HttpNotFound();
             }
-            return View(perfil);
+            return View(horta);
         }
 
-        // POST: Perfils/Delete/5
+        // POST: Hortas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Perfil perfil = servico.RetornaPerfilUnico(id);
-            servico.ApagaPerfil(perfil);
+            Horta horta = servico.RetornaHortaUnica(id);
+            servico.ApagaHorta(horta);
             return RedirectToAction("Index");
         }
-        
+
     }
 }
