@@ -1,13 +1,8 @@
-﻿using SocialNetwork.core.Dominio;
-using SocialNetwork.core.Repositorio;
-using SocialNetwork.negocio.Dominio;
-using System;
+﻿using Negocio.Repositorio;
+using Negocio.Dominio;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SocialNetwork.data
+namespace Servico
 {
     public class HortaServico
     {

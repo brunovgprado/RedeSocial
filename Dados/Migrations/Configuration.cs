@@ -1,18 +1,18 @@
-namespace Data.Migrations
+namespace Dados.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SocialNetwork.data.SocialNetworkContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Dados.SocialWebContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(SocialNetwork.data.SocialNetworkContext context)
+        protected override void Seed(Dados.SocialWebContext context)
         {
             //  This method will be called after migrating to the latest version.
 

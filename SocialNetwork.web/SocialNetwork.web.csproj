@@ -151,6 +151,7 @@
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\HortasController.cs" />
     <Compile Include="Controllers\PerfilsController.cs" />
+    <Compile Include="Controllers\PlantasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -168,10 +169,12 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Application\DashBoard.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Perfils\Create.cshtml" />
-    <Content Include="Views\Perfils\Delete.cshtml" />
-    <Content Include="Views\Perfils\Details.cshtml" />
-    <Content Include="Views\Perfils\Edit.cshtml" />
+    <Content Include="Views\Hortas\Create.cshtml" />
+    <Content Include="Views\Hortas\Delete.cshtml" />
+    <Content Include="Views\Hortas\Details.cshtml" />
+    <Content Include="Views\Hortas\Edit.cshtml" />
+    <Content Include="Views\Hortas\Index.cshtml" />
+    <Content Include="Views\Plantas\Index.cshtml" />
     <Content Include="Views\Perfils\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -182,24 +185,23 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Hortas\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data\SocialNetwork.data.csproj">
-      <Project>{dce9aa08-4634-460e-bc19-891404ca54e2}</Project>
-      <Name>SocialNetwork.data</Name>
+    <ProjectReference Include="..\Dados\Dados.csproj">
+      <Project>{4b8e07c5-52db-4206-8893-48a6c2a77e53}</Project>
+      <Name>Dados</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{2073e215-7e7e-4fab-a5c5-f2225d01a022}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Servico\Servico.csproj">
+      <Project>{8bf89a4b-b321-41e0-a7e2-548082e75e8c}</Project>
+      <Name>Servico</Name>
     </ProjectReference>
     <ProjectReference Include="..\SocialNetwork.api\SocialNetwork.api.csproj">
       <Project>{b6389fdf-6eb5-4b59-ad00-f3422ebc269a}</Project>
       <Name>SocialNetwork.api</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SocialNetwork.core\SocialNetwork.negocio.csproj">
-      <Project>{3c6c8d77-1013-4653-9a3a-167a4bcb31b4}</Project>
-      <Name>SocialNetwork.negocio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SocialNetwork.data\SocialNetwork.servico.csproj">
-      <Project>{b210bc73-e626-4266-be71-c9ef1047a78c}</Project>
-      <Name>SocialNetwork.servico</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

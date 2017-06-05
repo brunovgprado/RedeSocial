@@ -1,7 +1,7 @@
-﻿using SocialNetwork.negocio.Dominio;
+﻿using Negocio.Dominio;
 using System.Collections.Generic;
 
-namespace SocialNetwork.core.Repositorio
+namespace Negocio.Repositorio
 {
     public interface IPerfilRepository
     {

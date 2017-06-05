@@ -1,12 +1,8 @@
-﻿using SocialNetwork.core.Repositorio;
-using SocialNetwork.negocio.Dominio;
-using System;
+﻿using Negocio.Repositorio;
+using Negocio.Dominio;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SocialNetwork.data
+namespace Servico
 {
     public class PerfilServico
     {
@@ -29,19 +25,19 @@ namespace SocialNetwork.data
             repositorio.CriarPerfil(perfil);
         }
 
-        //Metodo que retorna um perfil ao receber um id
+        //Metodo que retorna uma horta ao receber um id
         public Perfil RetornaPerfilUnico(int id)
         {
             return repositorio.ObterPerfilUnico(id);
         }
 
-        //Metodo que edita um perfil
+        //Metodo que edita uma horta
         public void EditaPerfil(Perfil perfil)
         {
             repositorio.EditarPerfil(perfil);
         }
 
-        //Metodo que apaga um perfil
+        //Metodo que apaga uma horta
         public void ApagaPerfil(Perfil perfil)
         {
             repositorio.ApagarPerfil(perfil);

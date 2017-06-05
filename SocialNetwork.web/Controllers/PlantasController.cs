@@ -1,117 +1,113 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Dados;
 using Negocio.Dominio;
 
 namespace SocialNetwork.web.Controllers
 {
-    public class PerfilsController : Controller
+    public class PlantasController : Controller
     {
         private SocialWebContext db = new SocialWebContext();
 
-        // GET: Perfils
+        // GET: Plantas
         public ActionResult Index()
         {
-            return View(db.Perfils.ToList());
+            return View(db.Plantas.ToList());
         }
 
-        // GET: Perfils/Details/5
+        // GET: Plantas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Perfil perfil = db.Perfils.Find(id);
-            if (perfil == null)
+            Planta planta = db.Plantas.Find(id);
+            if (planta == null)
             {
                 return HttpNotFound();
             }
-            return View(perfil);
+            return View(planta);
         }
 
-        // GET: Perfils/Create
+        // GET: Plantas/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Perfils/Create
+        // POST: Plantas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PerfilId,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
+        public ActionResult Create([Bind(Include = "id,HortaId,Nome")] Planta planta)
         {
             if (ModelState.IsValid)
             {
-                db.Perfils.Add(perfil);
+                db.Plantas.Add(planta);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(perfil);
+            return View(planta);
         }
 
-        // GET: Perfils/Edit/5
+        // GET: Plantas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Perfil perfil = db.Perfils.Find(id);
-            if (perfil == null)
+            Planta planta = db.Plantas.Find(id);
+            if (planta == null)
             {
                 return HttpNotFound();
             }
-            return View(perfil);
+            return View(planta);
         }
 
-        // POST: Perfils/Edit/5
+        // POST: Plantas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PerfilId,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
+        public ActionResult Edit([Bind(Include = "id,HortaId,Nome")] Planta planta)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(perfil).State = EntityState.Modified;
+                db.Entry(planta).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(perfil);
+            return View(planta);
         }
 
-        // GET: Perfils/Delete/5
+        // GET: Plantas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Perfil perfil = db.Perfils.Find(id);
-            if (perfil == null)
+            Planta planta = db.Plantas.Find(id);
+            if (planta == null)
             {
                 return HttpNotFound();
             }
-            return View(perfil);
+            return View(planta);
         }
 
-        // POST: Perfils/Delete/5
+        // POST: Plantas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Perfil perfil = db.Perfils.Find(id);
-            db.Perfils.Remove(perfil);
+            Planta planta = db.Plantas.Find(id);
+            db.Plantas.Remove(planta);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,19 +1,15 @@
-﻿using SocialNetwork.core.Repositorio;
+﻿using Negocio.Repositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SocialNetwork.negocio.Dominio;
-using SocialNetwork.data;
 using System.Data.Entity;
-using SocialNetwork.core.Dominio;
+using Negocio.Dominio;
 
-namespace Data
+namespace Dados
 {
     public class HortasEntity : IHortaRepository
     {
-        SocialNetworkContext db = new SocialNetworkContext();
+        SocialWebContext db = new SocialWebContext();
 
         public void ApagarHorta(Horta horta)
         {

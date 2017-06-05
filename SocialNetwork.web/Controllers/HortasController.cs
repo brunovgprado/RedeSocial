@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using SocialNetwork.core.Dominio;
-using SocialNetwork.data;
-using Data;
+﻿using System.Web.Mvc;
+using Negocio.Dominio;
+using Dados;
+using Servico;
 
 namespace SocialNetwork.web.Controllers
 {
