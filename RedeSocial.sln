@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.servico", "So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.data", "Data\SocialNetwork.data.csproj", "{DCE9AA08-4634-460E-BC19-891404CA54E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{2073E215-7E7E-4FAB-A5C5-F2225D01A022}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servico", "Servico\Servico.csproj", "{8BF89A4B-B321-41E0-A7E2-548082E75E8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{DCE9AA08-4634-460E-BC19-891404CA54E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCE9AA08-4634-460E-BC19-891404CA54E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCE9AA08-4634-460E-BC19-891404CA54E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2073E215-7E7E-4FAB-A5C5-F2225D01A022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2073E215-7E7E-4FAB-A5C5-F2225D01A022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2073E215-7E7E-4FAB-A5C5-F2225D01A022}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2073E215-7E7E-4FAB-A5C5-F2225D01A022}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BF89A4B-B321-41E0-A7E2-548082E75E8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BF89A4B-B321-41E0-A7E2-548082E75E8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BF89A4B-B321-41E0-A7E2-548082E75E8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BF89A4B-B321-41E0-A7E2-548082E75E8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
