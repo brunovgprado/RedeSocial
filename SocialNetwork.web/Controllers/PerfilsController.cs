@@ -26,21 +26,17 @@ namespace SocialNetwork.web.Controllers
             var lista = servico.RetornaPerfis();
             return View(lista);
         }
-        /*
+        
         // GET: Perfils/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Perfil perfil = db.Perfils.Find(id);
+            Perfil perfil = servico.RetornaPerfilUnico(id);
             if (perfil == null)
             {
                 return HttpNotFound();
             }
             return View(perfil);
-        }*/
+        }
 
         // GET: Perfils/Create
         public ActionResult Create()
@@ -63,22 +59,18 @@ namespace SocialNetwork.web.Controllers
 
             return View(perfil);
         }
-        /*
+       
         // GET: Perfils/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Perfil perfil = db.Perfils.Find(id);
+            Perfil perfil = servico.RetornaPerfilUnico(id);
             if (perfil == null)
             {
                 return HttpNotFound();
             }
             return View(perfil);
         }
-
+ 
         // POST: Perfils/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -88,21 +80,16 @@ namespace SocialNetwork.web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(perfil).State = EntityState.Modified;
-                db.SaveChanges();
+                servico.EditaPerfil(perfil);
                 return RedirectToAction("Index");
             }
             return View(perfil);
         }
 
         // GET: Perfils/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Perfil perfil = db.Perfils.Find(id);
+            Perfil perfil = servico.RetornaPerfilUnico(id);
             if (perfil == null)
             {
                 return HttpNotFound();
@@ -115,20 +102,10 @@ namespace SocialNetwork.web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Perfil perfil = db.Perfils.Find(id);
-            db.Perfils.Remove(perfil);
-            db.SaveChanges();
+            Perfil perfil = servico.RetornaPerfilUnico(id);
+            servico.ApagaPerfil(perfil);
             return RedirectToAction("Index");
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-        */
+        
     }
 }

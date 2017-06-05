@@ -7,6 +7,8 @@ namespace SocialNetwork.core.Repositorio
     {
         List<Perfil> ObterPerfis();
         bool CriarPerfil(Perfil perfil);
-        Perfil ObterPerfilUnico();
+        Perfil ObterPerfilUnico(int id);
+        void EditarPerfil(Perfil id);
+        void ApagarPerfil(Perfil perfil);
     }
 }

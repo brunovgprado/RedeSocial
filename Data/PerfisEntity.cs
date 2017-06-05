@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SocialNetwork.negocio.Dominio;
 using SocialNetwork.data;
+using System.Data.Entity;
 
 namespace Data
 {
@@ -13,9 +14,23 @@ namespace Data
     {
         SocialNetworkContext db = new SocialNetworkContext();
 
-        public Perfil ObterPerfilUnico()
+        public void ApagarPerfil(Perfil perfil)
         {
-            throw new NotImplementedException();
+            db.Perfils.Remove(perfil);
+            db.SaveChanges();
+        }
+
+        public void EditarPerfil(Perfil perfil)
+        {
+            db.Entry(perfil).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+
+        public Perfil ObterPerfilUnico(int id)
+        {
+            Perfil perfil = db.Perfils.Find(id);
+
+            return perfil;
         }
 
         public List<Perfil> ObterPerfis()
