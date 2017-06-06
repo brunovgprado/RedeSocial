@@ -10,5 +10,6 @@ namespace Negocio.Repositorio
         Perfil ObterPerfilUnico(int id);
         void EditarPerfil(Perfil id);
         void ApagarPerfil(Perfil perfil);
+        void dispose();
     }
 }

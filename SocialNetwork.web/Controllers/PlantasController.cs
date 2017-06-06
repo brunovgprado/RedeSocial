@@ -4,27 +4,30 @@ using System.Net;
 using System.Web.Mvc;
 using Dados;
 using Negocio.Dominio;
+using Servico;
 
 namespace SocialNetwork.web.Controllers
 {
     public class PlantasController : Controller
     {
-        private SocialWebContext db = new SocialWebContext();
+        private PlantaServico servico;
+
+        public PlantasController()
+        {
+            servico = new PlantaServico(new PlantasEntity());
+        }
 
         // GET: Plantas
         public ActionResult Index()
         {
-            return View(db.Plantas.ToList());
+            var lista = servico.RetornaPlantas();
+            return View(lista);
         }
 
         // GET: Plantas/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Planta planta = db.Plantas.Find(id);
+            Planta planta = servico.RetornaPlantaUnica(id);
             if (planta == null)
             {
                 return HttpNotFound();
@@ -47,8 +50,7 @@ namespace SocialNetwork.web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Plantas.Add(planta);
-                db.SaveChanges();
+                servico.CriaPlanta(planta);
                 return RedirectToAction("Index");
             }
 
@@ -56,13 +58,13 @@ namespace SocialNetwork.web.Controllers
         }
 
         // GET: Plantas/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Planta planta = db.Plantas.Find(id);
+            Planta planta = servico.RetornaPlantaUnica(id);
             if (planta == null)
             {
                 return HttpNotFound();
@@ -79,21 +81,16 @@ namespace SocialNetwork.web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(planta).State = EntityState.Modified;
-                db.SaveChanges();
+                servico.EditaPlanta(planta);
                 return RedirectToAction("Index");
             }
             return View(planta);
         }
 
         // GET: Plantas/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Planta planta = db.Plantas.Find(id);
+            Planta planta = servico.RetornaPlantaUnica(id);
             if (planta == null)
             {
                 return HttpNotFound();
@@ -106,9 +103,8 @@ namespace SocialNetwork.web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Planta planta = db.Plantas.Find(id);
-            db.Plantas.Remove(planta);
-            db.SaveChanges();
+            Planta planta = servico.RetornaPlantaUnica(id);
+            servico.ApagaPlanta(planta);
             return RedirectToAction("Index");
         }
 
@@ -116,7 +112,7 @@ namespace SocialNetwork.web.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                servico.dispose();
             }
             base.Dispose(disposing);
         }

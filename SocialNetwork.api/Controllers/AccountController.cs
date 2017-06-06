@@ -58,11 +58,13 @@ namespace SocialNetwork.api.Controllers
             return Ok();
         }
 
+        public class UserBindingModel { public string UserEmail { get; set; } }
+
         [AllowAnonymous]
         [Route("EmailIsConfirmed")]
-        public async Task<IHttpActionResult> EmailIsConfirmed(string userEmail)
+        public async Task<IHttpActionResult> EmailIsConfirmed(UserBindingModel useri)
         {
-            var user = await UserManager.FindByNameAsync(userEmail);
+            var user = await UserManager.FindByNameAsync(useri.UserEmail);
 
             if (user != null)
             {
@@ -72,8 +74,8 @@ namespace SocialNetwork.api.Controllers
                 }
                 return null;
             }
-            var id = user.Id;
-            return Ok(id);
+            //var id = user.Id;
+            return Ok();
         }
 
         [AllowAnonymous]

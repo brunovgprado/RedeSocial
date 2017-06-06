@@ -8,27 +8,29 @@ using System.Web;
 using System.Web.Mvc;
 using Dados;
 using Negocio.Dominio;
+using Servico;
 
 namespace SocialNetwork.web.Controllers
 {
     public class PerfilsController : Controller
     {
-        private SocialWebContext db = new SocialWebContext();
+        private PerfilServico servico;
 
+        public PerfilsController()
+        {
+            servico = new PerfilServico(new PerfisEntity());
+        }
         // GET: Perfils
         public ActionResult Index()
         {
-            return View(db.Perfils.ToList());
+            var lista = servico.RetornaPerfis();
+            return View(lista);
         }
 
         // GET: Perfils/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Perfil perfil = db.Perfils.Find(id);
+            Perfil perfil = servico.RetornaPerfilUnico(id);
             if (perfil == null)
             {
                 return HttpNotFound();
@@ -47,12 +49,11 @@ namespace SocialNetwork.web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PerfilId,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
+        public ActionResult Create([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
         {
             if (ModelState.IsValid)
             {
-                db.Perfils.Add(perfil);
-                db.SaveChanges();
+                servico.CriaPerfil(perfil);
                 return RedirectToAction("Index");
             }
 
@@ -60,13 +61,9 @@ namespace SocialNetwork.web.Controllers
         }
 
         // GET: Perfils/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Perfil perfil = db.Perfils.Find(id);
+            Perfil perfil = servico.RetornaPerfilUnico(id);
             if (perfil == null)
             {
                 return HttpNotFound();
@@ -79,25 +76,20 @@ namespace SocialNetwork.web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PerfilId,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
+        public ActionResult Edit([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(perfil).State = EntityState.Modified;
-                db.SaveChanges();
+                servico.EditaPerfil(perfil);
                 return RedirectToAction("Index");
             }
             return View(perfil);
         }
 
         // GET: Perfils/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Perfil perfil = db.Perfils.Find(id);
+            Perfil perfil = servico.RetornaPerfilUnico(id);
             if (perfil == null)
             {
                 return HttpNotFound();
@@ -110,9 +102,8 @@ namespace SocialNetwork.web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Perfil perfil = db.Perfils.Find(id);
-            db.Perfils.Remove(perfil);
-            db.SaveChanges();
+            Perfil perfil = servico.RetornaPerfilUnico(id);
+            servico.ApagaPerfil(perfil);
             return RedirectToAction("Index");
         }
 
@@ -120,7 +111,7 @@ namespace SocialNetwork.web.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+               servico.dispose();
             }
             base.Dispose(disposing);
         }

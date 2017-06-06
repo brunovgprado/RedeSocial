@@ -45,6 +45,7 @@
     <Compile Include="Dominio\Planta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\IHortaRepository.cs" />
+    <Compile Include="Repositorio\IPlantaRepository.cs" />
     <Compile Include="Repositorio\IPerfilRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

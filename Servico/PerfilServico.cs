@@ -4,43 +4,48 @@ using System.Collections.Generic;
 
 namespace Servico
 {
-    public class PerfilServico
+    public class PlantaServico
     {
-        private IPerfilRepository repositorio { get; set; }
+        private IPlantaRepository repositorio { get; set; }
 
-        public PerfilServico(IPerfilRepository repositorio)
+        public PlantaServico(IPlantaRepository repositorio)
         {
             this.repositorio = repositorio;
         }
 
         //Metodo que retorna todos os perfis
-        public List<Perfil> RetornaPerfis()
+        public List<Planta> RetornaPlantas()
         {
-            return repositorio.ObterPerfis();
+            return repositorio.ObterPlantas();
         }
 
         //Metodo que cria um novo perfil
-        public void CriaPerfil(Perfil perfil)
+        public void CriaPlanta(Planta planta)
         {
-            repositorio.CriarPerfil(perfil);
+            repositorio.CriarPlanta(planta);
         }
 
         //Metodo que retorna uma horta ao receber um id
-        public Perfil RetornaPerfilUnico(int id)
+        public Planta RetornaPlantaUnica(int id)
         {
-            return repositorio.ObterPerfilUnico(id);
+            return repositorio.ObterPlantaUnica(id);
         }
 
         //Metodo que edita uma horta
-        public void EditaPerfil(Perfil perfil)
+        public void EditaPlanta(Planta planta)
         {
-            repositorio.EditarPerfil(perfil);
+            repositorio.EditarPlanta(planta);
         }
 
         //Metodo que apaga uma horta
-        public void ApagaPerfil(Perfil perfil)
+        public void ApagaPlanta(Planta planta)
         {
-            repositorio.ApagarPerfil(perfil);
+            repositorio.ApagarPlanta(planta);
+        }
+
+        public void dispose()
+        {
+            repositorio.dispose();
         }
     }
 }

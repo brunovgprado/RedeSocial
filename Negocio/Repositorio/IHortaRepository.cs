@@ -10,5 +10,6 @@ namespace Negocio.Repositorio
         Horta ObterHortaUnica(int id);
         void EditarHorta(Horta id);
         void ApagarHorta(Horta horta);
+        void dispose();
     }
 }

@@ -102,5 +102,13 @@ namespace SocialNetwork.web.Controllers
             return RedirectToAction("Index");
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                servico.dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

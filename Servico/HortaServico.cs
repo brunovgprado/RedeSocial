@@ -42,5 +42,10 @@ namespace Servico
         {
             repositorio.ApagarHorta(horta);
         }
+
+        public void dispose()
+        {
+            repositorio.dispose();
+        }
     }
 }

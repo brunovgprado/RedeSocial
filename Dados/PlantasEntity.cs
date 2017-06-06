@@ -7,40 +7,40 @@ using Negocio.Dominio;
 
 namespace Dados
 {
-    public class PerfisEntity : IPerfilRepository
+    public class PlantasEntity : IPlantaRepository
     {
         SocialWebContext db = new SocialWebContext();
 
-        public void ApagarPerfil(Perfil perfil)
+        public void ApagarPlanta(Planta planta)
         {
-            db.Perfils.Remove(perfil);
+            db.Plantas.Remove(planta);
             db.SaveChanges();
         }
 
-        public void EditarPerfil(Perfil perfil)
+        public void EditarPlanta(Planta planta)
         {
-            db.Entry(perfil).State = EntityState.Modified;
+            db.Entry(planta).State = EntityState.Modified;
             db.SaveChanges();
         }
 
-        public Perfil ObterPerfilUnico(int id)
+        public Planta ObterPlantaUnica(int id)
         {
-            Perfil perfil = db.Perfils.Find(id);
+            Planta planta = db.Plantas.Find(id);
 
-            return perfil;
+            return planta;
         }
 
-        public List<Perfil> ObterPerfis()
+        public List<Planta> ObterPlantas()
         {           
-            List<Perfil> perfis = db.Perfils.ToList();
+            List<Planta> planta = db.Plantas.ToList();
 
-            return perfis;
+            return planta;
         }
 
-        bool IPerfilRepository.CriarPerfil(Perfil perfil)
+        public bool CriarPlanta(Planta planta)
         {
             try{
-                db.Perfils.Add(perfil);
+                db.Plantas.Add(planta);
                 db.SaveChanges();
             }
             catch (Exception e)

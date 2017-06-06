@@ -50,5 +50,9 @@ namespace Dados
             return horta;
         }
 
+        public void dispose()
+        {
+            db.Dispose();
+        }
     }
 }
