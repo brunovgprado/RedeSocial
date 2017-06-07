@@ -26,29 +26,31 @@ namespace Dados
         public Perfil ObterPerfilUnico(int id)
         {
             Perfil perfil = db.Perfils.Find(id);
-
             return perfil;
+        }
+
+        public Perfil ObterPerfilUsuario(string UserID)
+        {
+            try{
+                Perfil perfil = db.Perfils.Where(x => x.UserID == UserID).First();
+                return perfil;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
         public List<Perfil> ObterPerfis()
         {           
             List<Perfil> perfis = db.Perfils.ToList();
-
             return perfis;
         }
 
-        bool IPerfilRepository.CriarPerfil(Perfil perfil)
+        public void CriarPerfil(Perfil perfil)
         {
-            try{
-                db.Perfils.Add(perfil);
-                db.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-
-            return true;
+            db.Perfils.Add(perfil);
+            db.SaveChanges();        
         }
 
         public void dispose()

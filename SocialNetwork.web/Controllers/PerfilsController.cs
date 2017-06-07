@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Dados;
 using Negocio.Dominio;
 using Servico;
@@ -20,6 +13,19 @@ namespace SocialNetwork.web.Controllers
         {
             servico = new PerfilServico(new PerfisEntity());
         }
+
+        public ActionResult CheckIn()
+        {
+            var Idusuario = Session["UserId"].ToString();
+            var perfil = servico.RetornaPerfilUsuario(Idusuario);
+
+            if (perfil != null)
+            {
+                return RedirectToAction("Details",  new { Id = perfil.id });
+            }
+            return RedirectToAction("Create");
+        }
+
         // GET: Perfils
         public ActionResult Index()
         {
@@ -51,6 +57,7 @@ namespace SocialNetwork.web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
         {
+            perfil.UserID = Session["UserId"].ToString();
             if (ModelState.IsValid)
             {
                 servico.CriaPerfil(perfil);

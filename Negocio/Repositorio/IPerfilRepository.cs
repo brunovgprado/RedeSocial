@@ -6,10 +6,11 @@ namespace Negocio.Repositorio
     public interface IPerfilRepository
     {
         List<Perfil> ObterPerfis();
-        bool CriarPerfil(Perfil perfil);
+        void CriarPerfil(Perfil perfil);
         Perfil ObterPerfilUnico(int id);
         void EditarPerfil(Perfil id);
         void ApagarPerfil(Perfil perfil);
         void dispose();
+        Perfil ObterPerfilUsuario(string UserID);
     }
 }

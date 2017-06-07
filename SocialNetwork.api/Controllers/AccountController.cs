@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace SocialNetwork.api.Controllers
 {
@@ -29,7 +30,7 @@ namespace SocialNetwork.api.Controllers
         }
 
 
-        //POST api/Account/Register
+        // Metodo que registra o usuário e chama o envio de email para confirmação de conta
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
@@ -60,13 +61,14 @@ namespace SocialNetwork.api.Controllers
 
         public class UserBindingModel { public string UserEmail { get; set; } }
 
+        // Metodo que verifica se o email do usuário foi confirmado
         [AllowAnonymous]
         [Route("EmailIsConfirmed")]
-        public async Task<IHttpActionResult> EmailIsConfirmed(UserBindingModel useri)
+        public async Task<IHttpActionResult> IsEmailConfirmed(UserBindingModel useri)
         {
             var user = await UserManager.FindByNameAsync(useri.UserEmail);
 
-            if (user != null)
+            if (user == null)
             {
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                 {
@@ -74,10 +76,25 @@ namespace SocialNetwork.api.Controllers
                 }
                 return null;
             }
-            //var id = user.Id;
             return Ok();
         }
 
+        // Metodo que retorna o id do usuário logado através do email recebido
+        [AllowAnonymous]
+        [ResponseType(typeof(string))]
+        public async Task<IHttpActionResult> GetUserID(string userEmail)
+        {
+            var user = await UserManager.FindByNameAsync(userEmail);
+
+            if (user == null)
+            {
+                return null;
+            }
+            var retorno = user.Id;
+            return Ok(retorno);
+        }
+
+        // Metodo que confirma o email do usuário através dos argumentos recebidos
         [AllowAnonymous]
         [Route("ConfirmEmail")]
         public async Task<IHttpActionResult> ConfirmEmail(ArgumentosConfirm confirm)

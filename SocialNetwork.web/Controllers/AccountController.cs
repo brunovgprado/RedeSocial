@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SocialNetwork.api.Models.Account;
 using SocialNetwork.web.Helpers;
 using SocialNetwork.web.Models.Account;
@@ -85,6 +86,8 @@ namespace SocialNetwork.web.Controllers
             return View();
         }
 
+        public class UserBindingModel { public string UserID { get; set; } }
+
         // POST: Account/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -92,8 +95,12 @@ namespace SocialNetwork.web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var emailIsConfirmed = await _client.PostAsJsonAsync("api/Account/EmailIsConfirmed", new { UserEmail = model.Email });
-                
+
+                //Obtendo o id do usuário logado na api
+                var responseUserID = await _client.GetAsync($"api/Account/GetUserID?userEmail={model.Email}");
+                var UserID = await responseUserID.Content.ReadAsAsync<string>();
+                Session["UserId"] = UserID;
+
                 var data = new Dictionary<string, string>()
                 {
                     {"grant_type", "password" },
@@ -115,7 +122,7 @@ namespace SocialNetwork.web.Controllers
 
                         // Testanto se o usuário está autenticado
                         var sessao = Session.Contents;
-                        return RedirectToAction("DashBoard", "Application");
+                        return RedirectToAction("CheckIn", "Perfils");
                         
                     }
                     else
