@@ -14,6 +14,7 @@ namespace SocialNetwork.web.Controllers
             servico = new PerfilServico(new PerfisEntity());
         }
 
+        // Action responsável por verificar se o usuário já possui perfil
         public ActionResult CheckIn()
         {
             var IdUsuario = Session["UserId"].ToString();
@@ -24,6 +25,12 @@ namespace SocialNetwork.web.Controllers
                 return RedirectToAction("Details",  new { Id = perfil.id });
             }
             return RedirectToAction("Create");
+        }
+
+        // Action que registra o Seguir para perfil
+        public ActionResult Seguir(int id)
+        {
+            return RedirectToAction("SeguirPerfil","Seguirs", new { Id = id });
         }
 
         // GET: Perfils

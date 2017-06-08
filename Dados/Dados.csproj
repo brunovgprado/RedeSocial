@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201706082029187_Corrigida_tabela_seguir.Designer.cs">
       <DependentUpon>201706082029187_Corrigida_tabela_seguir.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706082138175_alterada_tabela_seguirs.cs" />
+    <Compile Include="Migrations\201706082138175_alterada_tabela_seguirs.Designer.cs">
+      <DependentUpon>201706082138175_alterada_tabela_seguirs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlantasEntity.cs" />
     <Compile Include="PerfisEntity.cs" />
@@ -102,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706082029187_Corrigida_tabela_seguir.resx">
       <DependentUpon>201706082029187_Corrigida_tabela_seguir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706082138175_alterada_tabela_seguirs.resx">
+      <DependentUpon>201706082138175_alterada_tabela_seguirs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

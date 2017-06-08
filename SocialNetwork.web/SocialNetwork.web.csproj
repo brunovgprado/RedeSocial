@@ -111,6 +111,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SocialWebContext-20170605161538.mdf" />
+    <Content Include="App_Data\SocialWebContext-20170605161538_log.ldf">
+      <DependentUpon>SocialWebContext-20170605161538.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -184,10 +188,6 @@
     <Content Include="Views\Plantas\Create.cshtml" />
     <Content Include="Views\Plantas\Edit.cshtml" />
     <Content Include="Views\Plantas\Delete.cshtml" />
-    <Content Include="Views\Seguirs\Create.cshtml" />
-    <Content Include="Views\Seguirs\Delete.cshtml" />
-    <Content Include="Views\Seguirs\Details.cshtml" />
-    <Content Include="Views\Seguirs\Edit.cshtml" />
     <Content Include="Views\Seguirs\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -196,9 +196,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Dados\Dados.csproj">
       <Project>{4b8e07c5-52db-4206-8893-48a6c2a77e53}</Project>

@@ -27,14 +27,11 @@ namespace SocialNetwork.web.Controllers
             return View();
         }
 
-        // POST: Seguir perfil
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult SeguirPerfil(int SeguidorId, int PerfilID)
+        public ActionResult SeguirPerfil(int id)
         {
             Seguir seguir = new Seguir();
-            seguir.SeguidorId = SeguidorId;
-            seguir.PerfilID = PerfilID;
+            seguir.SeguidorId = Session["UserId"].ToString();
+            seguir.PerfilID = id;
 
             db.Seguirs.Add(seguir);
             db.SaveChanges();
