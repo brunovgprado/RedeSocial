@@ -99,7 +99,7 @@ namespace SocialNetwork.web.Controllers
                 //Obtendo o id do usuário logado na api
                 var responseUserID = await _client.GetAsync($"api/Account/GetUserID?userEmail={model.Email}");
                 var UserID = await responseUserID.Content.ReadAsAsync<string>();
-                Session["UserId"] = UserID;
+                
 
                 var data = new Dictionary<string, string>()
                 {
@@ -118,7 +118,9 @@ namespace SocialNetwork.web.Controllers
 
                        var tokenData = JObject.Parse(responseContent);
 
+                        //Guardando token e id do usuário na sessão
                         _tokenHelper.AccessToken = tokenData["access_token"];
+                        Session["UserId"] = UserID;
 
                         // Testanto se o usuário está autenticado
                         var sessao = Session.Contents;
