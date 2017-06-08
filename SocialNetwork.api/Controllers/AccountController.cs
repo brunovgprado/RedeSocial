@@ -90,8 +90,7 @@ namespace SocialNetwork.api.Controllers
             {
                 return null;
             }
-            var retorno = user.Id;
-            return Ok(retorno);
+            return Ok(user.Id);
         }
 
         // Metodo que confirma o email do usuário através dos argumentos recebidos

@@ -25,25 +25,25 @@ namespace Servico
             repositorio.CriarPerfil(perfil);
         }
 
-        //Metodo que retorna uma horta ao receber um id
+        //Metodo que retorna um perfil ao receber um id
         public Perfil RetornaPerfilUnico(int id)
         {
             return repositorio.ObterPerfilUnico(id);
         }
 
-        //Metodo que retorna uma horta ao receber um id
+        //Metodo que retorna um perfil ao receber um id
         public Perfil RetornaPerfilUsuario(string UserId)
         {
             return repositorio.ObterPerfilUsuario(UserId);
         }
 
-        //Metodo que edita uma horta
+        //Metodo que edita um perfil
         public void EditaPerfil(Perfil perfil)
         {
             repositorio.EditarPerfil(perfil);
         }
 
-        //Metodo que apaga uma horta
+        //Metodo que apaga um perfil
         public void ApagaPerfil(Perfil perfil)
         {
             repositorio.ApagarPerfil(perfil);

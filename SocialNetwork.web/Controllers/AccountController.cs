@@ -30,13 +30,13 @@ namespace SocialNetwork.web.Controllers
             _tokenHelper = new TokenHelper();
         }
 
-        // GET: Account
+        //Action GETpara registro de novos usuários
         public ActionResult Register()
         {
             return View();
         }
 
-        // POST: Account/Register
+        //Action POST para registro de novos usuários
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
@@ -61,7 +61,7 @@ namespace SocialNetwork.web.Controllers
             return View(model);
         }
 
-        
+        //Action POST para confirmação de email de novos usuários
         public async Task<ActionResult> ConfirmEmail(string userId = "", string code = "")
         {
             ArgumentosConfirm confirm = new ArgumentosConfirm();
@@ -80,7 +80,7 @@ namespace SocialNetwork.web.Controllers
             return View();
         }
 
-        // GET: Account/Login
+        // Action GET de login de usuários
         public ActionResult Login()
         {
             return View();
@@ -88,7 +88,7 @@ namespace SocialNetwork.web.Controllers
 
         public class UserBindingModel { public string UserID { get; set; } }
 
-        // POST: Account/Login
+        // Action POST de login de usuários
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model)
@@ -114,16 +114,15 @@ namespace SocialNetwork.web.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        var responseContent = await response.Content.ReadAsStringAsync();
+                       var responseContent = await response.Content.ReadAsStringAsync();
 
                        var tokenData = JObject.Parse(responseContent);
 
-                        //Guardando token e id do usuário na sessão
+                        //Guardando token, id e email do usuário na sessão
                         _tokenHelper.AccessToken = tokenData["access_token"];
                         Session["UserId"] = UserID;
+                        Session["UserEmail"] = model.Email;
 
-                        // Testanto se o usuário está autenticado
-                        var sessao = Session.Contents;
                         return RedirectToAction("CheckIn", "Perfils");
                         
                     }
@@ -137,7 +136,7 @@ namespace SocialNetwork.web.Controllers
             return View(model);
         }
 
-        // GET: Account/Logout
+        // Action GET de Logout
         public ActionResult Logout()
         {            
             _tokenHelper.AccessToken = null;

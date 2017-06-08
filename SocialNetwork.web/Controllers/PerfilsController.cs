@@ -16,8 +16,8 @@ namespace SocialNetwork.web.Controllers
 
         public ActionResult CheckIn()
         {
-            var Idusuario = Session["UserId"].ToString();
-            var perfil = servico.RetornaPerfilUsuario(Idusuario);
+            var IdUsuario = Session["UserId"].ToString();
+            var perfil = servico.RetornaPerfilUsuario(IdUsuario);
 
             if (perfil != null)
             {
@@ -51,8 +51,6 @@ namespace SocialNetwork.web.Controllers
         }
 
         // POST: Perfils/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
