@@ -135,13 +135,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\INFNETBanco.mdf" />
+    <Content Include="App_Data\INFNETBanco_log.ldf">
+      <DependentUpon>INFNETBanco.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\Banco.mdf" />
     <Content Include="App_Data\Banco_log.ldf">
       <DependentUpon>Banco.mdf</DependentUpon>
-    </Content>
-    <Content Include="App_Data\OLDBanco.mdf" />
-    <Content Include="App_Data\OLDBanco_log.ldf">
-      <DependentUpon>OLDBanco.mdf</DependentUpon>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>

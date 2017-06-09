@@ -111,13 +111,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\OLDSocialWebContext-20170605161538.mdf" />
-    <Content Include="App_Data\OLDSocialWebContext-20170605161538_log.ldf">
-      <DependentUpon>OLDSocialWebContext-20170605161538.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\SocialWebContext-20170605161538.mdf" />
     <Content Include="App_Data\SocialWebContext-20170605161538_log.ldf">
       <DependentUpon>SocialWebContext-20170605161538.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\INFNETSocialWebContext-20170605161538.mdf" />
+    <Content Include="App_Data\INFNETSocialWebContext-20170605161538_log.ldf">
+      <DependentUpon>INFNETSocialWebContext-20170605161538.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
