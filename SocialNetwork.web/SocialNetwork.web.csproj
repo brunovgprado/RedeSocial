@@ -157,6 +157,7 @@
     <Compile Include="Attributes\AuthenticationAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
+    <Compile Include="Controllers\GerenciadorController.cs" />
     <Compile Include="Controllers\HortasController.cs" />
     <Compile Include="Controllers\PerfilsController.cs" />
     <Compile Include="Controllers\PlantasController.cs" />
@@ -184,15 +185,14 @@
     <Content Include="Views\Hortas\Edit.cshtml" />
     <Content Include="Views\Hortas\Index.cshtml" />
     <Content Include="Views\Plantas\Index.cshtml" />
-    <Content Include="Views\Perfils\Index.cshtml" />
     <Content Include="Views\Perfils\Details.cshtml" />
     <Content Include="Views\Perfils\Create.cshtml" />
     <Content Include="Views\Perfils\Edit.cshtml" />
-    <Content Include="Views\Perfils\Delete.cshtml" />
     <Content Include="Views\Plantas\Create.cshtml" />
     <Content Include="Views\Plantas\Edit.cshtml" />
     <Content Include="Views\Plantas\Delete.cshtml" />
     <Content Include="Views\Seguirs\Index.cshtml" />
+    <Content Include="Views\Gerenciador\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

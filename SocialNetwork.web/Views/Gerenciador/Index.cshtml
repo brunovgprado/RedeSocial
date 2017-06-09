@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ops!</h2>
+<h4>Ocorreu um problema por aqui</h4><br/>
+@Html.ActionLink("Voltar ao meu perfil", "../Perfils/Details", new { id = Session["PerfilId"].ToString() })
+

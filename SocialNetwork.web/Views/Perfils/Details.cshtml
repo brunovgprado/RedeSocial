@@ -11,14 +11,6 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.UserID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserID)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.NomeExibicao)
         </dt>
 
@@ -36,8 +28,7 @@
 
     </dl>
 </div>
-<p>
-     
+<p>  
 
 @if (Model.UserID.ToString() == Session["UserId"].ToString())
 {

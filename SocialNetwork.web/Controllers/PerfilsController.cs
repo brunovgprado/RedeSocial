@@ -67,7 +67,7 @@ namespace SocialNetwork.web.Controllers
             if (ModelState.IsValid)
             {
                 servico.CriaPerfil(perfil);
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = perfil.id});
             }
 
             return View(perfil);
@@ -77,11 +77,11 @@ namespace SocialNetwork.web.Controllers
         public ActionResult Edit(int id)
         {
             Perfil perfil = servico.RetornaPerfilUnico(id);
-            if (perfil == null)
-            {
-                return HttpNotFound();
+            if (perfil.UserID == Session["UserId"].ToString())
+            {      
+                return View(perfil);
             }
-            return View(perfil);
+            return RedirectToAction("Index", "Gerenciador");
         }
 
         // POST: Perfils/Edit/5
@@ -92,7 +92,7 @@ namespace SocialNetwork.web.Controllers
             if (ModelState.IsValid)
             {
                 servico.EditaPerfil(perfil);
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = perfil.id });
             }
             return View(perfil);
         }
@@ -108,14 +108,13 @@ namespace SocialNetwork.web.Controllers
             return View(perfil);
         }
 
-        // POST: Perfils/Delete/5
+        // Action que apaga um perfil
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public void DeleteConfirmed(int id)
         {
             Perfil perfil = servico.RetornaPerfilUnico(id);
             servico.ApagaPerfil(perfil);
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
