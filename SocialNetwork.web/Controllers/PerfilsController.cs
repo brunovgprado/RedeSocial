@@ -8,16 +8,17 @@ namespace SocialNetwork.web.Controllers
     public class PerfilsController : Controller
     {
         private PerfilServico servico;
+        private string IdUsuario;
 
         public PerfilsController()
         {
+            IdUsuario = Session["UserId"].ToString();
             servico = new PerfilServico(new PerfisEntity());
         }
 
         // Action responsável por verificar se o usuário já possui perfil
         public ActionResult CheckIn()
-        {
-            var IdUsuario = Session["UserId"].ToString();
+        {      
             var perfil = servico.RetornaPerfilUsuario(IdUsuario);
 
             if (perfil != null)
