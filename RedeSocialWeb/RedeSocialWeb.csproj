@@ -213,6 +213,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SocialWebContext-20170605161538.mdf" />
+    <Content Include="App_Data\SocialWebContext-20170605161538_log.ldf">
+      <DependentUpon>SocialWebContext-20170605161538.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -285,9 +289,7 @@
     <Content Include="Views\Plantas\Index.cshtml" />
     <Content Include="Views\Seguirs\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
