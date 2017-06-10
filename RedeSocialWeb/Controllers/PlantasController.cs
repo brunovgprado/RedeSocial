@@ -6,7 +6,7 @@ using Dados;
 using Negocio.Dominio;
 using Servico;
 
-namespace SocialNetwork.web.Controllers
+namespace RedeSocialWeb.Controllers
 {
     public class PlantasController : Controller
     {

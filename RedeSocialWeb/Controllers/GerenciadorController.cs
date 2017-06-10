@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SocialNetwork.web.Controllers
+namespace RedeSocialWeb.Controllers
 {
     public class GerenciadorController : Controller
     {

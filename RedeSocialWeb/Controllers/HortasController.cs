@@ -3,7 +3,7 @@ using Negocio.Dominio;
 using Dados;
 using Servico;
 
-namespace SocialNetwork.web.Controllers
+namespace RedeSocialWeb.Controllers
 {
     public class HortasController : Controller
     {
