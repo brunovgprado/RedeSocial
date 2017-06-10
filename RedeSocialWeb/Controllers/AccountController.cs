@@ -162,17 +162,17 @@ namespace RedeSocialWeb.Controllers
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    //Gerando token e enviando e-mail de confirmação
+                    /*/Gerando token e enviando e-mail de confirmação
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     code = HttpUtility.UrlEncode(code);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id,
                        "Confirme seu e-mail ", "Por favor, confirme seu e-mail clicando <a href=\""
-                       + model.CallbackUrl + $"?userId={user.Id}&code={code}" + "\">aqui</a>");
+                       + model.CallbackUrl + $"?userId={user.Id}&code={code}" + "\">aqui</a>");*/
 
                     return RedirectToAction("Index", "Home");
                 }
