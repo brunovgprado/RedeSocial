@@ -23,7 +23,7 @@ namespace RedeSocialWeb.Controllers
 
             if (perfil != null)
             {
-                return RedirectToAction("Details",  new { Id = perfil.id });
+                return RedirectToAction("Index", "Gerenciador");
             }
             return RedirectToAction("Create");
         }

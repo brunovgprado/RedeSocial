@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PostagensEntity.cs" />
     <Compile Include="HortasEntity.cs" />
     <Compile Include="Migrations\201706052222333_Adicionado modelo Perfil.cs" />
     <Compile Include="Migrations\201706052222333_Adicionado modelo Perfil.Designer.cs">
@@ -80,6 +81,14 @@
     <Compile Include="Migrations\201706082138175_alterada_tabela_seguirs.cs" />
     <Compile Include="Migrations\201706082138175_alterada_tabela_seguirs.Designer.cs">
       <DependentUpon>201706082138175_alterada_tabela_seguirs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706101810143_Criado model de postagem.cs" />
+    <Compile Include="Migrations\201706101810143_Criado model de postagem.Designer.cs">
+      <DependentUpon>201706101810143_Criado model de postagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706101820234_Postagems inserido no context.cs" />
+    <Compile Include="Migrations\201706101820234_Postagems inserido no context.Designer.cs">
+      <DependentUpon>201706101820234_Postagems inserido no context.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlantasEntity.cs" />
@@ -110,6 +119,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706082138175_alterada_tabela_seguirs.resx">
       <DependentUpon>201706082138175_alterada_tabela_seguirs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706101810143_Criado model de postagem.resx">
+      <DependentUpon>201706101810143_Criado model de postagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706101820234_Postagems inserido no context.resx">
+      <DependentUpon>201706101820234_Postagems inserido no context.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

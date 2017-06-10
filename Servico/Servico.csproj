@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PostagemServico.cs" />
     <Compile Include="SeguirServico.cs" />
     <Compile Include="PerfilServico.cs" />
     <Compile Include="PlantaServico.cs" />

@@ -32,10 +32,17 @@
 
 @if (Model.UserID.ToString() == Session["UserId"].ToString())
 {
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id })
+    <a href="@Url.Action("Edit", "Edit", new { id = Model.id })" title="Cancelar" class="btn btn-info">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        Editar Perfil
+    </a>
 }
 else
 {
-    @Html.ActionLink("Seguir", "Seguir", new { id = Model.id })
+
+    <a href="@Url.Action("Seguir", "Seguir", new { id = Model.id })" title="Cancelar" class="btn btn-info">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        Seguir
+    </a>
 }
 </p>

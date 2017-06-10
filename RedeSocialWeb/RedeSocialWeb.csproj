@@ -207,18 +207,23 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PerfilsController.cs" />
     <Compile Include="Controllers\PlantasController.cs" />
+    <Compile Include="Controllers\PostagemsController.cs" />
     <Compile Include="Controllers\SeguirsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DashBoardModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\EmailService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-RedeSocialWeb-20170610121518.mdf" />
+    <Content Include="App_Data\aspnet-RedeSocialWeb-20170610121518_log.ldf">
+      <DependentUpon>aspnet-RedeSocialWeb-20170610121518.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\SocialWebContext-20170605161538.mdf" />
     <Content Include="App_Data\SocialWebContext-20170605161538_log.ldf">
       <DependentUpon>SocialWebContext-20170605161538.mdf</DependentUpon>
@@ -266,8 +271,8 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\_LoginFormPartial.cshtml" />
+    <Content Include="Views\Account\_RegisterPartial.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
@@ -294,6 +299,9 @@
     <Content Include="Views\Plantas\Edit.cshtml" />
     <Content Include="Views\Plantas\Index.cshtml" />
     <Content Include="Views\Seguirs\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Postagems\Index.cshtml" />
+    <Content Include="Views\Postagems\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

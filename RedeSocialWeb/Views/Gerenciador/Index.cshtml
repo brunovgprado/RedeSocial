@@ -1,9 +1,49 @@
-﻿
+﻿@model RedeSocialWeb.Models.DashBoardModel
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Ops!</h2>
-<h4>Ocorreu um problema por aqui</h4><br/>
-@Html.ActionLink("Voltar ao meu perfil", "../Perfils/Details", new { id = Session["PerfilId"].ToString() })
+<h2>Index</h2>
+
+<div>
+    <h4>DashBoardModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nomePerfil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomePerfil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fotoPerfil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fotoPerfil)
+        </dd>
+    </dl>
+    <table class="table">
+        @foreach (var item in Model.postagens)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PerfilId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataPostagem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FotoPostagem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TextoPostagem)
+                </td>
+            </tr>
+        }
+     </table>
+</div>
 

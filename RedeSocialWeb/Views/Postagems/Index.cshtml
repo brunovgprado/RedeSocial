@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Negocio.Dominio.Postagem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PerfilId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataPostagem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FotoPostagem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TextoPostagem)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PerfilId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataPostagem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FotoPostagem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TextoPostagem)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
