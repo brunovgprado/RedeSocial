@@ -44,7 +44,7 @@ namespace Servico
         }
 
         //Metodo que apaga um perfil
-        public void ApagaPerfil(Postagem postagem)
+        public void ApagaPostagem(Postagem postagem)
         {
             repositorio.ApagarPostagem(postagem);
         }

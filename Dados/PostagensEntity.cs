@@ -16,19 +16,28 @@ namespace Dados
             throw new NotImplementedException();
         }
 
-        public bool CriarPostagem(Postagem horta)
+        public void CriarPostagem(Postagem postagem)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.Postagems.Add(postagem);
+            }
+            catch(Exception e)
+            {
+                
+            }
+            
         }
 
-        public void EditarPostagem(Postagem id)
+        public void EditarPostagem(Postagem postagem)
         {
-            throw new NotImplementedException();
+            db.Entry(postagem).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         public Postagem ObterPostagemUnica(int id)
         {
-            throw new NotImplementedException();
+            return db.Postagems.Find(id);
         }
 
         public List<Postagem> ObterPostagens()
@@ -41,9 +50,12 @@ namespace Dados
             db.Dispose();
         }
 
+        // Retorna todas as postagens de um determinado usuario
         public List<Postagem> ObterPostagensUserId(string userId)
         {
-            throw new NotImplementedException();
+            var postagemsUserId = db.Postagems.Where(x => x.UserId == userId);
+
+            return postagemsUserId.ToList();
         }
     }
 }

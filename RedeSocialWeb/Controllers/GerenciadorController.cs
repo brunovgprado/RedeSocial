@@ -1,4 +1,5 @@
 ﻿using Dados;
+using Microsoft.AspNet.Identity;
 using RedeSocialWeb.Models;
 using Servico;
 using System;
@@ -31,9 +32,8 @@ namespace RedeSocialWeb.Controllers
 
             // Verifica se a variavel de sessão UserId é nula
             if (Session["UserId"] == null)
-            {
-                return RedirectToAction("LogOff", "Account");
-            }
+                Session["UserId"] = User.Identity.GetUserId();
+
             // Obtém o valor da variavel de sessão e busca o perfil
             var UserId = Session["UserId"].ToString();
             var perfil = servicoPerfil.RetornaPerfilUsuario(UserId);
@@ -44,6 +44,12 @@ namespace RedeSocialWeb.Controllers
             dashBorad.UserId = perfil.UserID;
 
             return View(dashBorad);
+        }
+
+        public ActionResult PerfilPorUserId(int perfilId)
+        {
+            var perfil = servicoPerfil.RetornaPerfilUnico(perfilId);
+            return RedirectToAction("PerfilTerceiro", new { userId = perfil.UserID});
         }
 
         public ActionResult PerfilTerceiro(string userId)

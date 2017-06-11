@@ -7,9 +7,9 @@ namespace Negocio.Repositorio
     {
         List<Postagem> ObterPostagens();
         List<Postagem> ObterPostagensUserId(string userId);
-        bool CriarPostagem(Postagem horta);
+        void CriarPostagem(Postagem postagem);
         Postagem ObterPostagemUnica(int id);
-        void EditarPostagem(Postagem id);
+        void EditarPostagem(Postagem postagem);
         void ApagarPostagem(Postagem horta);
         void dispose();
     }

@@ -2,6 +2,7 @@
 using Dados;
 using Negocio.Dominio;
 using Servico;
+using Microsoft.AspNet.Identity;
 
 namespace RedeSocialWeb.Controllers
 {
@@ -18,6 +19,9 @@ namespace RedeSocialWeb.Controllers
         // Action responsável por verificar se o usuário já possui perfil
         public ActionResult CheckIn()
         {
+            if (Session["UserId"] == null) ;
+                Session["UserId"] = User.Identity.GetUserId();
+
             IdUsuario = Session["UserId"].ToString();   
             var perfil = servico.RetornaPerfilUsuario(IdUsuario);
 
@@ -45,7 +49,7 @@ namespace RedeSocialWeb.Controllers
         // GET: Perfils/Details/5
         public ActionResult Details(int id)
         {
-            Perfil perfil = servico.RetornaPerfilUnico(id);
+            var perfil = servico.RetornaPerfilUnico(id);
             if (perfil == null)
             {
                 return HttpNotFound();
@@ -64,6 +68,9 @@ namespace RedeSocialWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
         {
+            if (Session["UserId"] == null)
+                Session["UserId"] = User.Identity.GetUserId();
+
             perfil.UserID = Session["UserId"].ToString();
             if (ModelState.IsValid)
             {
@@ -80,6 +87,9 @@ namespace RedeSocialWeb.Controllers
         // GET: Perfils/Edit/5
         public ActionResult Edit(int id)
         {
+            if (Session["UserId"] == null) ;
+                Session["UserId"] = User.Identity.GetUserId();
+
             Perfil perfil = servico.RetornaPerfilUnico(id);
             if (perfil.UserID == Session["UserId"].ToString())
             {      
@@ -95,6 +105,10 @@ namespace RedeSocialWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Session["UserId"] == null)
+                    Session["UserId"] = User.Identity.GetUserId();
+
+                perfil.UserID = Session["UserId"].ToString();
                 servico.EditaPerfil(perfil);
                 return RedirectToAction("Index", "Gerenciador");
             }

@@ -9,27 +9,32 @@ using System.Web.Mvc;
 using Negocio.Dominio;
 using RedeSocialWeb.Models;
 using Dados;
+using Microsoft.AspNet.Identity;
+using Servico;
 
 namespace RedeSocialWeb.Controllers
 {
     public class PostagemsController : Controller
     {
-        private SocialWebContext db = new SocialWebContext();
+        private PostagemServico servicoPostagem;
+        private PerfilServico servicoPerfil;
+
+        public PostagemsController()
+        {
+            servicoPostagem = new PostagemServico(new PostagensEntity());
+            servicoPerfil = new PerfilServico(new PerfisEntity());
+        }
 
         // GET: Postagems
         public ActionResult Index()
         {
-            return View(db.Postagems.ToList());
+            return View(servicoPostagem.RetornaPostagens());
         }
 
         // GET: Postagems/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Postagem postagem = db.Postagems.Find(id);
+            Postagem postagem = servicoPostagem.RetornaPostagemUnica(id);
             if (postagem == null)
             {
                 return HttpNotFound();
@@ -50,12 +55,18 @@ namespace RedeSocialWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,PerfilId,DataPostagem,FotoPostagem,TextoPostagem")] Postagem postagem)
         {
+            // Verificando se a variavel de sessão UserId é está nula
+            if (Session["UserId"] == null)
+                Session["UserId"] = User.Identity.GetUserId();
             postagem.UserId = Session["UserId"].ToString();
+
+            var perfil = servicoPerfil.RetornaPerfilUsuario(postagem.UserId);
+            postagem.PerfilId = perfil.id;
             postagem.DataPostagem = DateTime.Now;
+
             if (ModelState.IsValid)
             {
-                db.Postagems.Add(postagem);
-                db.SaveChanges();
+                servicoPostagem.CriaPostagem(postagem);
                 return RedirectToAction("Index", "Gerenciador");
             }
 
@@ -63,13 +74,9 @@ namespace RedeSocialWeb.Controllers
         }
 
         // GET: Postagems/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Postagem postagem = db.Postagems.Find(id);
+            Postagem postagem = servicoPostagem.RetornaPostagemUnica(id);
             if (postagem == null)
             {
                 return HttpNotFound();
@@ -86,21 +93,16 @@ namespace RedeSocialWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(postagem).State = EntityState.Modified;
-                db.SaveChanges();
+                servicoPostagem.EditaPostagem(postagem);
                 return RedirectToAction("Index");
             }
             return View(postagem);
         }
 
         // GET: Postagems/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Postagem postagem = db.Postagems.Find(id);
+            Postagem postagem = servicoPostagem.RetornaPostagemUnica(id);
             if (postagem == null)
             {
                 return HttpNotFound();
@@ -113,9 +115,8 @@ namespace RedeSocialWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Postagem postagem = db.Postagems.Find(id);
-            db.Postagems.Remove(postagem);
-            db.SaveChanges();
+            Postagem postagem = servicoPostagem.RetornaPostagemUnica(id);
+            servicoPostagem.ApagaPostagem(postagem);
             return RedirectToAction("Index");
         }
 
@@ -123,7 +124,7 @@ namespace RedeSocialWeb.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                servicoPostagem.dispose();
             }
             base.Dispose(disposing);
         }
