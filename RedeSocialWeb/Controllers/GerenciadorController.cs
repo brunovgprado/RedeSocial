@@ -29,6 +29,12 @@ namespace RedeSocialWeb.Controllers
             var lista = servicoPostagem.RetornaPostagens();
             dashBorad.postagens = PostagemViewModel.GetModel(lista);
 
+            // Verifica se a variavel de sessão UserId é nula
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+            // Obtém o valor da variavel de sessão e busca o perfil
             var UserId = Session["UserId"].ToString();
             var perfil = servicoPerfil.RetornaPerfilUsuario(UserId);
 
