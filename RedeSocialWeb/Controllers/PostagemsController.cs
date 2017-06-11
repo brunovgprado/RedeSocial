@@ -50,6 +50,8 @@ namespace RedeSocialWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,PerfilId,DataPostagem,FotoPostagem,TextoPostagem")] Postagem postagem)
         {
+            postagem.UserId = Session["UserId"].ToString();
+            postagem.DataPostagem = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Postagems.Add(postagem);

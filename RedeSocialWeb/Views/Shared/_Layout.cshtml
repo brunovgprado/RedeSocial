@@ -33,6 +33,7 @@
             @if (Request.IsAuthenticated)
             {
                 <li>@Html.ActionLink("Home", "Index", "Gerenciador")</li>
+                <li>@Html.ActionLink("Postar", "Create", "Postagems")</li>
             }
             else
             {

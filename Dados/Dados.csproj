@@ -64,6 +64,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201706111546590_Add_Coluna_UserId.cs" />
+    <Compile Include="Migrations\201706111546590_Add_Coluna_UserId.Designer.cs">
+      <DependentUpon>201706111546590_Add_Coluna_UserId.cs</DependentUpon>
+    </Compile>
     <Compile Include="PostagensEntity.cs" />
     <Compile Include="HortasEntity.cs" />
     <Compile Include="Migrations\201706052222333_Adicionado modelo Perfil.cs" />
@@ -125,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706101820234_Postagems inserido no context.resx">
       <DependentUpon>201706101820234_Postagems inserido no context.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706111546590_Add_Coluna_UserId.resx">
+      <DependentUpon>201706111546590_Add_Coluna_UserId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
