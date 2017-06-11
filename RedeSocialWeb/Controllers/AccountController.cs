@@ -159,9 +159,10 @@ namespace RedeSocialWeb.Controllers
                     //Gerando token e enviando e-mail de confirmação
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Por favor, confirme seu e-mail clicando <a href=\"" + callbackUrl + "\">Aqui</a>");  
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Por favor, confirme seu e-mail clicando <a href=\"" + callbackUrl + "\">Aqui</a>");
+                    Session["UserId"] = user.Id;
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("CheckIn", "Perfils");
                 }
                 AddErrors(result);
             }
