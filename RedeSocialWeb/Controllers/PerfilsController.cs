@@ -23,6 +23,7 @@ namespace RedeSocialWeb.Controllers
 
             if (perfil != null)
             {
+                Session["PerfilId"] = perfil.id;
                 return RedirectToAction("Index", "Gerenciador");
             }
             return RedirectToAction("Create");
@@ -67,7 +68,8 @@ namespace RedeSocialWeb.Controllers
             if (ModelState.IsValid)
             {
                 servico.CriaPerfil(perfil);
-                return RedirectToAction("Details", new { id = perfil.id});
+                Session["PerfilId"] = perfil.id;
+                return RedirectToAction("CheckIn", "Perfils");
             }
 
             return View(perfil);

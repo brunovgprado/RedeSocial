@@ -56,7 +56,7 @@ namespace RedeSocialWeb.Controllers
             {
                 db.Postagems.Add(postagem);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Gerenciador");
             }
 
             return View(postagem);

@@ -4,14 +4,14 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Bem vindo!</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Perfil</h4>
+        <h5>Informe um nome e uma foto para seu perfil</h5>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -38,7 +38,3 @@
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
