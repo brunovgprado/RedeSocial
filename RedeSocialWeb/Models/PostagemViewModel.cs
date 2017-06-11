@@ -3,11 +3,10 @@ using Negocio.Dominio;
 using Servico;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace RedeSocialWeb.Models
 {
+    // Entidade responsável por conter os dados de postagem a serem exibidos
     public class PostagemViewModel
     {
         private PerfilServico servicoPerfil;  
@@ -22,9 +21,11 @@ namespace RedeSocialWeb.Models
         public string FotoPostagem { get; set; }
         public string TextoPostagem { get; set; }
 
+        public string UserId { get; set; }
         public string UserName { get; set; }
         public string UserFoto { get; set; }
 
+        // Metodo que recebe um do tipo Postagem e converte para PostagemViewModel
         public void SetModel(Postagem postagem)
         {
             Perfil perfil = new Perfil();
@@ -35,13 +36,14 @@ namespace RedeSocialWeb.Models
             DataPostagem = postagem.DataPostagem;
             FotoPostagem = postagem.FotoPostagem;
             TextoPostagem = postagem.TextoPostagem;
+            UserId = perfil.UserID;
             UserName = perfil.NomeExibicao;
             UserFoto = perfil.FotoPerfil;
         }    
 
+        // Metodo que recebe uma lista do tipo Postagem e envia para conversão para PostagemViewModel
         public static List<PostagemViewModel> GetModel(List<Postagem> postagens)
         {
-            Perfil perfil;
             PostagemViewModel postagemView;
             List<PostagemViewModel> listaView = new List<PostagemViewModel>();
 

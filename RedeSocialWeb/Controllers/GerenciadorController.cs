@@ -35,6 +35,22 @@ namespace RedeSocialWeb.Controllers
             dashBorad.nomePerfil = perfil.NomeExibicao;
             dashBorad.fotoPerfil = perfil.FotoPerfil;
             dashBorad.idPerfil = perfil.id;
+            dashBorad.UserId = perfil.UserID;
+
+            return View(dashBorad);
+        }
+
+        public ActionResult PerfilTerceiro(string userId)
+        {
+            DashBoardModel dashBorad = new DashBoardModel();
+            var lista = servicoPostagem.RetornaPostagens();
+            dashBorad.postagens = PostagemViewModel.GetModel(lista);
+            var perfil = servicoPerfil.RetornaPerfilUsuario(userId);
+
+            dashBorad.nomePerfil = perfil.NomeExibicao;
+            dashBorad.fotoPerfil = perfil.FotoPerfil;
+            dashBorad.idPerfil = perfil.id;
+            dashBorad.UserId = perfil.UserID;
 
             return View(dashBorad);
         }

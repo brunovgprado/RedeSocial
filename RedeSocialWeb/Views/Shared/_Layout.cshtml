@@ -20,11 +20,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+            @if (Request.IsAuthenticated)
+            {
                 @Html.ActionLink("HortoHome", "Index", "Gerenciador", new { area = "" }, new { @class = "navbar-brand" })
+            }else
+            {
+                @Html.ActionLink("HortoHome", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Gerenciador")</li>
+            @if (Request.IsAuthenticated)
+            {
+                <li>@Html.ActionLink("Home", "Index", "Gerenciador")</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

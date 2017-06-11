@@ -304,6 +304,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Postagems\Index.cshtml" />
     <Content Include="Views\Postagems\Create.cshtml" />
+    <Content Include="Views\Gerenciador\PerfilTerceiro.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
