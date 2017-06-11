@@ -21,6 +21,7 @@ namespace Dados
             try
             {
                 db.Postagems.Add(postagem);
+                db.SaveChanges();
             }
             catch(Exception e)
             {
