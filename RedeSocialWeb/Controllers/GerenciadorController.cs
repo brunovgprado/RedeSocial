@@ -24,14 +24,17 @@ namespace RedeSocialWeb.Controllers
         // GET: Gerenciador
         public ActionResult Index()
         {
+            
             DashBoardModel dashBorad = new DashBoardModel();
-            dashBorad.postagens = servicoPostagem.RetornaPostagens();
+            var lista = servicoPostagem.RetornaPostagens();
+            dashBorad.postagens = PostagemViewModel.GetModel(lista);
 
             var UserId = Session["UserId"].ToString();
             var perfil = servicoPerfil.RetornaPerfilUsuario(UserId);
 
             dashBorad.nomePerfil = perfil.NomeExibicao;
             dashBorad.fotoPerfil = perfil.FotoPerfil;
+            dashBorad.idPerfil = perfil.id;
 
             return View(dashBorad);
         }

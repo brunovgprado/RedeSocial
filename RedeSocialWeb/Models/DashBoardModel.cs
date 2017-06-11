@@ -6,8 +6,9 @@ namespace RedeSocialWeb.Models
     // Entidade responsável por conter os dados que montam a tela principal
     public class DashBoardModel
     {
+        public int idPerfil { get; set; }
         public string nomePerfil { get; set; }
         public string fotoPerfil { get; set; }
-        public List<Postagem> postagens { get; set; }
+        public List<PostagemViewModel> postagens { get; set; }
     }
 }

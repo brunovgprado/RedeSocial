@@ -92,7 +92,7 @@ namespace RedeSocialWeb.Controllers
             if (ModelState.IsValid)
             {
                 servico.EditaPerfil(perfil);
-                return RedirectToAction("Details", new { id = perfil.id });
+                return RedirectToAction("Index", "Gerenciador");
             }
             return View(perfil);
         }
