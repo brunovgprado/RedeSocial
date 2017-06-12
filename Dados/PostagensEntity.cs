@@ -43,7 +43,7 @@ namespace Dados
 
         public List<Postagem> ObterPostagens()
         {
-           return db.Postagems.ToList();
+            return db.Postagems.ToList();
         }
 
         public void dispose()

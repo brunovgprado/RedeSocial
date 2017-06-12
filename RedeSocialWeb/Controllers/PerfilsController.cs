@@ -75,7 +75,7 @@ namespace RedeSocialWeb.Controllers
             if (ModelState.IsValid)
             {
                 if (perfil.FotoPerfil == null)
-                    perfil.FotoPerfil = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
+                    perfil.FotoPerfil = "https://raw.githubusercontent.com/brunovitorprado/RedeSocial/master/avatar.png";
                 servico.CriaPerfil(perfil);
                 Session["PerfilId"] = perfil.id;
                 return RedirectToAction("CheckIn", "Perfils");
