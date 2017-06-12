@@ -24,7 +24,7 @@ namespace RedeSocialWeb.Controllers
             servicoSeguir = new SeguirServico(new SeguirEntity());
         }
 
-        // GET: Gerenciador
+        // Action da pagina principal do usuario logado
         public ActionResult Index()
         {
             
@@ -48,13 +48,15 @@ namespace RedeSocialWeb.Controllers
             return View(dashBorad);
         }
 
+        // Action que localiza o usuario a partir do id de perfil e chama a action PerfilTerceiro
         public ActionResult PerfilPorUserId(int perfilId)
         {
             var perfil = servicoPerfil.RetornaPerfilUnico(perfilId);
             return RedirectToAction("PerfilTerceiro", new { userId = perfil.UserID});
         }
 
-        public ActionResult PerfilTerceiro(string userId)
+        // Action que monta a view de um usuario visitado
+        public ActionResult PerfilVisitado(string userId)
         {
             DashBoardModel dashBorad = new DashBoardModel();
             var lista = servicoPostagem.RetornaPostagens();
