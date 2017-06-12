@@ -4,9 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Inicio</h2>
 <div>
-    <h4>@Model.PerfisSeguidos.Count().ToString()</h4>
     <hr />
 </div>
 
@@ -32,6 +31,9 @@
             </div>
         </a>
     </div>
+    <div class="thumbnail text-justify">
+        <p>Seguindo @Model.PerfisSeguidos.Count().ToString() perfis</p>
+    </div>
 </div>
 <div class="col-sm-8 text-left">
     @foreach (var item in Model.postagens)
@@ -41,7 +43,7 @@
                 <div class="message-inner">
                     <div class="message-head clearfix">
                         <div class="avatar pull-left">
-                            <a href="@Url.Action("PerfilTerceiro", new { userId = item.UserId } )">
+                            <a href="@Url.Action("PerfilVisitado", new { userId = item.UserId } )">
                                 <img src="@Html.DisplayFor(model => item.UserFoto)" title="@Html.DisplayFor(modelItem => item.UserName)" class="imgPost">
                             </a>
                         </div>
@@ -58,7 +60,7 @@
                                     <span class="qa-message-who">
                                         <span class="qa-message-who-pad">Por </span>
                                         <span class="qa-message-who-data">
-                                            <a href="@Url.Action("PerfilTerceiro", new { userId = item.UserId } )">
+                                            <a href="@Url.Action("PerfilVisitado", new { userId = item.UserId } )">
                                                 @Html.DisplayFor(modelItem => item.UserName)
                                             </a>
                                         </span>

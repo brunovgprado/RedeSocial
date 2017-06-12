@@ -64,7 +64,7 @@ namespace RedeSocialWeb.Controllers
         public ActionResult PerfilPorUserId(int perfilId)
         {
             var perfil = servicoPerfil.RetornaPerfilUnico(perfilId);
-            return RedirectToAction("PerfilTerceiro", new { userId = perfil.UserID});
+            return RedirectToAction("PerfilVisitado", new { userId = perfil.UserID});
         }
 
         // Action que monta a view de um usuario visitado
