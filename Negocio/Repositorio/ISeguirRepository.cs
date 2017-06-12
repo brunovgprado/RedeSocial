@@ -7,6 +7,7 @@ namespace Negocio.Repositorio
     {
         void SeguirPerfil(Seguir seguir);
         void DeixarDeSeguir(Seguir seguir);
+        List<Seguir> ObterSeguidos(string userId);
         void dispose();
     }
 }

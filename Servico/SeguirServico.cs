@@ -23,6 +23,11 @@ namespace Servico
             repositorio.DeixarDeSeguir(seguir);
         }
 
+        public List<Seguir> ObterSeguidos(string userId)
+        {
+            return repositorio.ObterSeguidos(userId);
+        }
+
         public void dispose()
         {
             repositorio.dispose();

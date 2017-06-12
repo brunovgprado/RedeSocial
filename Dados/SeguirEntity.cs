@@ -24,6 +24,12 @@ namespace Dados
             db.SaveChanges();
         }
 
+        public List<Seguir> ObterSeguidos(string userId)
+        {
+            var seguidos = db.Seguirs.Where(x => x.SeguidorId == userId);
+            return seguidos.ToList();
+        }
+
         public void dispose()
         {
             db.Dispose();

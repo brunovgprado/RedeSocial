@@ -15,11 +15,13 @@ namespace RedeSocialWeb.Controllers
     {
         private PerfilServico servicoPerfil;
         private PostagemServico servicoPostagem;
+        private SeguirServico servicoSeguir;
 
         public GerenciadorController()
         {
             servicoPerfil = new PerfilServico(new PerfisEntity());
             servicoPostagem = new PostagemServico(new PostagensEntity());
+            servicoSeguir = new SeguirServico(new SeguirEntity());
         }
 
         // GET: Gerenciador
