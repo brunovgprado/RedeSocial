@@ -39,6 +39,7 @@ namespace RedeSocialWeb.Models
             UserId = perfil.UserID;
             UserName = perfil.NomeExibicao;
             UserFoto = perfil.FotoPerfil;
+            DataPostagem.IsDaylightSavingTime();
         }    
 
         // Metodo que recebe uma lista do tipo Postagem e envia para conversão para PostagemViewModel
