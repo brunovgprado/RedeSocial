@@ -1,5 +1,6 @@
 ﻿using Dados;
 using Microsoft.AspNet.Identity;
+using Negocio.Dominio;
 using RedeSocialWeb.Models;
 using Servico;
 using System;
@@ -27,7 +28,7 @@ namespace RedeSocialWeb.Controllers
         // Action da pagina principal do usuario logado
         public ActionResult Index()
         {
-            
+            // Obtendo a lista de postagens
             DashBoardModel dashBorad = new DashBoardModel();
             var lista = servicoPostagem.RetornaPostagens();
             dashBorad.postagens = PostagemViewModel.GetModel(lista);
@@ -40,6 +41,17 @@ namespace RedeSocialWeb.Controllers
             var UserId = Session["UserId"].ToString();
             var perfil = servicoPerfil.RetornaPerfilUsuario(UserId);
 
+            // Procura todos os perfis seguidos usando o id do usuário
+            var Seguidos = servicoSeguir.ObterSeguidos(UserId);
+            // Adiciona à lista cada perfil encontrado com base no id
+            List<Perfil> perfisSeguidos = new List<Perfil>(); ;
+            foreach (var seguido in Seguidos.Where(x => x.PerfilID != 0))
+            {
+                var perfilSeguido = servicoPerfil.RetornaPerfilUnico(seguido.PerfilID);
+                perfisSeguidos.Add(perfilSeguido);
+            }
+
+            dashBorad.PerfisSeguidos = perfisSeguidos;
             dashBorad.nomePerfil = perfil.NomeExibicao;
             dashBorad.fotoPerfil = perfil.FotoPerfil;
             dashBorad.idPerfil = perfil.id;
