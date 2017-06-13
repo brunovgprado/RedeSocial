@@ -23,11 +23,10 @@ namespace Dados
             db.Seguirs.Add(seguir);
             db.SaveChanges();
         }
-
+        // Metodo que retorna seguidos de um usuario
         public List<Seguir> ObterSeguidos(string userId)
         {
             var seguidos = db.Seguirs.Where(x => x.SeguidorId == userId);
-            seguidos.Where(x => x.PerfilID != 0);
             return seguidos.ToList();
         }
 

@@ -280,8 +280,8 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\_LoginFormPartial.cshtml" />
-    <Content Include="Views\Account\_RegisterPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
@@ -308,7 +308,7 @@
     <Content Include="Views\Plantas\Edit.cshtml" />
     <Content Include="Views\Plantas\Index.cshtml" />
     <Content Include="Views\Seguirs\Index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Inicio.cshtml" />
     <Content Include="Views\Postagems\Index.cshtml" />
     <Content Include="Views\Postagems\Create.cshtml" />
     <Content Include="Views\Gerenciador\PerfilVisitado.cshtml" />

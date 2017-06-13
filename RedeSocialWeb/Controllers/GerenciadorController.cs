@@ -45,7 +45,7 @@ namespace RedeSocialWeb.Controllers
             var Seguidos = servicoSeguir.ObterSeguidos(UserId);
             // Adiciona à lista cada perfil encontrado com base no id
             List<Perfil> perfisSeguidos = new List<Perfil>();
-            foreach (var seguido in Seguidos)
+            foreach (var seguido in Seguidos.Where(x => x.PerfilID != 0))
             {
                 var perfilSeguido = servicoPerfil.RetornaPerfilUnico(seguido.PerfilID);
                 perfisSeguidos.Add(perfilSeguido);
@@ -67,7 +67,7 @@ namespace RedeSocialWeb.Controllers
             return RedirectToAction("PerfilVisitado", new { userId = perfil.UserID});
         }
 
-        // Action que monta a view de um usuario visitado
+        // Action que monta a view de um perfil visitado
         public ActionResult PerfilVisitado(string userId)
         {
             DashBoardModel dashBorad = new DashBoardModel();

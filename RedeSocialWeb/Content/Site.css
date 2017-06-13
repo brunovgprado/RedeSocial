@@ -22,6 +22,25 @@ select,
 textarea {
     max-width: 280px;
 }
+.row{
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+.painel-title{
+    font-weight: 600;
+    margin-left: 3%;
+}
+.foto-thumb-seguir {
+width: 100px;
+height 200px;
+}
+
+.cap-thumb-seguir {
+position: absolute;
+margin-top: -45px;
+font-weight:800;
+font-size: 2em;
+}
 .message-item {
 margin-bottom: 25px;
 margin-left: 40px;

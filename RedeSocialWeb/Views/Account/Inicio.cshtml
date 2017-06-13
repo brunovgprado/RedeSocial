@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <section id="socialLoginForm">
+            @{Html.RenderAction("Login", "Account");} 
+        </section>
+    </div>
+    <div class="col-md-2">
+        <p class="text-center"></p>
+    </div>
+    <div class="col-md-5">
+        <section id="socialLoginForm">
+            @{Html.RenderAction("Register", "Account");} 
+        </section>
+    </div>
+</div>
+

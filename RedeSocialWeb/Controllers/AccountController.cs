@@ -52,6 +52,12 @@ namespace RedeSocialWeb.Controllers
             }
         }
 
+        [AllowAnonymous]
+        public ActionResult Inicio()
+        {
+            return View();
+        }
+
         //
         // GET: /Account/Login
         [AllowAnonymous]
