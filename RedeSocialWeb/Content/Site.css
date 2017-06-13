@@ -40,6 +40,7 @@ position: absolute;
 margin-top: -45px;
 font-weight:800;
 font-size: 2em;
+color: rgba(0,0,0,0.42) !important;
 }
 .message-item {
 margin-bottom: 25px;
