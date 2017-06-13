@@ -4,47 +4,82 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Inicio</h2>
 <div>
-    <h4>DashBoardModel</h4>
     <hr />
 </div>
 
-<div class="col-sm-2 sidenav">
-    <div class="thumbnail text-left">
-        <a href="@Url.Action("PerfilTerceiro", new { userId = Model.UserId } )" title="@Html.DisplayFor(model => model.nomePerfil)">
-            <img src="@Html.DisplayFor(model => model.fotoPerfil)" alt="Lights" style="width:100%">
-            <div class="caption">
-                <h4>@Html.DisplayFor(model => model.nomePerfil)</h4>
+<div class="col-sm-4 sidenav">
+    <div class="thumbnail text-left row">
+        <a href="@Url.Action("PerfilVisitado", new { userId = Model.UserId } )" title="@Html.DisplayFor(model => model.nomePerfil)">
+            <div class="thumbnail col-sm-6">
+                <img src="@Html.DisplayFor(model => model.fotoPerfil)" alt="Lights" style="width:100%">
+
             </div>
-            <div class="text-right">
-                @if (Model.UserId.ToString() == Session["UserId"].ToString())
-                {
-                    <a href="@Url.Action("../Perfils/Edit", new { id = Model.idPerfil })" title="Editar">
-                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                    </a>
-                }
-                else
-                {
-                    <a href="@Url.Action("../Seguirs/SeguirPerfil", new { id = Model.idPerfil })" title="Seguir" class="btn btn-info">
-                        <span aria-hidden="true">Seguir</span>
-                    </a>
-                }
+            <div class="caption col-sm-6">
+                <h3>@Html.DisplayFor(model => model.nomePerfil)</h3>
+                <h5>26 anos</h5>
+                <h5>Rio de janeiro</h5>
+                <h5>Brasil</h5>
             </div>
         </a>
+        <div class="col-sm-12">
+            <hr />
+            <p>Postagens 0</p>
+            <p>Ações 0</p>
+            <p>Hortas 0</p>
+        </div>
+        <div class="text-right">
+            @if (Model.UserId.ToString() == Session["UserId"].ToString())
+            {
+                <a href="@Url.Action("../Perfils/Edit", new { id = Model.idPerfil })" title="Editar">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                </a>
+            }
+            else
+            {
+                <a href="@Url.Action("../Seguirs/SeguirPerfil", new { id = Model.idPerfil })" title="Seguir" class="btn btn-info">
+                    <span aria-hidden="true">Seguir</span>
+                </a>
+            }
+        </div>
+
     </div>
+    <hr />
+    <div class="thumbnail">
+        <span class="painel-title">Seguindo <a href="#">@Model.PerfisSeguidos.Count().ToString()</a></span>
+    </div>
+
+    <div class="lista-amigos">
+        <div class="row">
+            @foreach (var seguido in Model.PerfisSeguidos)
+            {
+                <div class="thumbnail col-sm-3 col-xs-3">
+                    <img src="@seguido.FotoPerfil" title="@seguido.NomeExibicao" class="foto-thumb-seguir" />
+                    <figcaption class="cap-thumb-seguir caption">
+                        @seguido.NomeExibicao.ElementAt(0)
+                    </figcaption>
+                </div>
+            }
+        </div>
+    </div>
+    <hr />
+    <div class="thumbnail">
+        <span class="painel-title">Seguidores 0</span>
+    </div>
+
 </div>
-<div class="col-sm-8 text-left">
-    @*-----Lista de postagens-----*@
-    @foreach (var item in Model.postagens)
+
+<div class="col-sm-6 text-left">
+    @foreach (var post in Model.postagens)
     {
         <div class="qa-message-list" id="wallmessages">
             <div class="message-item" id="m16">
                 <div class="message-inner">
                     <div class="message-head clearfix">
                         <div class="avatar pull-left">
-                            <a href="@Url.Action("PerfilVisitado", new { userId = item.UserId } )">
-                                <img src="@Html.DisplayFor(model => item.UserFoto)" title="@Html.DisplayFor(modelItem => item.UserName)" class="imgPost">
+                            <a href="@Url.Action("PerfilVisitado", new { userId = post.UserId } )">
+                                <img src="@Html.DisplayFor(model => post.UserFoto)" title="@Html.DisplayFor(modelItem => post.UserName)" class="imgPost">
                             </a>
                         </div>
                         <div class="user-detail">
@@ -53,13 +88,15 @@
                                 <div class="asker-meta">
                                     <span class="qa-message-what"></span>
                                     <span class="qa-message-when">
-                                        <span class="qa-message-when-data">Jan 21</span>
+                                        <span class="qa-message-when-data">
+                                            @Html.DisplayFor(modelItem => post.DataPostagem)
+                                        </span>
                                     </span>
                                     <span class="qa-message-who">
                                         <span class="qa-message-who-pad">Por </span>
                                         <span class="qa-message-who-data">
-                                            <a href="@Url.Action("PerfilVisitado", new { userId = item.UserId } )">
-                                                @Html.DisplayFor(modelItem => item.UserName)
+                                            <a href="@Url.Action("PerfilVisitado", new { userId = post.UserId } )">
+                                                @Html.DisplayFor(modelItem => post.UserName)
                                             </a>
                                         </span>
                                     </span>
@@ -68,15 +105,12 @@
                         </div>
                     </div>
                     <div class="qa-message-content">
-                        @Html.DisplayFor(modelItem => item.TextoPostagem)
+                        @Html.DisplayFor(modelItem => post.TextoPostagem)
                     </div>
                 </div>
             </div>
         </div>
     }
-
-    
-
 </div>
 <div class="col-sm-2 sidenav">
     <div class="well">

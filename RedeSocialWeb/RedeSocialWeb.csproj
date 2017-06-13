@@ -312,6 +312,7 @@
     <Content Include="Views\Postagems\Index.cshtml" />
     <Content Include="Views\Postagems\Create.cshtml" />
     <Content Include="Views\Gerenciador\PerfilVisitado.cshtml" />
+    <Content Include="Views\Gerenciador\Inicio.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

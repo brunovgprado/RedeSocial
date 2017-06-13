@@ -75,6 +75,18 @@ namespace RedeSocialWeb.Controllers
             dashBorad.postagens = PostagemViewModel.GetModel(lista);
             var perfil = servicoPerfil.RetornaPerfilUsuario(userId);
 
+            // Procura todos os perfis seguidos usando o id do usuário
+            var Seguidos = servicoSeguir.ObterSeguidos(userId);
+            // Adiciona à lista cada perfil encontrado com base no id
+            List<Perfil> perfisSeguidos = new List<Perfil>();
+            foreach (var seguido in Seguidos.Where(x => x.PerfilID != 0))
+            {
+                var perfilSeguido = servicoPerfil.RetornaPerfilUnico(seguido.PerfilID);
+                perfisSeguidos.Add(perfilSeguido);
+            }
+
+            dashBorad.PerfisSeguidos = perfisSeguidos;
+
             dashBorad.nomePerfil = perfil.NomeExibicao;
             dashBorad.fotoPerfil = perfil.FotoPerfil;
             dashBorad.idPerfil = perfil.id;
