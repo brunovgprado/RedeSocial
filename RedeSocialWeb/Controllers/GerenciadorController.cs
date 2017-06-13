@@ -44,8 +44,8 @@ namespace RedeSocialWeb.Controllers
             // Procura todos os perfis seguidos usando o id do usuário
             var Seguidos = servicoSeguir.ObterSeguidos(UserId);
             // Adiciona à lista cada perfil encontrado com base no id
-            List<Perfil> perfisSeguidos = new List<Perfil>(); ;
-            foreach (var seguido in Seguidos.Where(x => x.PerfilID != 0))
+            List<Perfil> perfisSeguidos = new List<Perfil>();
+            foreach (var seguido in Seguidos)
             {
                 var perfilSeguido = servicoPerfil.RetornaPerfilUnico(seguido.PerfilID);
                 perfisSeguidos.Add(perfilSeguido);

@@ -43,7 +43,7 @@ namespace Dados
 
         public List<Postagem> ObterPostagens()
         {
-            return db.Postagems.ToList();
+            return db.Postagems.OrderByDescending(x => x.DataPostagem).ToList();
         }
 
         public void dispose()
@@ -55,6 +55,8 @@ namespace Dados
         public List<Postagem> ObterPostagensUserId(string userId)
         {
             var postagemsUserId = db.Postagems.Where(x => x.UserId == userId);
+
+            postagemsUserId = postagemsUserId.Reverse();
 
             return postagemsUserId.ToList();
         }
