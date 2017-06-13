@@ -25,13 +25,11 @@ namespace RedeSocialWeb.Controllers
             servicoSeguir = new SeguirServico(new SeguirEntity());
         }
 
-        // Action da pagina principal do usuario logado
+        // Action da pagina do usuario logado
         public ActionResult Index()
         {
-            // Obtendo a lista de postagens
+            
             DashBoardModel dashBorad = new DashBoardModel();
-            var lista = servicoPostagem.RetornaPostagens();
-            dashBorad.postagens = PostagemViewModel.GetModel(lista);
 
             // Verifica se a variavel de sessão UserId é nula
             if (Session["UserId"] == null)
@@ -40,6 +38,11 @@ namespace RedeSocialWeb.Controllers
             // Obtém o valor da variavel de sessão e busca o perfil
             var UserId = Session["UserId"].ToString();
             var perfil = servicoPerfil.RetornaPerfilUsuario(UserId);
+
+            // Obtendo a lista de postagens
+            var lista = servicoPostagem.RetornaPostagens();
+            var listaFiltro = lista.Where(x => x.PerfilId == perfil.id);
+            dashBorad.postagens = PostagemViewModel.GetModel(listaFiltro.ToList());
 
             // Procura todos os perfis seguidos usando o id do usuário
             var Seguidos = servicoSeguir.ObterSeguidos(UserId);
@@ -67,7 +70,7 @@ namespace RedeSocialWeb.Controllers
             return RedirectToAction("PerfilVisitado", new { userId = perfil.UserID});
         }
 
-        // Action que monta a view de um perfil visitado
+        // Action que monta a view de um usuario visitado
         public ActionResult PerfilVisitado(string userId)
         {
             DashBoardModel dashBorad = new DashBoardModel();
@@ -87,6 +90,48 @@ namespace RedeSocialWeb.Controllers
 
             dashBorad.PerfisSeguidos = perfisSeguidos;
 
+            dashBorad.nomePerfil = perfil.NomeExibicao;
+            dashBorad.fotoPerfil = perfil.FotoPerfil;
+            dashBorad.idPerfil = perfil.id;
+            dashBorad.UserId = perfil.UserID;
+
+            return View(dashBorad);
+        }
+
+        // Action da pagina inicial do usuario
+        public ActionResult Inicio()
+        {
+            DashBoardModel dashBorad = new DashBoardModel();
+
+            // Verifica se a variavel de sessão UserId é nula
+            if (Session["UserId"] == null)
+                Session["UserId"] = User.Identity.GetUserId();
+
+            // Obtém o valor da variavel de sessão e busca o perfil
+            var UserId = Session["UserId"].ToString();
+            var perfil = servicoPerfil.RetornaPerfilUsuario(UserId);
+
+            // Recupera todos os itens seguidos usando o id do usuário
+            var Seguidos = servicoSeguir.ObterSeguidos(UserId);
+            // Recupera todas as postagens do banco
+            var lista = servicoPostagem.RetornaPostagens();
+            
+            // Adiciona à lista cada perfil seguido encontrado com base no id
+            List<Perfil> perfisSeguidos = new List<Perfil>();
+            List<Postagem> postagensSeguidos = new List<Postagem>();
+            foreach (var seguido in Seguidos.Where(x => x.PerfilID != 0))
+            {
+                var perfilSeguido = servicoPerfil.RetornaPerfilUnico(seguido.PerfilID);
+                perfisSeguidos.Add(perfilSeguido);
+
+                // Recuperando as postagens de cada perfil seguido
+                foreach (var postagemSeguido in lista.Where(x => x.PerfilId == perfilSeguido.id))
+                {
+                    postagensSeguidos.Add(postagemSeguido);
+                }
+            }
+            dashBorad.postagens = PostagemViewModel.GetModel(postagensSeguidos.ToList());
+            dashBorad.PerfisSeguidos = perfisSeguidos;
             dashBorad.nomePerfil = perfil.NomeExibicao;
             dashBorad.fotoPerfil = perfil.FotoPerfil;
             dashBorad.idPerfil = perfil.id;

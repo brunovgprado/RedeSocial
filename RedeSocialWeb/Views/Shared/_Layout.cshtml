@@ -32,7 +32,8 @@
                 <ul class="nav navbar-nav">
             @if (Request.IsAuthenticated)
             {
-                <li>@Html.ActionLink("Inicio", "Index", "Gerenciador")</li>
+                <li>@Html.ActionLink("Minha area", "Index", "Gerenciador")</li>
+                <li>@Html.ActionLink("Inicio", "Inicio", "Gerenciador")</li>
                 <li>@Html.ActionLink("Postar", "Create", "Postagems")</li>
             }
             else

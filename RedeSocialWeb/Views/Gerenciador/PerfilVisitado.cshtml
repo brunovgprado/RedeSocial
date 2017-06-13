@@ -33,16 +33,22 @@
             @if (Model.UserId.ToString() == Session["UserId"].ToString())
             {
                 <a href="@Url.Action("../Perfils/Edit", new { id = Model.idPerfil })" title="Editar">
-                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    <span class="btn btn-primary btn-sm">
+                        Editar
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </span>
                 </a>
             }
             else
             {
-                <a href="@Url.Action("../Seguirs/SeguirPerfil", new { id = Model.idPerfil })" title="Seguir" class="btn btn-info">
+                <a href="@Url.Action("../Seguirs/SeguirPerfil", new { id = Model.idPerfil })" title="Seguir" class="btn btn-primary btn-sm">
                     <span aria-hidden="true">Seguir</span>
+                    <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                 </a>
             }
         </div>
+
+
 
     </div>
     <hr />
