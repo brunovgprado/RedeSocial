@@ -10,7 +10,9 @@ namespace RedeSocialWeb.Models
         public int idPerfil { get; set; }
         public string nomePerfil { get; set; }
         public string fotoPerfil { get; set; }
+        public int TotPostagens { get; set; }
         public List<PostagemViewModel> postagens { get; set; }
+        public List<PostagemViewModel> postagensSeguidos { get; set; }
         public List<Perfil> PerfisSeguidos { get; set; }
         public List<Horta> HortasSeguidas { get; set; }
         public List<Planta> PlantasSeguidas { get; set; }

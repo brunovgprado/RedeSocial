@@ -219,6 +219,7 @@
     <Compile Include="Models\PerfilViewModel.cs" />
     <Compile Include="Models\PostagemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicoWeb\FabricaDashBoard.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

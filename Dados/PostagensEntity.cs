@@ -41,9 +41,14 @@ namespace Dados
             return db.Postagems.Find(id);
         }
 
-        public List<Postagem> ObterPostagens()
+        public List<Postagem> ObterPostagens(int qtd)
         {
-            return db.Postagems.Take(5).OrderByDescending(x => x.DataPostagem).ToList();
+            return db.Postagems.Take(qtd).OrderByDescending(x => x.DataPostagem).ToList();
+        }
+
+        public int ObterTotalPostagens()
+        {
+            return db.Postagems.Count();
         }
 
         public void dispose()

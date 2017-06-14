@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Negocio.Dominio;
 using RedeSocialWeb.Models;
+using RedeSocialWeb.ServicoWeb;
 using Servico;
 using System;
 using System.Collections.Generic;
@@ -27,40 +28,16 @@ namespace RedeSocialWeb.Controllers
 
         // Action da pagina do usuario logado
         public ActionResult Index()
-        {
-            
-            DashBoardModel dashBorad = new DashBoardModel();
-
-            // Verifica se a variavel de sessão UserId é nula
+        {                 
+            if (User.Identity.GetUserId() == null)
+                return RedirectToAction("Login", "Account");
             if (Session["UserId"] == null)
                 Session["UserId"] = User.Identity.GetUserId();
 
-            // Obtém o valor da variavel de sessão e busca o perfil
-            var UserId = Session["UserId"].ToString();
-            var perfil = servicoPerfil.RetornaPerfilUsuario(UserId);
+            FabricaDashBoard fabricaDash = new FabricaDashBoard();
+            var dashBoard = fabricaDash.Perfil(Session["UserId"].ToString());
 
-            // Obtendo a lista de postagens
-            var lista = servicoPostagem.RetornaPostagens();
-            var listaFiltro = lista.Where(x => x.PerfilId == perfil.id);
-            dashBorad.postagens = PostagemViewModel.GetModel(listaFiltro.ToList());
-
-            // Procura todos os perfis seguidos usando o id do usuário
-            var Seguidos = servicoSeguir.ObterSeguidos(UserId);
-            // Adiciona à lista cada perfil encontrado com base no id
-            List<Perfil> perfisSeguidos = new List<Perfil>();
-            foreach (var seguido in Seguidos.Where(x => x.PerfilID != 0))
-            {
-                var perfilSeguido = servicoPerfil.RetornaPerfilUnico(seguido.PerfilID);
-                perfisSeguidos.Add(perfilSeguido);
-            }
-
-            dashBorad.PerfisSeguidos = perfisSeguidos;
-            dashBorad.nomePerfil = perfil.NomeExibicao;
-            dashBorad.fotoPerfil = perfil.FotoPerfil;
-            dashBorad.idPerfil = perfil.id;
-            dashBorad.UserId = perfil.UserID;
-
-            return View(dashBorad);
+            return View(dashBoard);
         }
 
         // Action que localiza o usuario a partir do id de perfil e chama a action PerfilTerceiro
@@ -74,7 +51,7 @@ namespace RedeSocialWeb.Controllers
         public ActionResult PerfilVisitado(string userId)
         {
             DashBoardModel dashBorad = new DashBoardModel();
-            var lista = servicoPostagem.RetornaPostagens();
+            var lista = servicoPostagem.RetornaPostagens(5);
             dashBorad.postagens = PostagemViewModel.GetModel(lista);
             var perfil = servicoPerfil.RetornaPerfilUsuario(userId);
 
@@ -104,6 +81,8 @@ namespace RedeSocialWeb.Controllers
             DashBoardModel dashBorad = new DashBoardModel();
 
             // Verifica se a variavel de sessão UserId é nula
+            if (User.Identity.GetUserId().ToString() == null)
+                return RedirectToAction("Login", "Account");
             if (Session["UserId"] == null)
                 Session["UserId"] = User.Identity.GetUserId();
 
@@ -114,7 +93,7 @@ namespace RedeSocialWeb.Controllers
             // Recupera todos os itens seguidos usando o id do usuário
             var Seguidos = servicoSeguir.ObterSeguidos(UserId);
             // Recupera todas as postagens do banco
-            var lista = servicoPostagem.RetornaPostagens();
+            var lista = servicoPostagem.RetornaPostagens(5);
             
             // Adiciona à lista cada perfil seguido encontrado com base no id
             List<Perfil> perfisSeguidos = new List<Perfil>();
@@ -143,7 +122,7 @@ namespace RedeSocialWeb.Controllers
         public ActionResult TodaRede()
         {
             DashBoardModel dashBorad = new DashBoardModel();
-            var lista = servicoPostagem.RetornaPostagens();
+            var lista = servicoPostagem.RetornaPostagens(10);
             dashBorad.postagens = PostagemViewModel.GetModel(lista);
 
             return View(dashBorad);

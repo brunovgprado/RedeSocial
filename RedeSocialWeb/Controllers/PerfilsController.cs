@@ -19,7 +19,12 @@ namespace RedeSocialWeb.Controllers
         // Action responsável por verificar se o usuário já possui perfil
         public ActionResult CheckIn()
         {
-            if (Session["UserId"] == null) ;
+            // Verificando se UserId é null
+            if (User.Identity.GetUserId().ToString() == null)
+                return RedirectToAction("Login", "Account");
+
+            // Verificando se a cariavel de sessão UserId é null
+            if (Session["UserId"] == null)
                 Session["UserId"] = User.Identity.GetUserId();
 
             IdUsuario = Session["UserId"].ToString();   
@@ -68,6 +73,11 @@ namespace RedeSocialWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
         {
+            // Verificando se UserId é null
+            if (User.Identity.GetUserId().ToString() == null)
+                return RedirectToAction("Login", "Account");
+
+            // Verificando se a cariavel de sessão UserId é null
             if (Session["UserId"] == null)
                 Session["UserId"] = User.Identity.GetUserId();
 

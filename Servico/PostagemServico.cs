@@ -14,9 +14,9 @@ namespace Servico
         }
 
         //Metodo que retorna todas as Postagens
-        public List<Postagem> RetornaPostagens()
+        public List<Postagem> RetornaPostagens(int qtd)
         {
-            return repositorio.ObterPostagens();
+            return repositorio.ObterPostagens(qtd);
         }
 
         //Metodo que cria uma nova Postagem
@@ -47,6 +47,11 @@ namespace Servico
         public void ApagaPostagem(Postagem postagem)
         {
             repositorio.ApagarPostagem(postagem);
+        }
+
+        public int TotalPostagens()
+        {
+            return repositorio.ObterTotalPostagens();
         }
 
         public void dispose()

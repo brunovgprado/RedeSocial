@@ -25,9 +25,9 @@
         </a>
             <div class="col-sm-12">
                 <hr />
-                <p>Postagens 0</p>
-                <p>Ações 0</p>
-                <p>Hortas 0</p>
+                <p>Postagens <span class="badge">0</span></p>
+                <p>Ações <span class="badge">0</span></p>
+                <p>Hortas <span class="badge">0</span></p>
             </div>
             <div class="text-right">
                 @if (Model.UserId.ToString() == Session["UserId"].ToString())
@@ -84,7 +84,7 @@
         </span>
     </div>*@
         <div class="thumbnail">
-            <span class="painel-title">Minhas postagens</span>
+            <span class="painel-title">Minhas postagens <span class="badge">@Model.postagens.Count()</span></span>
         </div>
         <hr />
         @foreach (var post in Model.postagens)

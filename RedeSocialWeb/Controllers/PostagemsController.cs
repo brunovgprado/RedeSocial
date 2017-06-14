@@ -28,7 +28,7 @@ namespace RedeSocialWeb.Controllers
         // GET: Postagems
         public ActionResult Index()
         {
-            return View(servicoPostagem.RetornaPostagens());
+            return View(servicoPostagem.RetornaPostagens(10));
         }
 
         // GET: Postagems/Details/5
