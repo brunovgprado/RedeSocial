@@ -43,7 +43,7 @@ namespace Dados
 
         public List<Postagem> ObterPostagens()
         {
-            return db.Postagems.OrderByDescending(x => x.DataPostagem).ToList();
+            return db.Postagems.Take(5).OrderByDescending(x => x.DataPostagem).ToList();
         }
 
         public void dispose()
