@@ -1,0 +1,61 @@
+﻿@model RedeSocialWeb.Models.DashBoardModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tudo junto e misturado</h2>
+<hr />
+<div class="col-sm-2 sidenav">
+    <div class="thumbnail text-left">
+       <span class="">Geral é nois</span>
+    </div>
+</div>
+<div class="col-sm-8 text-left">
+    @*-----Lista de postagens-----*@
+    @foreach (var item in Model.postagens)
+    {
+        <div class="qa-message-list" id="wallmessages">
+            <div class="message-item" id="m16">
+                <div class="message-inner">
+                    <div class="message-head clearfix">
+                        <div class="avatar pull-left">
+                            <a href="@Url.Action("PerfilVisitado", new { userId = item.UserId } )">
+                                <img src="@Html.DisplayFor(model => item.UserFoto)" title="@Html.DisplayFor(modelItem => item.UserName)" class="imgPost">
+                            </a>
+                        </div>
+                        <div class="user-detail">
+                            <h5 class="handle">Postagem</h5>
+                            <div class="post-meta">
+                                <div class="asker-meta">
+                                    <span class="qa-message-what"></span>
+                                    <span class="qa-message-when">
+                                        <span class="qa-message-when-data">Jan 21</span>
+                                    </span>
+                                    <span class="qa-message-who">
+                                        <span class="qa-message-who-pad">Por </span>
+                                        <span class="qa-message-who-data">
+                                            <a href="@Url.Action("PerfilVisitado", new { userId = item.UserId } )">
+                                                @Html.DisplayFor(modelItem => item.UserName)
+                                            </a>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qa-message-content">
+                        @Html.DisplayFor(modelItem => item.TextoPostagem)
+                    </div>
+                </div>
+            </div>
+        </div>
+    }   
+</div>
+<div class="col-sm-2 sidenav">
+    <div class="well">
+        <p>ADS</p>
+    </div>
+</div>
+
+

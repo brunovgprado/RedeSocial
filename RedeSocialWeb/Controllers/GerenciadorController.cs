@@ -139,5 +139,14 @@ namespace RedeSocialWeb.Controllers
 
             return View(dashBorad);
         }
+
+        public ActionResult TodaRede()
+        {
+            DashBoardModel dashBorad = new DashBoardModel();
+            var lista = servicoPostagem.RetornaPostagens();
+            dashBorad.postagens = PostagemViewModel.GetModel(lista);
+
+            return View(dashBorad);
+        }
     }
 }

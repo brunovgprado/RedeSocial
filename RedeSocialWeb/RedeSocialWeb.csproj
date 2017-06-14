@@ -222,9 +222,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\aspnet-RedeSocialWeb-20170610121518.mdf" />
-    <Content Include="App_Data\aspnet-RedeSocialWeb-20170610121518_log.ldf">
-      <DependentUpon>aspnet-RedeSocialWeb-20170610121518.mdf</DependentUpon>
+    <Content Include="App_Data\SocialWebContext-20170605161538.mdf" />
+    <Content Include="App_Data\SocialWebContext-20170605161538_log.ldf">
+      <DependentUpon>SocialWebContext-20170605161538.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -313,6 +313,7 @@
     <Content Include="Views\Postagems\Create.cshtml" />
     <Content Include="Views\Gerenciador\PerfilVisitado.cshtml" />
     <Content Include="Views\Gerenciador\Inicio.cshtml" />
+    <Content Include="Views\Gerenciador\TodaRede.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
