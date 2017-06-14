@@ -57,11 +57,11 @@ namespace Dados
         }
 
         // Retorna todas as postagens de um determinado usuario
-        public List<Postagem> ObterPostagensUserId(string userId)
+        public List<Postagem> ObterPostagensUserId(string userId, int qtd)
         {
-            var postagemsUserId = db.Postagems.Where(x => x.UserId == userId);
+            var postagemsUserId = db.Postagems.Where(x => x.UserId == userId).Take(qtd);
 
-            postagemsUserId = postagemsUserId.Reverse();
+            postagemsUserId = postagemsUserId.OrderByDescending(x => x.DataPostagem);
 
             return postagemsUserId.ToList();
         }

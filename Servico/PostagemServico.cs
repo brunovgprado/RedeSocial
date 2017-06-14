@@ -32,9 +32,9 @@ namespace Servico
         }
 
         //Metodo que retorna um perfil ao receber um id
-        public List<Postagem> RetornaPostagemUsuario(string UserId)
+        public List<Postagem> RetornaPostagemUsuario(string UserId, int qtd)
         {
-            return repositorio.ObterPostagensUserId(UserId);
+            return repositorio.ObterPostagensUserId(UserId, qtd);
         }
 
         //Metodo que edita um perfil

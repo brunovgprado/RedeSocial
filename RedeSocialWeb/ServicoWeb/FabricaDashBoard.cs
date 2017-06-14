@@ -29,6 +29,10 @@ namespace RedeSocialWeb.ServicoWeb
 
             // Recupera todos os itens seguidos usando o id do usuário
             var Seguidos = servicoSeguir.ObterSeguidos(UserId);
+
+            // Recupera todas as postagens deste usuário
+            var PostagensUsuario = servicoPostagem.RetornaPostagemUsuario(UserId, 5); 
+
             // Recupera todas as postagens do banco
             var PostagensBanco = servicoPostagem.RetornaPostagens(5);
 
@@ -49,7 +53,7 @@ namespace RedeSocialWeb.ServicoWeb
 
             // Montando o DashBord para enviar à View
             DashBoardModel dashBorad = new DashBoardModel();
-            dashBorad.postagens = PostagemViewModel.GetModel(PostagensBanco);
+            dashBorad.postagens = PostagemViewModel.GetModel(PostagensUsuario);
             dashBorad.postagensSeguidos = PostagemViewModel.GetModel(postagensSeguidos);
             dashBorad.TotPostagens = servicoPostagem.TotalPostagens();
             dashBorad.PerfisSeguidos = perfisSeguidos;
