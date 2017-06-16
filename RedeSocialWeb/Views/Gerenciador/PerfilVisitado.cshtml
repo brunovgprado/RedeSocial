@@ -25,9 +25,9 @@
         </a>
         <div class="col-sm-12">
             <hr />
-            <p>Postagens 0</p>
-            <p>Ações 0</p>
-            <p>Hortas 0</p>
+            <p>Postagens <span class="badge">0</span></p>
+            <p>Ações <span class="badge">0</span></p>
+            <p>Hortas <span class="badge">0</span></p>
         </div>
         <div class="text-right">
             @if (Model.UserId.ToString() == Session["UserId"].ToString())
@@ -47,8 +47,6 @@
                 </a>
             }
         </div>
-
-
 
     </div>
     <hr />
@@ -77,6 +75,18 @@
 </div>
 
 <div class="col-sm-6 text-left">
+    @*<div class="input-group row col-sm-12">
+            <div class="form-group  has-feedback">
+                <input type="text" class="form-control col-sm-8" placeholder="Diga algo para o mundo">
+            </div>
+            <span class="input-group-btn col-sm-2">
+                <button class="btn btn-default" type="button">Postar</button>
+            </span>
+        </div>*@
+    <div class="thumbnail">
+        <span class="painel-title">Minhas atividades <span class="badge">@Model.TotPostagens</span></span>
+    </div>
+    <hr />
     @foreach (var post in Model.postagens)
     {
         <div class="qa-message-list" id="wallmessages">
