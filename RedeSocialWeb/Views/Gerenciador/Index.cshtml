@@ -56,7 +56,7 @@
     
     <div class="lista-amigos">
         <div class="row">
-            @foreach (var seguido in Model.PerfisSeguidos)
+            @foreach (var seguido in Model.PerfisSeguidos.Take(8))
             {
                 <div class="thumbnail col-sm-3 col-xs-3">
                     <img src="@seguido.FotoPerfil" title="@seguido.NomeExibicao" class="foto-thumb-seguir"/>
