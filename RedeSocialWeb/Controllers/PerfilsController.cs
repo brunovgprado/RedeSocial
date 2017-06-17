@@ -15,7 +15,7 @@ namespace RedeSocialWeb.Controllers
         {     
             servico = new PerfilServico(new PerfisEntity());
         }
-
+    
         // Action responsável por verificar se o usuário já possui perfil
         public ActionResult CheckIn()
         {
