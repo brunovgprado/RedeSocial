@@ -3,17 +3,23 @@ using Dados;
 using Negocio.Dominio;
 using Servico;
 using Microsoft.AspNet.Identity;
+using RedeSocialWeb.ServicoWeb;
+using System.Threading.Tasks;
+using System.Web;
 
 namespace RedeSocialWeb.Controllers
 {
     public class PerfilsController : Controller
     {
+
         private PerfilServico servico;
         private string IdUsuario;
+        private BlobServico servicoBlob;
 
         public PerfilsController()
         {     
             servico = new PerfilServico(new PerfisEntity());
+            servicoBlob = new BlobServico();
         }
     
         // Action responsável por verificar se o usuário já possui perfil
@@ -71,21 +77,26 @@ namespace RedeSocialWeb.Controllers
         // POST: Perfils/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
+        public async Task<ActionResult> Create([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] Perfil perfil, HttpPostedFileBase imgPerfil)
         {
             // Verificando se UserId é null
             if (User.Identity.GetUserId().ToString() == null)
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Account");// Se é null, manda para login
 
-            // Verificando se a cariavel de sessão UserId é null
+            // Verificando se a variavel de sessão UserId é null
             if (Session["UserId"] == null)
-                Session["UserId"] = User.Identity.GetUserId();
-
-            perfil.UserID = Session["UserId"].ToString();
+                Session["UserId"] = User.Identity.GetUserId(); // Salva o id do user logado na sessão
+            
+            perfil.UserID = Session["UserId"].ToString(); // Guarda o valor do UserId da sessão no perfil criado
             if (ModelState.IsValid)
             {
+                // Atribui um placeholder caso a foto seja nula
                 if (perfil.FotoPerfil == null)
                     perfil.FotoPerfil = "https://raw.githubusercontent.com/brunovitorprado/RedeSocial/master/avatar.png";
+                // Envia a foto para o blob
+                var imgUri = await servicoBlob.UploadImageAsync(imgPerfil);
+                // Guarda a Uri da foto salva no blob
+                perfil.FotoPerfil = imgUri.ToString();
                 servico.CriaPerfil(perfil);
                 Session["PerfilId"] = perfil.id;
                 return RedirectToAction("CheckIn", "Perfils");

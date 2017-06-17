@@ -22,7 +22,7 @@ namespace RedeSocialWeb.ServicoWeb
             servicoSeguir = new SeguirServico(new SeguirEntity());
         }
 
-        // Metodo que monta o DashBoardModel com os dados necessários para a Action Index
+        // Metodo que monta o DashBoardModel com os dados necessários para a View perfil
         public DashBoardModel MontaPerfil(string UserId)
         {
             var perfil = servicoPerfil.RetornaPerfilUsuario(UserId);
@@ -65,7 +65,7 @@ namespace RedeSocialWeb.ServicoWeb
             return dashBorad;
         }
 
-
+        // Metodo que monta o DashBoardModel com os dados necessários para a View inicio
         public DashBoardModel MontaInicio(string UserId)
         {
             var perfil = servicoPerfil.RetornaPerfilUsuario(UserId);
