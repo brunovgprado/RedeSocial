@@ -153,3 +153,29 @@ line-height: 22px;
  min-height: 40px;
  max-height: 40px;
 }
+
+.container{
+    margin-top:20px !important;
+}
+.image-preview-input {
+    position: relative !important;
+    overflow: hidden !important;
+	margin: 0px !important;    
+    color: #330 !important;
+    background-color: #fff !important;
+    border-color: #ccc !important;    
+}
+.image-preview-input input[type=file] {
+	position: absolute !important;
+	top: 0 !important;
+	right: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	font-size: 20px !important;
+	cursor: pointer !important;
+	opacity: 0 !important;
+	filter: alpha(opacity=0) !important;
+}
+.image-preview-input-title {
+    margin-left:2px !important;
+}

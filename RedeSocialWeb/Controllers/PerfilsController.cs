@@ -91,7 +91,7 @@ namespace RedeSocialWeb.Controllers
             if (ModelState.IsValid)
             {
                 // Atribui um placeholder caso a foto seja nula
-                if (perfil.FotoPerfil == null)
+                if (imgPerfil == null)
                     perfil.FotoPerfil = "https://raw.githubusercontent.com/brunovitorprado/RedeSocial/master/avatar.png";
                 // Envia a foto para o blob
                 var imgUri = await servicoBlob.UploadImageAsync(imgPerfil);
