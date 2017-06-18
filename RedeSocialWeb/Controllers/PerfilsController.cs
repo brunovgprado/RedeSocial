@@ -92,11 +92,18 @@ namespace RedeSocialWeb.Controllers
             {
                 // Atribui um placeholder caso a foto seja nula
                 if (imgPerfil == null)
+                { 
                     perfil.FotoPerfil = "https://raw.githubusercontent.com/brunovitorprado/RedeSocial/master/avatar.png";
-                // Envia a foto para o blob
-                var imgUri = await servicoBlob.UploadImageAsync(imgPerfil);
-                // Guarda a Uri da foto salva no blob
-                perfil.FotoPerfil = imgUri.ToString();
+                }
+                else
+                {
+                    // Envia a foto para o blob
+                    var imgUri = await servicoBlob.UploadImageAsync(imgPerfil);
+                    // Guarda a Uri da foto salva no blob
+                    perfil.FotoPerfil = imgUri.ToString();
+                }
+                
+                
                 servico.CriaPerfil(perfil);
                 Session["PerfilId"] = perfil.id;
                 return RedirectToAction("CheckIn", "Perfils");

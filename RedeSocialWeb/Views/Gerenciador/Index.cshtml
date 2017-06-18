@@ -17,8 +17,7 @@
 
             </div>
             <div class="caption col-sm-6">
-                <h3>@Html.DisplayFor(model => model.nomePerfil)</h3>
-                <h5>26 anos</h5>
+                <span class="nome-perfil">@Html.DisplayFor(model => model.nomePerfil)</span>
                 <h5>Rio de janeiro</h5>
                 <h5>Brasil</h5>
             </div>
@@ -29,7 +28,7 @@
                 <p>Ações <span class="badge">0</span></p>
                 <p>Hortas <span class="badge">0</span></p>
             </div>
-            <div class="text-right">
+            <div class="text-right pull-left">
                 @if (Model.UserId.ToString() == Session["UserId"].ToString())
                 {
                     <a href="@Url.Action("../Perfils/Edit", new { id = Model.idPerfil })" title="Editar">
@@ -59,10 +58,13 @@
             @foreach (var seguido in Model.PerfisSeguidos.Take(8))
             {
                 <div class="thumbnail col-sm-3 col-xs-3">
-                    <img src="@seguido.FotoPerfil" title="@seguido.NomeExibicao" class="foto-thumb-seguir"/>
-                    <figcaption class="cap-thumb-seguir caption">
-                        @seguido.NomeExibicao.ElementAt(0)
-                    </figcaption>
+                    <a href="@Url.Action("PerfilVisitado", new { userId = seguido.UserID } )">
+                        <img src="@seguido.FotoPerfil" title="@seguido.NomeExibicao" class="foto-thumb-seguir" />
+
+                        <figcaption class="cap-thumb-seguir caption">
+                            @seguido.NomeExibicao.ElementAt(0)
+                        </figcaption>
+                    </a>
                 </div>
             }
         </div>
@@ -99,21 +101,17 @@
                                 </a>
                             </div>
                             <div class="user-detail">
-                                <h5 class="handle">Postagem</h5>
+                                <h5 class="handle">
+                                    <a href="@Url.Action("PerfilVisitado", new { userId = post.UserId } )">
+                                        @Html.DisplayFor(modelItem => post.UserName)
+                                    </a>
+                                </h5>
                                 <div class="post-meta">
                                     <div class="asker-meta">
                                         <span class="qa-message-what"></span>
                                         <span class="qa-message-when">
                                             <span class="qa-message-when-data">
                                                 @Html.DisplayFor(modelItem => post.DataPostagem)
-                                            </span>
-                                        </span>
-                                        <span class="qa-message-who">
-                                            <span class="qa-message-who-pad">Por </span>
-                                            <span class="qa-message-who-data">
-                                                <a href="@Url.Action("PerfilVisitado", new { userId = post.UserId } )">
-                                                    @Html.DisplayFor(modelItem => post.UserName)
-                                                </a>
                                             </span>
                                         </span>
                                     </div>

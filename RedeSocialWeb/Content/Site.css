@@ -179,3 +179,8 @@ line-height: 22px;
 .image-preview-input-title {
     margin-left:2px !important;
 }
+.nome-perfil{
+    margin-top : 1px !important;
+    font-size : 1.5em;
+    font-weight: 600;   
+}

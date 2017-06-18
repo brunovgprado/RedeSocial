@@ -44,19 +44,17 @@
                             </a>
                         </div>
                         <div class="user-detail">
-                            <h5 class="handle">Postagem</h5>
+                            <h5 class="handle">
+                                <a href="@Url.Action("PerfilVisitado", new { userId = item.UserId } )">
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </a>
+                            </h5>
                             <div class="post-meta">
                                 <div class="asker-meta">
                                     <span class="qa-message-what"></span>
                                     <span class="qa-message-when">
-                                        <span class="qa-message-when-data">@Html.DisplayFor(model => item.DataPostagem)</span>
-                                    </span>
-                                    <span class="qa-message-who">
-                                        <span class="qa-message-who-pad">Por </span>
-                                        <span class="qa-message-who-data">
-                                            <a href="@Url.Action("PerfilVisitado", new { userId = item.UserId } )">
-                                                @Html.DisplayFor(modelItem => item.UserName)
-                                            </a>
+                                        <span class="qa-message-when-data">
+                                            @Html.DisplayFor(modelItem => item.DataPostagem)
                                         </span>
                                     </span>
                                 </div>
