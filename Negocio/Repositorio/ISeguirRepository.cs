@@ -9,5 +9,6 @@ namespace Negocio.Repositorio
         void DeixarDeSeguir(Seguir seguir);
         List<Seguir> ObterSeguidos(string userId);
         void dispose();
+        bool ChecaSeguido(string UserId, int IdSeguido);
     }
 }

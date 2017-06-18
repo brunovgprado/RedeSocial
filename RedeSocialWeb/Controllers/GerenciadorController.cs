@@ -53,6 +53,11 @@ namespace RedeSocialWeb.Controllers
             FabricaDashBoard fabricaDash = new FabricaDashBoard();
             var dashBoard = fabricaDash.MontaPerfil(userId);
 
+            // Busca perfil e verifica se está seguindo
+            var VisitanteId = Session["UserId"].ToString();
+            var Visitado = servicoPerfil.RetornaPerfilUsuario(userId);
+            dashBoard.ChecaSeSeguePerfil = servicoSeguir.checarSeguido(VisitanteId, Visitado.id);
+
             return View(dashBoard);
         }
 
@@ -76,6 +81,7 @@ namespace RedeSocialWeb.Controllers
             DashBoardModel dashBorad = new DashBoardModel();
             var lista = servicoPostagem.RetornaPostagens(10);
             dashBorad.postagens = PostagemViewModel.GetModel(lista);
+            dashBorad.PerfisSeguidos = servicoPerfil.RetornaPerfis(8);
 
             return View(dashBorad);
         }

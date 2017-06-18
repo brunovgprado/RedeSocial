@@ -14,9 +14,9 @@ namespace Servico
         }
 
         //Metodo que retorna todos os perfis
-        public List<Perfil> RetornaPerfis()
+        public List<Perfil> RetornaPerfis(int qtd)
         {
-            return repositorio.ObterPerfis();
+            return repositorio.ObterPerfis(qtd);
         }
 
         //Metodo que cria um novo perfil

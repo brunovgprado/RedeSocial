@@ -5,7 +5,7 @@ namespace Negocio.Repositorio
 {
     public interface IPerfilRepository
     {
-        List<Perfil> ObterPerfis();
+        List<Perfil> ObterPerfis(int qtd);
         void CriarPerfil(Perfil perfil);
         Perfil ObterPerfilUnico(int id);
         void EditarPerfil(Perfil id);

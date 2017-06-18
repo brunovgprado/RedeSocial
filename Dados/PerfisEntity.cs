@@ -41,10 +41,10 @@ namespace Dados
             }
         }
 
-        public List<Perfil> ObterPerfis()
+        public List<Perfil> ObterPerfis(int qtd)
         {           
-            List<Perfil> perfis = db.Perfils.ToList();
-            return perfis;
+            var perfis = db.Perfils.Take(qtd);
+            return perfis.ToList();
         }
 
         public void CriarPerfil(Perfil perfil)

@@ -28,6 +28,11 @@ namespace Servico
             return repositorio.ObterSeguidos(userId);
         }
 
+        public bool checarSeguido(string UserId, int SeguidoId)
+        {
+            return repositorio.ChecaSeguido(UserId, SeguidoId);
+        }
+
         public void dispose()
         {
             repositorio.dispose();

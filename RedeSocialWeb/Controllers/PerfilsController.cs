@@ -53,7 +53,7 @@ namespace RedeSocialWeb.Controllers
         // GET: Perfils
         public ActionResult Index()
         {
-            var lista = servico.RetornaPerfis();
+            var lista = servico.RetornaPerfis(8);
             return View(lista);
         }
 
