@@ -12,7 +12,7 @@ namespace RedeSocialWeb.ServicoWeb
     {
         public async Task<string> UploadImageAsync(HttpPostedFileBase imageToUpload)
         {
-            string imageFullPath = null;
+            string imagePath = null;
             if (imageToUpload == null || imageToUpload.ContentLength == 0)
             {
                 return null;
@@ -40,13 +40,13 @@ namespace RedeSocialWeb.ServicoWeb
                 cloudBlockBlob.Properties.ContentType = imageToUpload.ContentType;
                 await cloudBlockBlob.UploadFromStreamAsync(imageToUpload.InputStream);
 
-                imageFullPath = cloudBlockBlob.Uri.ToString();
+                imagePath = cloudBlockBlob.Uri.ToString();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-
+                throw e;
             }
-            return imageFullPath;
+            return imagePath;
         }
     }
 }
