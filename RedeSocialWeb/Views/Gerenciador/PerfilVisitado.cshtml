@@ -16,48 +16,43 @@
                 <img src="@Html.DisplayFor(model => model.fotoPerfil)" alt="Lights" style="width:100%">
 
             </div>
-            <div class="caption col-sm-6">
-                <span class="nome-perfil">@Html.DisplayFor(model => model.nomePerfil)</span>
-                <h5>Rio de janeiro</h5>
-                <h5>Brasil</h5>
-            </div>
         </a>
-        <div class="col-sm-12">
-            <hr />
-            <p>Postagens <span class="badge">0</span></p>
-            <p>Ações <span class="badge">0</span></p>
-            <p>Hortas <span class="badge">0</span></p>
-        </div>
-        <div class="text-right pull-left">
-            @if (Model.UserId.ToString() == Session["UserId"].ToString())
-            {
-                <a href="@Url.Action("../Perfils/Edit", new { id = Model.idPerfil })" title="Editar">
-                    <span class="btn btn-primary btn-sm">
-                        Editar
-                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                    </span>
-                </a>
-            }else
-            {
-                if (Model.ChecaSeSeguePerfil)
+        <div class="caption col-sm-6">
+            <span class="nome-perfil">@Html.DisplayFor(model => model.nomePerfil)</span>
+            <h5>Ações <span class="badge">0</span></h5>
+            <h5>Seguindo <span class="badge">@Model.PerfisSeguidos.Count().ToString()</span></h5>
+            <div class="text-right pull-left">
+                @if (Model.UserId.ToString() == Session["UserId"].ToString())
                 {
-                    <a href="@Url.Action("../Seguirs/SeguirPerfil", new { id = Model.idPerfil })" title="Seguir" class="btn btn-primary btn-sm">
-                        <span aria-hidden="true">Desconectar</span>
-                        <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                    <a href="@Url.Action("../Perfils/Edit", new { id = Model.idPerfil })" title="Editar">
+                        <span class="btn btn-primary btn-sm">
+                            Editar
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        </span>
                     </a>
                 }
                 else
                 {
-                    <a href="@Url.Action("../Seguirs/SeguirPerfil", new { id = Model.idPerfil })" title="Seguir" class="btn btn-primary btn-sm">
-                        <span aria-hidden="true">Conectar</span>
-                        <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-                    </a>
+                    if (Model.ChecaSeSeguePerfil)
+                    {
+                        <a href="@Url.Action("../Seguirs/DeixarDeSeguir", new { IdSeguido = Model.idPerfil })" title="Seguir" class="btn btn-primary btn-sm">
+                            <span aria-hidden="true">Desconectar</span>
+                            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("../Seguirs/SeguirPerfil", new { id = Model.idPerfil })" title="Seguir" class="btn btn-primary btn-sm">
+                            <span aria-hidden="true">Conectar</span>
+                            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                        </a>
+                    }
+
                 }
-
-            }
+            </div>
         </div>
-
     </div>
+
     <hr />
     <div class="thumbnail">
         <span class="painel-title">Seguindo <a href="#">@Model.PerfisSeguidos.Count().ToString()</a></span>

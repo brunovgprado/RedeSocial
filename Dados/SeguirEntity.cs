@@ -12,8 +12,9 @@ namespace Dados
     {
         private SocialWebContext db = new SocialWebContext();
 
-        public void DeixarDeSeguir(Seguir seguir)
+        public void DeixarDeSeguir(string UserId, int IdSeguido)
         {
+            var seguir = db.Seguirs.Where(x=>x.SeguidorId == UserId && x.PerfilID == IdSeguido).First();
             db.Seguirs.Remove(seguir);
             db.SaveChanges();
         }

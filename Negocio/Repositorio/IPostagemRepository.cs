@@ -11,7 +11,7 @@ namespace Negocio.Repositorio
         Postagem ObterPostagemUnica(int id);
         void EditarPostagem(Postagem postagem);
         void ApagarPostagem(Postagem horta);
-        int ObterTotalPostagens();
+        int ObterTotalPostagensGeral();
         void dispose();
     }
 }

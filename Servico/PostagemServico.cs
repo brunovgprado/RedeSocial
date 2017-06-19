@@ -51,7 +51,7 @@ namespace Servico
 
         public int TotalPostagens()
         {
-            return repositorio.ObterTotalPostagens();
+            return repositorio.ObterTotalPostagensGeral();
         }
 
         public void dispose()

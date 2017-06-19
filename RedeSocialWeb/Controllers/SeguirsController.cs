@@ -17,6 +17,7 @@ namespace SocialNetwork.web.Controllers
             servico = new SeguirServico(new SeguirEntity());
         }
 
+        // Action que registra a ação de seguir um perfil
         public ActionResult SeguirPerfil(int id)
         {
             Seguir seguir = new Seguir();
@@ -30,12 +31,15 @@ namespace SocialNetwork.web.Controllers
 
             return RedirectToAction("PerfilPorUserId", "Gerenciador", new { perfilId = id });
         }
-        // GET: Seguirs/Delete/5
-        public ActionResult DeixarDeSeguir(int id)
+        // Action que desfaz a ação de seguir um perfil
+        public ActionResult DeixarDeSeguir(int IdSeguido)
         {
-            /*Seguir seguir = db.Seguirs.Find(id);
-            servico.DeixarDeSeguir(seguir);*/
-            return RedirectToAction("Index");
+            if (Session["UserId"] == null)
+                Session["UserId"] = User.Identity.GetUserId();
+
+            var UserId = Session["UserId"].ToString();
+            servico.DeixarDeSeguir(UserId, IdSeguido);
+            return RedirectToAction("PerfilPorUserId", "Gerenciador", new { perfilId = IdSeguido });
         }
 
         protected override void Dispose(bool disposing)

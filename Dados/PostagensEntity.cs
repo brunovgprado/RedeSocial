@@ -43,10 +43,10 @@ namespace Dados
 
         public List<Postagem> ObterPostagens(int qtd)
         {
-            return db.Postagems.Take(qtd).OrderByDescending(x => x.DataPostagem).ToList();
+            return db.Postagems.Take(qtd).ToList();
         }
 
-        public int ObterTotalPostagens()
+        public int ObterTotalPostagensGeral()
         {
             return db.Postagems.Count();
         }

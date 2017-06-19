@@ -18,9 +18,9 @@ namespace Servico
             repositorio.SeguirPerfil(seguir);
         }
 
-        public void DeixarDeSeguir(Seguir seguir)
+        public void DeixarDeSeguir(string UserId, int IdSeguido)
         {
-            repositorio.DeixarDeSeguir(seguir);
+            repositorio.DeixarDeSeguir(UserId, IdSeguido);
         }
 
         public List<Seguir> ObterSeguidos(string userId)

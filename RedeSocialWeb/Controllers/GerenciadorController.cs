@@ -50,6 +50,9 @@ namespace RedeSocialWeb.Controllers
         // Action que monta a view de um usuario visitado
         public ActionResult PerfilVisitado(string userId)
         {
+            if (Session["UserId"] == null)
+                Session["UserId"] = User.Identity.GetUserId();
+            // Instanciando o DashBoard e recebendo o perfil
             FabricaDashBoard fabricaDash = new FabricaDashBoard();
             var dashBoard = fabricaDash.MontaPerfil(userId);
 
