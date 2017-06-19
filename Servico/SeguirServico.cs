@@ -33,6 +33,12 @@ namespace Servico
             return repositorio.ChecaSeguido(UserId, SeguidoId);
         }
 
+        //Metodo que apaga registro de seguidos de um usuario
+        public void ExecutaExclusao(string UserId, int PerfilId)
+        {
+            repositorio.executaExclusao(UserId, PerfilId);
+        }
+
         public void dispose()
         {
             repositorio.dispose();

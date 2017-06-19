@@ -44,9 +44,9 @@ namespace Servico
         }
 
         //Metodo que apaga um perfil
-        public void ApagaPerfil(Perfil perfil)
+        public void executaExclusao(string UserId, int PerfilId)
         {
-            repositorio.ApagarPerfil(perfil);
+            repositorio.executaExclusao(UserId, PerfilId);
         }
 
         public void dispose()

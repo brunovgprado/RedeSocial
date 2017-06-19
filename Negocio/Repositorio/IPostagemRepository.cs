@@ -12,6 +12,7 @@ namespace Negocio.Repositorio
         void EditarPostagem(Postagem postagem);
         void ApagarPostagem(Postagem horta);
         int ObterTotalPostagensGeral();
+        void executaExclusao(string UserId, int PerfilId);
         void dispose();
     }
 }

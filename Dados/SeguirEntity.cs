@@ -42,5 +42,28 @@ namespace Dados
             var seguindo = lista.Exists(x => x.SeguidorId == UserId && x.PerfilID == IdSeguido);
             return seguindo;
         }
+
+        // Metodo que removerá todos os registros de seguido e seguidor do usuário
+        public void executaExclusao(string UserId, int PerfilId)
+        {
+            // Localiza todos os registros onde o usuario está seguindo alguem
+            var listaSeguidos =  db.Seguirs.Where(x => x.SeguidorId == UserId);
+            // Localiza todos os registros onde o usuário esteja sendo seguido
+            var listaSeguidores = db.Seguirs.Where(x => x.PerfilID == PerfilId);
+
+            // Percorre a lista de seguidos removendo cada registro
+            foreach (var seguido in listaSeguidos)
+            {
+                db.Seguirs.Remove(seguido);   
+            }
+            db.SaveChanges();
+
+            // Percorre a lista de seguidores removendo cada registro
+            foreach (var seguidor in listaSeguidores)
+            {
+                db.Seguirs.Remove(seguidor);               
+            }
+            db.SaveChanges();
+        }
     }
 }

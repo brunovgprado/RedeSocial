@@ -14,7 +14,7 @@ namespace Dados.Migrations
         }
         protected override void Seed(Dados.SocialWebContext context)
         {
-            context.Perfils.AddOrUpdate(
+            /*context.Perfils.AddOrUpdate(
                 p => p.NomeExibicao,
                 new Perfil { NomeExibicao = "Felipe Neto", FotoPerfil = "https://noticias.gospelmais.com.br/files/2016/05/felipe-neto.jpg", UserID = "0101" },
                 new Perfil { NomeExibicao = "Mark Zuckerberg", FotoPerfil = "https://images.forbes.com/media/lists/people/mark-zuckerberg_400x400.jpg", UserID = "0102" },
@@ -37,7 +37,7 @@ namespace Dados.Migrations
                 new Postagem { PerfilId = perfil4.id, UserId = "0104", TextoPostagem = "Se usar-mos a busca binária, acharemos a chave da sala em menos tempo. Ah eu não peguei ela...", DataPostagem = DateTime.Now.AddDays(-4) },
                 new Postagem { PerfilId = perfil5.id, UserId = "0105", TextoPostagem = "Não falei que dava? Só montar um Frankensteinzinho cara", DataPostagem = DateTime.Now.AddDays(-2) },
                 new Postagem { PerfilId = perfil4.id, UserId = "0104", TextoPostagem = "Terminei em menos tempo e há mais tempo... #ficaadica", DataPostagem = DateTime.Now.AddDays(-4) }
-            );
+            );*/
         }
     }
 }

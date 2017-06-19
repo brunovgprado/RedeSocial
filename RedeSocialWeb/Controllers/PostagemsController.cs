@@ -110,16 +110,6 @@ namespace RedeSocialWeb.Controllers
             return View(postagem);
         }
 
-        // POST: Postagems/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Postagem postagem = servicoPostagem.RetornaPostagemUnica(id);
-            servicoPostagem.ApagaPostagem(postagem);
-            return RedirectToAction("Index");
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -44,9 +44,9 @@ namespace Servico
         }
 
         //Metodo que apaga um perfil
-        public void ApagaPostagem(Postagem postagem)
+        public void ExecutaExclusao(string UserId, int PerfilId)
         {
-            repositorio.ApagarPostagem(postagem);
+            repositorio.executaExclusao(UserId, PerfilId);
         }
 
         public int TotalPostagens()

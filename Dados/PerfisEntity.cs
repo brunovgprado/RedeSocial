@@ -57,5 +57,12 @@ namespace Dados
         {
             db.Dispose();
         }
+        // Metodo que remove o perfil do usuário
+        public void executaExclusao(string UserId, int PerfilId)
+        {
+            var perfil = db.Perfils.Find(PerfilId);
+            db.Perfils.Remove(perfil);
+            db.SaveChanges();
+        }
     }
 }

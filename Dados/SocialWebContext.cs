@@ -28,5 +28,7 @@ namespace Dados
         public System.Data.Entity.DbSet<Negocio.Dominio.Seguir> Seguirs { get; set; }
 
         public System.Data.Entity.DbSet<Negocio.Dominio.Postagem> Postagems { get; set; }
+
+        public System.Data.Entity.DbSet<Negocio.Dominio.Atividade> Atividades { get; set; }
     }
 }

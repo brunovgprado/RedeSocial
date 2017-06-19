@@ -18,16 +18,8 @@ namespace Dados
 
         public void CriarPostagem(Postagem postagem)
         {
-            try
-            {
                 db.Postagems.Add(postagem);
-                db.SaveChanges();
-            }
-            catch(Exception e)
-            {
-                
-            }
-            
+                db.SaveChanges();         
         }
 
         public void EditarPostagem(Postagem postagem)
@@ -64,6 +56,18 @@ namespace Dados
             postagemsUserId = postagemsUserId.OrderByDescending(x => x.DataPostagem);
 
             return postagemsUserId.ToList();
+        }
+        // Metodo que removerá todos os registros de postagens do usuário
+        public void executaExclusao(string UserId, int PerfilId)
+        {
+            // Localiza todos os registros de postagens do usuario
+            var lista = db.Postagems.Where(x => x.UserId == UserId);
+            // Percorre a lista de postagens removendo cada registro
+            foreach (var post in lista)
+            {
+                db.Postagems.Remove(post);                
+            }
+            db.SaveChanges();
         }
     }
 }

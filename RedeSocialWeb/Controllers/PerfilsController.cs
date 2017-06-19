@@ -6,6 +6,9 @@ using Microsoft.AspNet.Identity;
 using RedeSocialWeb.ServicoWeb;
 using System.Threading.Tasks;
 using System.Web;
+using Negocio.Repositorio;
+using System;
+using System.Collections.Generic;
 
 namespace RedeSocialWeb.Controllers
 {
@@ -13,15 +16,21 @@ namespace RedeSocialWeb.Controllers
     {
 
         private PerfilServico servico;
+        private PostagemServico servicoPostagem;
+        private SeguirServico servicoSeguir;
         private string IdUsuario;
         private BlobServico servicoBlob;
+        
+
 
         public PerfilsController()
         {     
             servico = new PerfilServico(new PerfisEntity());
+            servicoPostagem = new PostagemServico(new PostagensEntity());
+            servicoSeguir = new SeguirServico(new SeguirEntity());
             servicoBlob = new BlobServico();
         }
-    
+
         // Action responsável por verificar se o usuário já possui perfil
         public ActionResult CheckIn()
         {
@@ -129,12 +138,20 @@ namespace RedeSocialWeb.Controllers
         // POST: Perfils/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] Perfil perfil)
+        public async Task<ActionResult> Edit([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] Perfil perfil, HttpPostedFileBase imgPerfil)
         {
             if (ModelState.IsValid)
             {
                 if (Session["UserId"] == null)
                     Session["UserId"] = User.Identity.GetUserId();
+
+                if (imgPerfil != null)
+                {
+                    // Envia a foto para o blob
+                    var imgUri = await servicoBlob.UploadImageAsync(imgPerfil);
+                    // Guarda a Uri da foto salva no blob
+                    perfil.FotoPerfil = imgUri.ToString();
+                }
 
                 perfil.UserID = Session["UserId"].ToString();
                 servico.EditaPerfil(perfil);
@@ -157,10 +174,15 @@ namespace RedeSocialWeb.Controllers
         // Action que apaga um perfil
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public void DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Perfil perfil = servico.RetornaPerfilUnico(id);
-            servico.ApagaPerfil(perfil);
+            var IdUsuario = User.Identity.GetUserId();
+            // Realiza a ação em todos os serviços
+            servicoPostagem.ExecutaExclusao(IdUsuario, id);
+            servicoSeguir.ExecutaExclusao(IdUsuario, id);
+            servico.executaExclusao(IdUsuario, id);
+
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)

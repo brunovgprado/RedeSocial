@@ -10,5 +10,6 @@ namespace Negocio.Repositorio
         List<Seguir> ObterSeguidos(string userId);
         void dispose();
         bool ChecaSeguido(string UserId, int IdSeguido);
+        void executaExclusao(string UserId, int PerfilId);
     }
 }

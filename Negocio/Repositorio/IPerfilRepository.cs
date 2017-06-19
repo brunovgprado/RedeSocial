@@ -12,5 +12,6 @@ namespace Negocio.Repositorio
         void ApagarPerfil(Perfil perfil);
         void dispose();
         Perfil ObterPerfilUsuario(string UserID);
+        void executaExclusao(string UserId, int PerfilId);
     }
 }
