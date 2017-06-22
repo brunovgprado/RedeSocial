@@ -95,7 +95,7 @@ namespace RedeSocialWeb.Controllers
 
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Usuário ou senha inválidos.");
                     return View(model);
             }
         }
@@ -165,7 +165,7 @@ namespace RedeSocialWeb.Controllers
                     //Gerando token e enviando e-mail de confirmação
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Por favor, confirme seu e-mail clicando <a href=\"" + callbackUrl + "\">Aqui</a>");
+                    await UserManager.SendEmailAsync(user.Id, "Confirme sua conta", "Por favor, confirme seu e-mail clicando <a href=\"" + callbackUrl + "\">Aqui</a>");
                     Session["UserId"] = user.Id;
 
                     return RedirectToAction("CheckIn", "Perfils");
@@ -217,7 +217,7 @@ namespace RedeSocialWeb.Controllers
                 // Envio de email para recuperação de senha
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                await UserManager.SendEmailAsync(user.Id, "Troca de senha", "Clique <a href=\"" + callbackUrl + "\">aqui</a> "+"para mudar sua senha");
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 

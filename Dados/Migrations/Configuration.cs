@@ -33,10 +33,11 @@ namespace Dados.Migrations
                 p => p.PerfilId,
                 new Postagem {PerfilId = perfil1.id, UserId = "0101", TextoPostagem = "blá blá blá não faz sentido", DataPostagem = DateTime.Now.AddDays(-1) },
                 new Postagem { PerfilId = perfil2.id, UserId = "0102", TextoPostagem = "I like Horto Home ;)", DataPostagem = DateTime.Now.AddHours(2) },
-                new Postagem { PerfilId = perfil3.id, UserId = "0103", TextoPostagem = "São dois tipos de problema...", DataPostagem = DateTime.Now.AddDays(-4) },
+                new Postagem { PerfilId = perfil3.id, UserId = "0103", TextoPostagem = "São dois tipos de problema...", DataPostagem = DateTime.Now.AddDays(-4).AddMinutes(30) },
                 new Postagem { PerfilId = perfil4.id, UserId = "0104", TextoPostagem = "Se usar-mos a busca binária, acharemos a chave da sala em menos tempo. Ah eu não peguei ela...", DataPostagem = DateTime.Now.AddDays(-4) },
                 new Postagem { PerfilId = perfil5.id, UserId = "0105", TextoPostagem = "Não falei que dava? Só montar um Frankensteinzinho cara", DataPostagem = DateTime.Now.AddDays(-2) },
-                new Postagem { PerfilId = perfil4.id, UserId = "0104", TextoPostagem = "Terminei em menos tempo e há mais tempo... #ficaadica", DataPostagem = DateTime.Now.AddDays(-4) }
+                new Postagem { PerfilId = perfil4.id, UserId = "0104", TextoPostagem = "Terminei em menos tempo e há mais tempo... #ficaadica", DataPostagem = DateTime.Now.AddDays(-4).AddMinutes(20) },
+                new Postagem { PerfilId = perfil4.id, UserId = "0104", TextoPostagem = "Isso pra mim é HTML", DataPostagem = DateTime.Now.AddDays(-4).AddMinutes(40) }
             );*/
         }
     }

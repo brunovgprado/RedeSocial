@@ -13,6 +13,7 @@ using System.Web.Mvc;
 namespace RedeSocialWeb.Controllers
 {
     // Controller responsável por montar e interagir com a tela principal
+    [Authorize]
     public class GerenciadorController : Controller
     {
         private PerfilServico servicoPerfil;

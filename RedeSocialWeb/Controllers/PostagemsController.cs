@@ -14,6 +14,7 @@ using Servico;
 
 namespace RedeSocialWeb.Controllers
 {
+    [Authorize]
     public class PostagemsController : Controller
     {
         private PostagemServico servicoPostagem;

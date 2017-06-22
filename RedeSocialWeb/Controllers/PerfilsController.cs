@@ -12,6 +12,7 @@ using System.Collections.Generic;
 
 namespace RedeSocialWeb.Controllers
 {
+    [Authorize]
     public class PerfilsController : Controller
     {
 
