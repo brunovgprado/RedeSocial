@@ -9,6 +9,7 @@ using System.Web;
 using Negocio.Repositorio;
 using System;
 using System.Collections.Generic;
+using RedeSocialWeb.Models;
 
 namespace RedeSocialWeb.Controllers
 {
@@ -87,7 +88,7 @@ namespace RedeSocialWeb.Controllers
         // POST: Perfils/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] Perfil perfil, HttpPostedFileBase imgPerfil)
+        public async Task<ActionResult> Create([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] PerfilViewModel perfilView, HttpPostedFileBase imgPerfil)
         {
             // Verificando se UserId é null
             if (User.Identity.GetUserId().ToString() == null)
@@ -96,11 +97,12 @@ namespace RedeSocialWeb.Controllers
             // Verificando se a variavel de sessão UserId é null
             if (Session["UserId"] == null)
                 Session["UserId"] = User.Identity.GetUserId(); // Salva o id do user logado na sessão
-            
+
+            var perfil = PerfilViewModel.ConvertToModel(perfilView);// Converte PerfilViewModel para Perfil
             perfil.UserID = Session["UserId"].ToString(); // Guarda o valor do UserId da sessão no perfil criado
             if (ModelState.IsValid)
             {
-                // Atribui um placeholder caso a foto seja nula
+                // Atribui um placeholdercaso a foto vindo da view seja nula
                 if (imgPerfil == null)
                 { 
                     perfil.FotoPerfil = "https://raw.githubusercontent.com/brunovitorprado/RedeSocial/master/avatar.png";
@@ -111,27 +113,26 @@ namespace RedeSocialWeb.Controllers
                     var imgUri = await servicoBlob.UploadImageAsync(imgPerfil);
                     // Guarda a Uri da foto salva no blob
                     perfil.FotoPerfil = imgUri.ToString();
-                }
-                
-                
+                }            
                 servico.CriaPerfil(perfil);
                 Session["PerfilId"] = perfil.id;
                 return RedirectToAction("CheckIn", "Perfils");
             }
 
-            return View(perfil);
+            return View(perfilView);
         }
 
         // GET: Perfils/Edit/5
         public ActionResult Edit(int id)
         {
-            if (Session["UserId"] == null) ;
+            if (Session["UserId"] == null)
                 Session["UserId"] = User.Identity.GetUserId();
 
             Perfil perfil = servico.RetornaPerfilUnico(id);
             if (perfil.UserID == Session["UserId"].ToString())
-            {      
-                return View(perfil);
+            {
+                var perfilView = PerfilViewModel.ConvertToViewModel(perfil);//Convertendo para PerfilViewModel
+                return View(perfilView);
             }
             return RedirectToAction("Index", "Gerenciador");
         }
@@ -139,13 +140,10 @@ namespace RedeSocialWeb.Controllers
         // POST: Perfils/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] Perfil perfil, HttpPostedFileBase imgPerfil)
+        public async Task<ActionResult> Edit([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] PerfilViewModel perfil, HttpPostedFileBase imgPerfil)
         {
             if (ModelState.IsValid)
             {
-                if (Session["UserId"] == null)
-                    Session["UserId"] = User.Identity.GetUserId();
-
                 if (imgPerfil != null)
                 {
                     // Envia a foto para o blob
@@ -153,9 +151,12 @@ namespace RedeSocialWeb.Controllers
                     // Guarda a Uri da foto salva no blob
                     perfil.FotoPerfil = imgUri.ToString();
                 }
+                var perfilModel = PerfilViewModel.ConvertToModel(perfil);
 
-                perfil.UserID = Session["UserId"].ToString();
-                servico.EditaPerfil(perfil);
+                if (Session["UserId"] == null)
+                    Session["UserId"] = User.Identity.GetUserId();
+                perfilModel.UserID = Session["UserId"].ToString();
+                servico.EditaPerfil(perfilModel);
                 return RedirectToAction("Index", "Gerenciador");
             }
             return View(perfil);

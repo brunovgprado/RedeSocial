@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201706190225396_Criado-Atividade.Designer.cs">
       <DependentUpon>201706190225396_Criado-Atividade.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706230019562_dbAzure.cs" />
+    <Compile Include="Migrations\201706230019562_dbAzure.Designer.cs">
+      <DependentUpon>201706230019562_dbAzure.cs</DependentUpon>
+    </Compile>
     <Compile Include="PostagensEntity.cs" />
     <Compile Include="HortasEntity.cs" />
     <Compile Include="Migrations\201706052222333_Adicionado modelo Perfil.cs" />
@@ -139,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706190225396_Criado-Atividade.resx">
       <DependentUpon>201706190225396_Criado-Atividade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706230019562_dbAzure.resx">
+      <DependentUpon>201706230019562_dbAzure.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
