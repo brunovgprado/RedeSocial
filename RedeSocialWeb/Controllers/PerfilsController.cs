@@ -33,23 +33,20 @@ namespace RedeSocialWeb.Controllers
             servicoBlob = new BlobServico();
         }
 
-        // Action responsável por verificar se o usuário já possui perfil
+        // Action responsável por criar um perfil básico
         public ActionResult CheckIn()
         {
-            // Verificando se UserId é null
-            if (User.Identity.GetUserId().ToString() == null)
-                return RedirectToAction("Login", "Account");
 
-            // Verificando se a cariavel de sessão UserId é null
-            if (Session["UserId"] == null)
-                Session["UserId"] = User.Identity.GetUserId();
+            // Criando um perfil básico para o novo usuário
+            var perfilNovo = new Perfil();
+            perfilNovo.NomeExibicao = "Usuário novo";
+            perfilNovo.UserID = User.Identity.GetUserId();
+            perfilNovo.FotoPerfil = "https://raw.githubusercontent.com/brunovitorprado/RedeSocial/master/avatar.png";
 
-            IdUsuario = Session["UserId"].ToString();   
-            var perfil = servico.RetornaPerfilUsuario(IdUsuario);
-
-            if (perfil != null)
+            servico.CriaPerfil(perfilNovo);
+            if (perfilNovo.id != 0)
             {
-                Session["PerfilId"] = perfil.id;
+                Session["PerfilId"] = perfilNovo.id;
                 return RedirectToAction("Index", "Gerenciador");
             }
             return RedirectToAction("Create");
@@ -116,7 +113,7 @@ namespace RedeSocialWeb.Controllers
                 }            
                 servico.CriaPerfil(perfil);
                 Session["PerfilId"] = perfil.id;
-                return RedirectToAction("CheckIn", "Perfils");
+                return RedirectToAction("Index", "Gerenciador");
             }
 
             return View(perfilView);
