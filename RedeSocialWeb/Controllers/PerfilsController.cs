@@ -99,18 +99,17 @@ namespace RedeSocialWeb.Controllers
             perfil.UserID = Session["UserId"].ToString(); // Guarda o valor do UserId da sessão no perfil criado
             if (ModelState.IsValid)
             {
-                // Atribui um placeholdercaso a foto vindo da view seja nula
-                if (imgPerfil == null)
-                { 
-                    perfil.FotoPerfil = "https://raw.githubusercontent.com/brunovitorprado/RedeSocial/master/avatar.png";
-                }
-                else
+                if (imgPerfil != null)// Se a foto vindo da view não for nula 
                 {
                     // Envia a foto para o blob
                     var imgUri = await servicoBlob.UploadImageAsync(imgPerfil);
                     // Guarda a Uri da foto salva no blob
                     perfil.FotoPerfil = imgUri.ToString();
-                }            
+                }
+                else
+                {   // Se for nula, atribui um avatar padrão ao perfil
+                    perfil.FotoPerfil = "https://raw.githubusercontent.com/brunovitorprado/RedeSocial/master/avatar.png";
+                }
                 servico.CriaPerfil(perfil);
                 Session["PerfilId"] = perfil.id;
                 return RedirectToAction("Index", "Gerenciador");
@@ -141,12 +140,16 @@ namespace RedeSocialWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (imgPerfil != null)
+                if (imgPerfil != null)// Se a foto vindo da view não for nula 
                 {
                     // Envia a foto para o blob
                     var imgUri = await servicoBlob.UploadImageAsync(imgPerfil);
                     // Guarda a Uri da foto salva no blob
                     perfil.FotoPerfil = imgUri.ToString();
+                }
+                else
+                {   // Se for nula, atribui um avatar padrão ao perfil
+                    perfil.FotoPerfil = "https://raw.githubusercontent.com/brunovitorprado/RedeSocial/master/avatar.png";
                 }
                 var perfilModel = PerfilViewModel.ConvertToModel(perfil);
 
