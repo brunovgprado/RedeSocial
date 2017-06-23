@@ -29,16 +29,19 @@ namespace RedeSocialWeb.Controllers
 
         // Action da pagina do usuario logado
         public ActionResult Index()
-        {                 
-            if (User.Identity.GetUserId() == null)
-                return RedirectToAction("Login", "Account");
+        {
+            var UserSessionId = User.Identity.GetUserId();
             if (Session["UserId"] == null)
-                Session["UserId"] = User.Identity.GetUserId();
+                Session["UserId"] = UserSessionId;
 
+            var perfilTmp = servicoPerfil.RetornaPerfilUsuario(UserSessionId);
+            if(perfilTmp != null) { 
             FabricaDashBoard fabricaDash = new FabricaDashBoard();
-            var dashBoard = fabricaDash.MontaPerfil(Session["UserId"].ToString());
-
-            return View(dashBoard);
+            var dashBoard = fabricaDash.MontaPerfil(UserSessionId);
+            if (dashBoard != null)    
+                return View(dashBoard);
+            }
+            return RedirectToAction("CheckIn", "Perfils");
         }
 
         // Action que localiza o usuario a partir do id de perfil e chama a action PerfilTerceiro
@@ -51,14 +54,15 @@ namespace RedeSocialWeb.Controllers
         // Action que monta a view de um usuario visitado
         public ActionResult PerfilVisitado(string userId)
         {
+            var UserSessionId = User.Identity.GetUserId();
             if (Session["UserId"] == null)
-                Session["UserId"] = User.Identity.GetUserId();
+                Session["UserId"] = UserSessionId;
             // Instanciando o DashBoard e recebendo o perfil
             FabricaDashBoard fabricaDash = new FabricaDashBoard();
             var dashBoard = fabricaDash.MontaPerfil(userId);
 
             // Busca perfil e verifica se está seguindo
-            var VisitanteId = Session["UserId"].ToString();
+            var VisitanteId = UserSessionId;
             var Visitado = servicoPerfil.RetornaPerfilUsuario(userId);
             dashBoard.ChecaSeSeguePerfil = servicoSeguir.checarSeguido(VisitanteId, Visitado.id);
 
@@ -69,13 +73,12 @@ namespace RedeSocialWeb.Controllers
         public ActionResult Inicio()
         {
             // Verifica se a variavel de sessão UserId é nula
-            if (User.Identity.GetUserId().ToString() == null)
-                return RedirectToAction("Login", "Account");
+            var UserSessionId = User.Identity.GetUserId();
             if (Session["UserId"] == null)
-                Session["UserId"] = User.Identity.GetUserId();
+                Session["UserId"] = UserSessionId;
 
             FabricaDashBoard fabricaDash = new FabricaDashBoard();
-            var dashBoard = fabricaDash.MontaPerfil(Session["UserId"].ToString());
+            var dashBoard = fabricaDash.MontaPerfil(UserSessionId);
 
             return View(dashBoard);
         }
