@@ -41,15 +41,11 @@ namespace RedeSocialWeb.Controllers
             var perfilNovo = new Perfil();
             perfilNovo.NomeExibicao = "Usuário novo";
             perfilNovo.UserID = User.Identity.GetUserId();
-            perfilNovo.FotoPerfil = "https://raw.githubusercontent.com/brunovitorprado/RedeSocial/master/avatar.png";
+            perfilNovo.FotoPerfil = Avatar.GetAvatar();
 
             servico.CriaPerfil(perfilNovo);
-            if (perfilNovo.id != 0)
-            {
-                Session["PerfilId"] = perfilNovo.id;
-                return RedirectToAction("Index", "Gerenciador");
-            }
-            return RedirectToAction("Create");
+            Session["PerfilId"] = perfilNovo.id;
+            return RedirectToAction("Index", "Gerenciador");
         }
 
         // Action que registra o Seguir para perfil
@@ -108,7 +104,7 @@ namespace RedeSocialWeb.Controllers
                 }
                 else
                 {   // Se for nula, atribui um avatar padrão ao perfil
-                    perfil.FotoPerfil = "https://raw.githubusercontent.com/brunovitorprado/RedeSocial/master/avatar.png";
+                    perfil.FotoPerfil = Avatar.GetAvatar();
                 }
                 servico.CriaPerfil(perfil);
                 Session["PerfilId"] = perfil.id;
@@ -149,7 +145,7 @@ namespace RedeSocialWeb.Controllers
                 }
                 else
                 {   // Se for nula, atribui um avatar padrão ao perfil
-                    perfil.FotoPerfil = "https://raw.githubusercontent.com/brunovitorprado/RedeSocial/master/avatar.png";
+                    perfil.FotoPerfil = Avatar.GetAvatar();
                 }
                 var perfilModel = PerfilViewModel.ConvertToModel(perfil);
 
