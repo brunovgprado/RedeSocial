@@ -30,6 +30,12 @@ namespace Dados
             var seguidos = db.Seguirs.Where(x => x.SeguidorId == userId);
             return seguidos.ToList();
         }
+        // Metodo que retorna seguidos de um usuario
+        public List<Seguir> ObterSeguidores(int perfilId)
+        {
+            var seguidores = db.Seguirs.Where(x => x.PerfilID == perfilId);
+            return seguidores.ToList();
+        }
 
         public void dispose()
         {

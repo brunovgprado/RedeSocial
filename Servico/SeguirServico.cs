@@ -28,6 +28,10 @@ namespace Servico
             return repositorio.ObterSeguidos(userId);
         }
 
+        public List<Seguir> ObterSeguidores(int PerfilId)
+        {
+            return repositorio.ObterSeguidores(PerfilId);
+        }
         public bool checarSeguido(string UserId, int SeguidoId)
         {
             return repositorio.ChecaSeguido(UserId, SeguidoId);

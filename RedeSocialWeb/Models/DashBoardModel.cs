@@ -15,6 +15,7 @@ namespace RedeSocialWeb.Models
         public List<PostagemViewModel> postagens { get; set; }
         public List<PostagemViewModel> postagensSeguidos { get; set; }
         public List<Perfil> PerfisSeguidos { get; set; }
+        public List<Perfil> PerfisSeguidores { get; set; }
         public List<Horta> HortasSeguidas { get; set; }
         public List<Planta> PlantasSeguidas { get; set; }
     }

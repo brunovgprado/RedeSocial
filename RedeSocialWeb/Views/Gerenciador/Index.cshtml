@@ -75,9 +75,24 @@
     </div>
     <hr />
     <div class="thumbnail">
-       <span class="painel-title">Seguidores 0</span> 
+       <span class="painel-title">Seguidores <a href="#">@Model.PerfisSeguidores.Count().ToString()</a></span> 
     </div>
-    
+    <div class="lista-amigos">
+        <div class="row">
+            @foreach (var seguidor in Model.PerfisSeguidores.Take(8))
+            {
+                <div class="thumbnail col-sm-3 col-xs-3">
+                    <a href="@Url.Action("PerfilVisitado", new { userId = seguidor.UserID } )">
+                        <img src="@seguidor.FotoPerfil" title="@seguidor.NomeExibicao" class="foto-thumb-seguir" />
+
+                        <figcaption class="cap-thumb-seguir caption">
+                            @seguidor.NomeExibicao.ElementAt(0)
+                        </figcaption>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
 </div>
 
 <div class="col-sm-6 text-left">

@@ -25,10 +25,12 @@ namespace RedeSocialWeb.ServicoWeb
         // Metodo que monta o DashBoardModel com os dados necessários para a View perfil
         public DashBoardModel MontaPerfil(string UserId)
         {
-            var perfil = servicoPerfil.RetornaPerfilUsuario(UserId);
+            var perfil = servicoPerfil.RetornaPerfilUsuario(UserId);// localiza o perfil do usuário logado
 
             // Recupera todos os itens seguidos usando o id do usuário
             var Seguidos = servicoSeguir.ObterSeguidos(UserId);
+
+            var Seguidores = servicoSeguir.ObterSeguidores(perfil.id);
 
             // Recupera todas as postagens deste usuário
             var PostagensUsuario = servicoPostagem.RetornaPostagemUsuario(UserId, 5); 
@@ -50,6 +52,16 @@ namespace RedeSocialWeb.ServicoWeb
                     postagensSeguidos.Add(postagemSeguido);
                 }
             }
+
+            // Adiciona à lista cada perfil seguidor
+            List<Perfil> perfisSeguidores = new List<Perfil>();
+            foreach (var seguidor in Seguidores)
+            {
+                var perfilSeguidor = servicoPerfil.RetornaPerfilUsuario(seguidor.SeguidorId);
+                perfisSeguidores.Add(perfilSeguidor);
+            }
+
+
             // Convertendo Postagem em PostagemViewModel
             var PostagensSeguidosView = PostagemViewModel.GetModel(postagensSeguidos);
             // Ordenando por data
@@ -61,6 +73,7 @@ namespace RedeSocialWeb.ServicoWeb
             dashBorad.postagensSeguidos = PostagensSeguidosOrdenadas;
             dashBorad.TotPostagens = servicoPostagem.TotalPostagens();
             dashBorad.PerfisSeguidos = perfisSeguidos;
+            dashBorad.PerfisSeguidores = perfisSeguidores;
             dashBorad.nomePerfil = perfil.NomeExibicao;
             dashBorad.fotoPerfil = perfil.FotoPerfil;
             dashBorad.idPerfil = perfil.id;
