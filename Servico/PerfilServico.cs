@@ -44,7 +44,7 @@ namespace Servico
         }
 
         //Metodo que apaga um perfil
-        public void executaExclusao(string UserId, int PerfilId)
+        public void ExecutaExclusao(string UserId, int PerfilId)
         {
             repositorio.executaExclusao(UserId, PerfilId);
         }

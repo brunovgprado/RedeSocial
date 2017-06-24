@@ -33,18 +33,15 @@ namespace RedeSocialWeb.Controllers
             servicoBlob = new BlobServico();
         }
 
-        // Action responsável por criar um perfil básico
+        // Action que busca um perfil para o usuario ou cria um novo perfil
         public ActionResult CheckIn()
         {
+            var userId = User.Identity.GetUserId(); // Obtém o id do user logado
+            var PerfilUser = servico.RetornaPerfilUsuario(userId); // Busca um perfil existente para o user logado
+            if(PerfilUser != null) // Manda para o perfil existente caso seja true
+                return RedirectToAction("Index", "Gerenciador");
 
-            // Criando um perfil básico para o novo usuário
-            var perfilNovo = new Perfil();
-            perfilNovo.NomeExibicao = "Usuário novo";
-            perfilNovo.UserID = User.Identity.GetUserId();
-            perfilNovo.FotoPerfil = Avatar.GetAvatar();
-
-            servico.CriaPerfil(perfilNovo);
-            Session["PerfilId"] = perfilNovo.id;
+            CriaPerfilPadrao.Criar(userId); // Cria um perfil padrão caso a condição acima seja false
             return RedirectToAction("Index", "Gerenciador");
         }
 
@@ -76,42 +73,6 @@ namespace RedeSocialWeb.Controllers
         public ActionResult Create()
         {
             return View();
-        }
-
-        // POST: Perfils/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,UserID,NomeExibicao,FotoPerfil")] PerfilViewModel perfilView, HttpPostedFileBase imgPerfil)
-        {
-            // Verificando se UserId é null
-            if (User.Identity.GetUserId().ToString() == null)
-                return RedirectToAction("Login", "Account");// Se é null, manda para login
-
-            // Verificando se a variavel de sessão UserId é null
-            if (Session["UserId"] == null)
-                Session["UserId"] = User.Identity.GetUserId(); // Salva o id do user logado na sessão
-
-            var perfil = PerfilViewModel.ConvertToModel(perfilView);// Converte PerfilViewModel para Perfil
-            perfil.UserID = Session["UserId"].ToString(); // Guarda o valor do UserId da sessão no perfil criado
-            if (ModelState.IsValid)
-            {
-                if (imgPerfil != null)// Se a foto vindo da view não for nula 
-                {
-                    // Envia a foto para o blob
-                    var imgUri = await servicoBlob.UploadImageAsync(imgPerfil);
-                    // Guarda a Uri da foto salva no blob
-                    perfil.FotoPerfil = imgUri.ToString();
-                }
-                else
-                {   // Se for nula, atribui um avatar padrão ao perfil
-                    perfil.FotoPerfil = Avatar.GetAvatar();
-                }
-                servico.CriaPerfil(perfil);
-                Session["PerfilId"] = perfil.id;
-                return RedirectToAction("Index", "Gerenciador");
-            }
-
-            return View(perfilView);
         }
 
         // GET: Perfils/Edit/5
@@ -178,7 +139,7 @@ namespace RedeSocialWeb.Controllers
             // Realiza a ação em todos os serviços
             servicoPostagem.ExecutaExclusao(IdUsuario, id);
             servicoSeguir.ExecutaExclusao(IdUsuario, id);
-            servico.executaExclusao(IdUsuario, id);
+            servico.ExecutaExclusao(IdUsuario, id);
 
             return RedirectToAction("Index", "Home");
         }
