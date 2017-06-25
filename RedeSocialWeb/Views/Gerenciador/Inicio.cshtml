@@ -8,7 +8,7 @@
 <hr />
 <div class="col-sm-2 sidenav">
     <div class="thumbnail text-left">
-        <a href="@Url.Action("PerfilTerceiro", new { userId = Model.UserId } )" title="@Html.DisplayFor(model => model.nomePerfil)">
+        <a href="@Url.Action("PerfilVisitado", new { userId = Model.UserId } )" title="@Html.DisplayFor(model => model.nomePerfil)">
             <img src="@Html.DisplayFor(model => model.fotoPerfil)" alt="Lights" style="width:100%">
             <div class="caption">
                 <h4>@Html.DisplayFor(model => model.nomePerfil)</h4>
