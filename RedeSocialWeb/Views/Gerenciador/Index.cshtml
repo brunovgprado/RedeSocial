@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h3>Meu Perfil</h3>
+<h3>Perfil</h3>
 <div>
     <hr />
 </div>
@@ -13,7 +13,7 @@
     <div class="thumbnail text-left row">
         <a href="@Url.Action("PerfilVisitado", new { userId = Model.UserId } )" title="@Html.DisplayFor(model => model.nomePerfil)">
             <div class="thumbnail col-sm-6">
-                <img id="img-perfil" src="@Html.DisplayFor(model => model.fotoPerfil)" alt="Lights">
+                <img id="img-perfil" src="@Html.DisplayFor(model => model.fotoPerfil)" alt="Lights" class="img-perfil">
             </div>
         </a>
             <div class="caption col-sm-6">
@@ -62,8 +62,7 @@
             {
                 <div class="thumbnail col-sm-3 col-xs-3">
                     <a href="@Url.Action("PerfilVisitado", new { userId = seguido.UserID } )">
-                        <img src="@seguido.FotoPerfil" title="@seguido.NomeExibicao" class="foto-thumb-seguir" />
-
+                        <img id="foto-thumb-seguir" src="@seguido.FotoPerfil" title="@seguido.NomeExibicao" class="foto-thumb-seguir" />
                         <figcaption class="cap-thumb-seguir caption">
                             @seguido.NomeExibicao.ElementAt(0)
                         </figcaption>
@@ -82,7 +81,7 @@
             {
                 <div class="thumbnail col-sm-3 col-xs-3">
                     <a href="@Url.Action("PerfilVisitado", new { userId = seguidor.UserID } )">
-                        <img src="@seguidor.FotoPerfil" title="@seguidor.NomeExibicao" class="foto-thumb-seguir" />
+                        <img id="foto-thumb-seguir" src="@seguidor.FotoPerfil" title="@seguidor.NomeExibicao" class="foto-thumb-seguir"/>
 
                         <figcaption class="cap-thumb-seguir caption">
                             @seguidor.NomeExibicao.ElementAt(0)
@@ -107,7 +106,7 @@
                         <div class="message-head clearfix">
                             <div class="avatar pull-left">
                                 <a href="@Url.Action("PerfilVisitado", new { userId = post.UserId } )">
-                                    <img src="@Html.DisplayFor(model => post.UserFoto)" title="@Html.DisplayFor(modelItem => post.UserName)" class="imgPost">
+                                    <img id="foto-post" src="@Html.DisplayFor(model => post.UserFoto)" title="@Html.DisplayFor(modelItem => post.UserName)" class="foto-post">
                                 </a>
                             </div>
                             <div class="user-detail">

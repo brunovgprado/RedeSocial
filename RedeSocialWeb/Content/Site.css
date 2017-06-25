@@ -30,10 +30,6 @@ textarea {
     font-weight: 600;
     margin-left: 3%;
 }
-.foto-thumb-seguir {
-width: 100px;
-height: 200px;
-}
 .badge{
     background: rgba(27,31,35,0.30)
 }
@@ -189,10 +185,38 @@ line-height: 22px;
 
 }
 
-
 #img-perfil{
     width: 150px;
     height: 150px;
     object-fit: cover;
     object-position: center;
+}
+
+.img-perfil{
+    min-height: 150px;
+    max-height: 150px;
+}
+
+#foto-thumb-seguir {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.foto-thumb-seguir {
+    min-height: 75px;
+    max-height: 75px;
+}
+
+#foto-post {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.foto-post {
+    min-height: 40px;
+    max-height: 40px;
 }
