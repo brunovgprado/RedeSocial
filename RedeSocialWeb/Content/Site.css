@@ -184,3 +184,15 @@ line-height: 22px;
     font-size : 1.5em;
     font-weight: 600;   
 }
+.hortaThumb{
+    background-image: url("~/Content/img/horta.jpg") !important;
+
+}
+
+
+#img-perfil{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+}

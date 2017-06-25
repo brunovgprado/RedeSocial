@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Perfil</h2>
+<h3>Meu Perfil</h3>
 <div>
     <hr />
 </div>
@@ -13,8 +13,7 @@
     <div class="thumbnail text-left row">
         <a href="@Url.Action("PerfilVisitado", new { userId = Model.UserId } )" title="@Html.DisplayFor(model => model.nomePerfil)">
             <div class="thumbnail col-sm-6">
-                <img src="@Html.DisplayFor(model => model.fotoPerfil)" alt="Lights" style="width:100%">
-
+                <img id="img-perfil" src="@Html.DisplayFor(model => model.fotoPerfil)" alt="Lights">
             </div>
         </a>
             <div class="caption col-sm-6">
@@ -96,14 +95,6 @@
 </div>
 
 <div class="col-sm-6 text-left">
-        @*<div class="input-group row col-sm-12">
-        <div class="form-group  has-feedback">
-            <input type="text" class="form-control col-sm-8" placeholder="Diga algo para o mundo">
-        </div>
-        <span class="input-group-btn col-sm-2">
-            <button class="btn btn-default" type="button">Postar</button>
-        </span>
-    </div>*@
         <div class="thumbnail">
             <span class="painel-title">Minhas atividades <span class="badge">@Model.postagens.Count()</span></span>
         </div>
@@ -149,8 +140,8 @@
     <div class="thumbnail">
         <span class="painel-title">Minhas Hortas 0</span> 
     </div>
-    <div class="well">
-        <p>ADS</p>
+    <div class="thumbnail">
+        <div class="hortaThumb">ADS</div>
     </div>
     <div class="well">
         <p>ADS</p>
