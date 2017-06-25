@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RedeSocialWeb.Models;
+using Dados;
 
 namespace RedeSocialWeb.Controllers
 {
@@ -63,6 +64,7 @@ namespace RedeSocialWeb.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            GeraPerfisDeExemplo.Executar();
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }

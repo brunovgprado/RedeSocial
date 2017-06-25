@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GerarPerfisExemplo.cs" />
     <Compile Include="Migrations\201706111546590_Add_Coluna_UserId.cs" />
     <Compile Include="Migrations\201706111546590_Add_Coluna_UserId.Designer.cs">
       <DependentUpon>201706111546590_Add_Coluna_UserId.cs</DependentUpon>
