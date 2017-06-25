@@ -16,46 +16,46 @@
                 <img id="img-perfil" src="@Html.DisplayFor(model => model.fotoPerfil)" alt="Lights" class="img-perfil">
             </div>
         </a>
-            <div class="caption col-sm-6 col-md-6 col-xs-6">
-                <span class="nome-perfil">@Html.DisplayFor(model => model.nomePerfil)</span>
-                <h5>Ações <span class="badge">0</span></h5>
-                <h5>Seguindo <span class="badge">@Model.PerfisSeguidos.Count().ToString()</span></h5>
-                <div class="text-right pull-left">
-                    @if (Model.UserId.ToString() == Session["UserId"].ToString())
+        <div class="caption col-sm-6 col-md-6 col-xs-6">
+            <span class="nome-perfil">@Html.DisplayFor(model => model.nomePerfil)</span>
+            <h5>Ações <span class="badge">0</span></h5>
+            <h5>Seguindo <span class="badge">@Model.PerfisSeguidos.Count().ToString()</span></h5>
+            <div class="text-right pull-left">
+                @if (Model.UserId.ToString() == Session["UserId"].ToString())
+                {
+                    <a href="@Url.Action("../Perfils/Edit", new { id = Model.idPerfil })" title="Editar">
+                        <span class="btn btn-primary btn-sm">
+                            Editar
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        </span>
+                    </a>
+                }
+                else
+                {
+                    if (Model.ChecaSeSeguePerfil)
                     {
-                        <a href="@Url.Action("../Perfils/Edit", new { id = Model.idPerfil })" title="Editar">
-                            <span class="btn btn-primary btn-sm">
-                                Editar
-                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                            </span>
+                        <a href="@Url.Action("../Seguirs/DeixarDeSeguir", new { id = Model.idPerfil })" title="Seguir" class="btn btn-primary btn-sm">
+                            <span aria-hidden="true">Desconectar</span>
+                            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                         </a>
                     }
                     else
                     {
-                        if (Model.ChecaSeSeguePerfil)
-                        {
-                            <a href="@Url.Action("../Seguirs/DeixarDeSeguir", new { id = Model.idPerfil })" title="Seguir" class="btn btn-primary btn-sm">
-                                <span aria-hidden="true">Desconectar</span>
-                                <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-                            </a>
-                        }
-                        else
-                        {
-                            <a href="@Url.Action("../Seguirs/SeguirPerfil", new { id = Model.idPerfil })" title="Seguir" class="btn btn-primary btn-sm">
-                                <span aria-hidden="true">Conectar</span>
-                                <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-                            </a>
-                        }
-
+                        <a href="@Url.Action("../Seguirs/SeguirPerfil", new { id = Model.idPerfil })" title="Seguir" class="btn btn-primary btn-sm">
+                            <span aria-hidden="true">Conectar</span>
+                            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                        </a>
                     }
-                </div>
-            </div>      
+
+                }
+            </div>
+        </div>
     </div>
     <hr />
     <div class="thumbnail">
         <span class="painel-title">Seguindo <a href="#">@Model.PerfisSeguidos.Count().ToString()</a></span>
     </div>
-    
+
     <div class="lista-amigos">
         <div class="row">
             @foreach (var seguido in Model.PerfisSeguidos.Take(8))
@@ -73,7 +73,7 @@
     </div>
     <hr />
     <div class="thumbnail">
-       <span class="painel-title">Seguidores <a href="#">@Model.PerfisSeguidores.Count().ToString()</a></span> 
+        <span class="painel-title">Seguidores <a href="#">@Model.PerfisSeguidores.Count().ToString()</a></span>
     </div>
     <div class="lista-amigos">
         <div class="row">
@@ -81,8 +81,7 @@
             {
                 <div class="thumbnail col-sm-3 col-xs-3">
                     <a href="@Url.Action("PerfilVisitado", new { userId = seguidor.UserID } )">
-                        <img id="foto-thumb-seguir" src="@seguidor.FotoPerfil" title="@seguidor.NomeExibicao" class="foto-thumb-seguir"/>
-
+                        <img id="foto-thumb-seguir" src="@seguidor.FotoPerfil" title="@seguidor.NomeExibicao" class="foto-thumb-seguir" />
                         <figcaption class="cap-thumb-seguir caption">
                             @seguidor.NomeExibicao.ElementAt(0)
                         </figcaption>
@@ -94,50 +93,50 @@
 </div>
 
 <div class="col-sm-6 text-left">
-        <div class="thumbnail">
-            <span class="painel-title">Minhas atividades <span class="badge">@Model.postagens.Count()</span></span>
-        </div>
-        <hr />
-        @foreach (var post in Model.postagens)
-        {
-            <div class="qa-message-list" id="wallmessages">
-                <div class="message-item" id="m16">
-                    <div class="message-inner">
-                        <div class="message-head clearfix">
-                            <div class="avatar pull-left">
+    <div class="thumbnail">
+        <span class="painel-title">Minhas atividades <span class="badge">@Model.postagens.Count()</span></span>
+    </div>
+    <hr />
+    @foreach (var post in Model.postagens)
+    {
+        <div class="qa-message-list" id="wallmessages">
+            <div class="message-item" id="m16">
+                <div class="message-inner">
+                    <div class="message-head clearfix">
+                        <div class="avatar pull-left">
+                            <a href="@Url.Action("PerfilVisitado", new { userId = post.UserId } )">
+                                <img id="foto-post" src="@Html.DisplayFor(model => post.UserFoto)" title="@Html.DisplayFor(modelItem => post.UserName)" class="foto-post">
+                            </a>
+                        </div>
+                        <div class="user-detail">
+                            <h5 class="handle">
                                 <a href="@Url.Action("PerfilVisitado", new { userId = post.UserId } )">
-                                    <img id="foto-post" src="@Html.DisplayFor(model => post.UserFoto)" title="@Html.DisplayFor(modelItem => post.UserName)" class="foto-post">
+                                    @Html.DisplayFor(modelItem => post.UserName)
                                 </a>
-                            </div>
-                            <div class="user-detail">
-                                <h5 class="handle">
-                                    <a href="@Url.Action("PerfilVisitado", new { userId = post.UserId } )">
-                                        @Html.DisplayFor(modelItem => post.UserName)
-                                    </a>
-                                </h5>
-                                <div class="post-meta">
-                                    <div class="asker-meta">
-                                        <span class="qa-message-what"></span>
-                                        <span class="qa-message-when">
-                                            <span class="qa-message-when-data">
-                                                @Html.DisplayFor(modelItem => post.DataPostagem)
-                                            </span>
+                            </h5>
+                            <div class="post-meta">
+                                <div class="asker-meta">
+                                    <span class="qa-message-what"></span>
+                                    <span class="qa-message-when">
+                                        <span class="qa-message-when-data">
+                                            @Html.DisplayFor(modelItem => post.DataPostagem)
                                         </span>
-                                    </div>
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="qa-message-content">
-                            @Html.DisplayFor(modelItem => post.TextoPostagem)
-                        </div>
+                    </div>
+                    <div class="qa-message-content">
+                        @Html.DisplayFor(modelItem => post.TextoPostagem)
                     </div>
                 </div>
             </div>
-        }
-    </div>
+        </div>
+    }
+</div>
 <div class="col-sm-2 sidenav">
     <div class="thumbnail">
-        <span class="painel-title">Minhas Hortas 0</span> 
+        <span class="painel-title">Minhas Hortas 0</span>
     </div>
     <div class="thumbnail">
         <div class="hortaThumb">ADS</div>

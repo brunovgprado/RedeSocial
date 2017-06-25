@@ -42,8 +42,8 @@ namespace Dados
         }
 
         public static void Executar() {
-            GeraPerfisDeExemplo gerador = new GeraPerfisDeExemplo();
-            gerador.ExecutaGerarPerfis();
+           GeraPerfisDeExemplo gerador = new GeraPerfisDeExemplo();
+           //  gerador.ExecutaGerarPerfis(); // Gerador desligado
         }
     }
 }

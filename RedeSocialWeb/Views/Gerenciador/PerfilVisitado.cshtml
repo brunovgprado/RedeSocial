@@ -12,9 +12,8 @@
 <div class="col-sm-4 sidenav">
     <div class="thumbnail text-left row">
         <a href="@Url.Action("PerfilVisitado", new { userId = Model.UserId } )" title="@Html.DisplayFor(model => model.nomePerfil)">
-            <div class="thumbnail col-sm-6">
-                <img id="img-perfil"  src="@Html.DisplayFor(model => model.fotoPerfil)" alt="Lights" class="img-perfil">
-
+            <div class="thumbnail col-sm-6 col-md-6 col-xs-6">
+                <img id="img-perfil" src="@Html.DisplayFor(model => model.fotoPerfil)" alt="Lights" class="img-perfil">
             </div>
         </a>
         <div class="caption col-sm-6 col-md-6 col-xs-6">
@@ -52,7 +51,6 @@
             </div>
         </div>
     </div>
-
     <hr />
     <div class="thumbnail">
         <span class="painel-title">Seguindo <a href="#">@Model.PerfisSeguidos.Count().ToString()</a></span>
@@ -95,7 +93,6 @@
 </div>
 
 <div class="col-sm-6 text-left">
-
     <div class="thumbnail">
         <span class="painel-title">Minhas atividades <span class="badge">@Model.TotPostagens</span></span>
     </div>
