@@ -85,6 +85,7 @@ namespace RedeSocialWeb.Controllers
             if (perfil.UserID == Session["UserId"].ToString())
             {
                 var perfilView = PerfilViewModel.ConvertToViewModel(perfil);//Convertendo para PerfilViewModel
+                Session["FotoPerfil"] = perfilView.FotoPerfil; // Guarda foto do perfil na sessão
                 return View(perfilView);
             }
             return RedirectToAction("Index", "Gerenciador");
@@ -105,8 +106,8 @@ namespace RedeSocialWeb.Controllers
                     perfil.FotoPerfil = imgUri.ToString();
                 }
                 else
-                {   // Se for nula, atribui um avatar padrão ao perfil
-                    perfil.FotoPerfil = Avatar.GetAvatar();
+                {   // Se for nula, atribui a foto que foi guardada na sessão             
+                    perfil.FotoPerfil = Session["FotoPerfil"].ToString();
                 }
                 var perfilModel = PerfilViewModel.ConvertToModel(perfil);
 
