@@ -77,6 +77,18 @@
     <Compile Include="Migrations\201706230019562_dbAzure.Designer.cs">
       <DependentUpon>201706230019562_dbAzure.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706261946014_AtualizadasPropriedadesDeHorta.cs" />
+    <Compile Include="Migrations\201706261946014_AtualizadasPropriedadesDeHorta.Designer.cs">
+      <DependentUpon>201706261946014_AtualizadasPropriedadesDeHorta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706261948163_AtualizadasPropriedadesDeHorta1.cs" />
+    <Compile Include="Migrations\201706261948163_AtualizadasPropriedadesDeHorta1.Designer.cs">
+      <DependentUpon>201706261948163_AtualizadasPropriedadesDeHorta1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706261952202_AtualizadasPropriedadesDeHorta2.cs" />
+    <Compile Include="Migrations\201706261952202_AtualizadasPropriedadesDeHorta2.Designer.cs">
+      <DependentUpon>201706261952202_AtualizadasPropriedadesDeHorta2.cs</DependentUpon>
+    </Compile>
     <Compile Include="PostagensEntity.cs" />
     <Compile Include="HortasEntity.cs" />
     <Compile Include="Migrations\201706052222333_Adicionado modelo Perfil.cs" />
@@ -147,6 +159,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706230019562_dbAzure.resx">
       <DependentUpon>201706230019562_dbAzure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706261946014_AtualizadasPropriedadesDeHorta.resx">
+      <DependentUpon>201706261946014_AtualizadasPropriedadesDeHorta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706261948163_AtualizadasPropriedadesDeHorta1.resx">
+      <DependentUpon>201706261948163_AtualizadasPropriedadesDeHorta1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706261952202_AtualizadasPropriedadesDeHorta2.resx">
+      <DependentUpon>201706261952202_AtualizadasPropriedadesDeHorta2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
