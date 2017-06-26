@@ -1,0 +1,45 @@
+﻿@using RedeSocialWeb.Models
+@model LoginViewModel
+
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-inline", role = "form" }))
+            {
+    @Html.AntiForgeryToken()
+
+    <div>
+        <div class="form-group form-group-sm">
+            <label for="email">
+                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+            </label>
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control"})
+        </div>
+
+        <div class="form-group form-group-sm">
+            <label>
+                @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+            </label>
+            <span>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </span>
+            
+        </div>
+        <input type="submit" value="ENTRAR" class="btn btn-sm btn-primary" /><br />
+        <span class="pull-right">
+            @Html.ActionLink("Esqueci minha senha", "ForgotPassword")
+        </span>  
+     </div>
+}
+
+<!--<form class="form-inline" action="/action_page.php">
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>-->

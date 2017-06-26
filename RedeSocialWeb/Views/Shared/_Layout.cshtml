@@ -27,25 +27,29 @@
                 @Html.ActionLink("HortoHome", "Index", "Gerenciador", new { area = "" }, new { @class = "navbar-brand" })
             }else
             {
-                @Html.ActionLink("HortoHome", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("HortoHome", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
             }
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                
             @if (Request.IsAuthenticated)
             {
-                <li>@Html.ActionLink("Meu Perfil", "Index", "Gerenciador")</li>
-                <li>@Html.ActionLink("Minha rede", "Inicio", "Gerenciador")</li>
-                <li>@Html.ActionLink("Postar", "Create", "Postagems")</li>
-                <li>@Html.ActionLink("Toda a Rede", "TodaRede", "Gerenciador")</li>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Meu Perfil", "Index", "Gerenciador")</li>
+                    <li>@Html.ActionLink("Minha rede", "Inicio", "Gerenciador")</li>
+                    <li>@Html.ActionLink("Postar", "Create", "Postagems")</li>
+                    <li>@Html.ActionLink("Toda a Rede", "TodaRede", "Gerenciador")</li>
+                </ul>
             }
             else
             {
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            }
+                <ul class="nav pull-right">
+                    <li class="">@Html.Partial("_LoginPartial")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+           }
+
+
+</div>
         </div>
     </div>
     <div class="container body-content">
