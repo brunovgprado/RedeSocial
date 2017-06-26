@@ -346,7 +346,6 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Gerenciador\Index.cshtml" />
     <Content Include="Views\Hortas\Create.cshtml" />
     <Content Include="Views\Hortas\Delete.cshtml" />
@@ -370,7 +369,7 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Perfils\Delete.cshtml" />
-    <Content Include="Views\Account\_loginPartial.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Atividades\" />

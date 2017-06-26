@@ -7,6 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    @using Microsoft.AspNet.Identity
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/jquery-3.1.1.min.js")
@@ -34,6 +35,17 @@
                 
             @if (Request.IsAuthenticated)
             {
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                        </li>
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">SAIR</a></li>
+                    </ul>
+                }
+
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Meu Perfil", "Index", "Gerenciador")</li>
                     <li>@Html.ActionLink("Minha rede", "Inicio", "Gerenciador")</li>
