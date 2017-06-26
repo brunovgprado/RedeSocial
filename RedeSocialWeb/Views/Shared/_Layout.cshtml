@@ -23,6 +23,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                
             @if (Request.IsAuthenticated)
             {
                 @Html.ActionLink("HortoHome", "Index", "Gerenciador", new { area = "" }, new { @class = "navbar-brand" })
@@ -30,6 +31,7 @@
             {
                 @Html.ActionLink("HortoHome", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
             }
+            <img src="~/Content/img/Logo_HortoHome.png" />
             </div>
             <div class="navbar-collapse collapse">
                 

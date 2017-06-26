@@ -273,6 +273,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\horta.jpg" />
+    <Content Include="Content\img\Logo_HortoHome.png" />
     <Content Include="Content\RedeSocial.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
