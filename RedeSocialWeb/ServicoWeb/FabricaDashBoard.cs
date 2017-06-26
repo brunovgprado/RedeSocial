@@ -40,7 +40,8 @@ namespace RedeSocialWeb.ServicoWeb
 
             // Recupera 10 postagens do banco
             var PostagensBanco = servicoPostagem.RetornaPostagens(10);
-
+            
+            // Recupera todas as hortas do banco
             var listaHortas = servicoHorta.RetornaHortas();
  
 
