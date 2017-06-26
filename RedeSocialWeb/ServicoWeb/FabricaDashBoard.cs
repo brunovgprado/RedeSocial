@@ -14,12 +14,14 @@ namespace RedeSocialWeb.ServicoWeb
         private PerfilServico servicoPerfil;
         private PostagemServico servicoPostagem;
         private SeguirServico servicoSeguir;
+        private HortaServico servicoHorta;
 
         public FabricaDashBoard()
         {
             servicoPerfil = new PerfilServico(new PerfisEntity());
             servicoPostagem = new PostagemServico(new PostagensEntity());
             servicoSeguir = new SeguirServico(new SeguirEntity());
+            servicoHorta = new HortaServico(new HortasEntity());
         }
 
         // Metodo que monta o DashBoardModel com os dados necessários para a View perfil
@@ -30,6 +32,7 @@ namespace RedeSocialWeb.ServicoWeb
             // Recupera todos os itens seguidos usando o id do usuário
             var Seguidos = servicoSeguir.ObterSeguidos(UserId);
 
+            // Recupera todos os seguidores do perfil
             var Seguidores = servicoSeguir.ObterSeguidores(perfil.id);
 
             // Recupera todas as postagens deste usuário
@@ -37,6 +40,9 @@ namespace RedeSocialWeb.ServicoWeb
 
             // Recupera 10 postagens do banco
             var PostagensBanco = servicoPostagem.RetornaPostagens(10);
+
+            var listaHortas = servicoHorta.RetornaHortas();
+ 
 
             // Adiciona à lista cada perfil seguido encontrado com base no id
             List<Perfil> perfisSeguidos = new List<Perfil>();
@@ -73,6 +79,7 @@ namespace RedeSocialWeb.ServicoWeb
             dashBorad.TotPostagens = servicoPostagem.TotalPostagens();
             dashBorad.PerfisSeguidos = perfisSeguidos;
             dashBorad.PerfisSeguidores = perfisSeguidores;
+            dashBorad.Hortas = HortaViewModel.GetModel(listaHortas);
             dashBorad.nomePerfil = perfil.NomeExibicao;
             dashBorad.fotoPerfil = perfil.FotoPerfil;
             dashBorad.idPerfil = perfil.id;
