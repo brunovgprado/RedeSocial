@@ -250,6 +250,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DashBoardModel.cs" />
+    <Compile Include="Models\HortaViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PerfilViewModel.cs" />

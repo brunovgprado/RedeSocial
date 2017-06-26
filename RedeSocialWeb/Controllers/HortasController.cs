@@ -2,6 +2,7 @@
 using Negocio.Dominio;
 using Dados;
 using Servico;
+using RedeSocialWeb.Models;
 
 namespace RedeSocialWeb.Controllers
 {
@@ -19,7 +20,8 @@ namespace RedeSocialWeb.Controllers
         public ActionResult Index()
         {
             var lista = servico.RetornaHortas();
-            return View(lista);
+            var hortaView = HortaViewModel.GetModel(lista);
+            return View(hortaView);
         }
 
         // GET: Hortas/Details/5
@@ -44,7 +46,7 @@ namespace RedeSocialWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,PerfilID")] Horta horta)
+        public ActionResult Create([Bind(Include = "id,PerfilID,UserId,Nome,tipo,capacidade")] Horta horta)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +73,7 @@ namespace RedeSocialWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,PerfilID")] Horta horta)
+        public ActionResult Edit([Bind(Include = "id,PerfilID,UserId,Nome,tipo,capacidade")] Horta horta)
         {
             if (ModelState.IsValid)
             {
