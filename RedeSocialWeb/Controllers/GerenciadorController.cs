@@ -62,7 +62,7 @@ namespace RedeSocialWeb.Controllers
             FabricaDashBoard fabricaDash = new FabricaDashBoard();
             var dashBoard = fabricaDash.MontaPerfil(userId);
 
-            // Busca perfil e verifica se está seguindo
+            // Busca perfil e verifica se o usuário atual está seguindo
             var VisitanteId = UserSessionId;
             var Visitado = servicoPerfil.RetornaPerfilUsuario(userId);
             dashBoard.ChecaSeSeguePerfil = servicoSeguir.checarSeguido(VisitanteId, Visitado.id);
@@ -84,14 +84,13 @@ namespace RedeSocialWeb.Controllers
             return View(dashBoard);
         }
 
+        // Retorna os dados contidos na entidade 'TodaRedeModel' para exibir a página 'Toda a Rede'
         public ActionResult TodaRede()
         {
-            DashBoardModel dashBorad = new DashBoardModel();
-            var lista = servicoPostagem.RetornaPostagens(10);
-            dashBorad.postagens = PostagemViewModel.GetModel(lista);
-            dashBorad.PerfisSeguidos = servicoPerfil.RetornaPerfis(8);
-
-            return View(dashBorad);
+            TodaRedeModel todaARede = new TodaRedeModel();
+            FabricaPaginaGeral fabricaPagina = new FabricaPaginaGeral();
+            todaARede = fabricaPagina.MontaPaginaTodaRede();
+            return View(todaARede);
         }
     }
 }

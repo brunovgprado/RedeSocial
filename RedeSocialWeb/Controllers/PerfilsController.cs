@@ -142,7 +142,7 @@ namespace RedeSocialWeb.Controllers
             servicoSeguir.ExecutaExclusao(IdUsuario, id);
             servico.ExecutaExclusao(IdUsuario, id);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Register", "Account");
         }
 
         protected override void Dispose(bool disposing)

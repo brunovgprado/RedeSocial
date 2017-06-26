@@ -220,3 +220,8 @@ line-height: 22px;
     min-height: 40px;
     max-height: 40px;
 }
+
+.navbar-brand{
+    color: #5cb85c !important;
+    font-size: 2em;
+}

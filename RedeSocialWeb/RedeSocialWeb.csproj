@@ -254,11 +254,13 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PerfilViewModel.cs" />
     <Compile Include="Models\PostagemViewModel.cs" />
+    <Compile Include="Models\TodaRedeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicoWeb\Avatar.cs" />
     <Compile Include="ServicoWeb\BlobServico.cs" />
     <Compile Include="ServicoWeb\CriaPerfilPadrao.cs" />
     <Compile Include="ServicoWeb\FabricaDashBoard.cs" />
+    <Compile Include="ServicoWeb\FabricaPaginaGeral.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

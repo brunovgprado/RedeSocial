@@ -1,59 +1,77 @@
-﻿@model RedeSocialWeb.Models.DashBoardModel
+﻿@model RedeSocialWeb.Models.TodaRedeModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "TodaRede";
 }
 
 <h2>Tudo junto e misturado</h2>
 <hr />
-<div class="col-sm-2 sidenav">
-    <div class="thumbnail text-left">
-       <span class="">Geral é nois</span>
+<div class="col-sm-4 sidenav">
+    <div class="thumbnail">
+        <span class="painel-title">Usuarios da rede <span class="badge">@Model.TodosOsPerfis.Count()</span> </span>
+    </div>
+    <div class="lista-amigos">
+        <div class="row">
+            @foreach (var perfil in Model.TodosOsPerfis)
+            {
+            <div class="thumbnail col-sm-3 col-xs-3">
+                <a href="@Url.Action("PerfilVisitado", new { userId = perfil.UserID } )">
+                    <img id="foto-thumb-seguir" src="@perfil.FotoPerfil" title="@perfil.NomeExibicao" class="foto-thumb-seguir" />
+                    <figcaption class="cap-thumb-seguir caption">
+                        @perfil.NomeExibicao.ElementAt(0)
+                    </figcaption>
+                </a>
+            </div>
+            }
+        </div>
     </div>
 </div>
-<div class="col-sm-8 text-left">
-    @*-----Lista de postagens-----*@
-    @foreach (var item in Model.postagens)
-    {
-        <div class="qa-message-list" id="wallmessages">
-            <div class="message-item" id="m16">
-                <div class="message-inner">
-                    <div class="message-head clearfix">
-                        <div class="avatar pull-left">
-                            <a href="@Url.Action("PerfilVisitado", new { userId = item.UserId } )">
-                                <img src="@Html.DisplayFor(model => item.UserFoto)" title="@Html.DisplayFor(modelItem => item.UserName)" class="imgPost">
-                            </a>
-                        </div>
-                        <div class="user-detail">
-                            <h5 class="handle">
+<div class="col-sm-6 text-left">
+    <div class="thumbnail">
+        <span class="painel-title">Postagens recentes <span class="badge">@Model.TodasAsPostagens.Count()</span></span>
+    </div>
+
+        @*-----Lista de postagens-----*@
+        @foreach (var item in Model.TodasAsPostagens)
+        {
+            <div class="qa-message-list" id="wallmessages">
+                <div class="message-item" id="m16">
+                    <div class="message-inner">
+                        <div class="message-head clearfix">
+                            <div class="avatar pull-left">
                                 <a href="@Url.Action("PerfilVisitado", new { userId = item.UserId } )">
-                                    @Html.DisplayFor(modelItem => item.UserName)
+                                    <img src="@Html.DisplayFor(model => item.UserFoto)" title="@Html.DisplayFor(modelItem => item.UserName)" class="imgPost">
                                 </a>
-                            </h5>
-                            <div class="post-meta">
-                                <div class="asker-meta">
-                                    <span class="qa-message-what"></span>
-                                    <span class="qa-message-when">
-                                        <span class="qa-message-when-data">
-                                            @Html.DisplayFor(modelItem => item.DataPostagem)
+                            </div>
+                            <div class="user-detail">
+                                <h5 class="handle">
+                                    <a href="@Url.Action("PerfilVisitado", new { userId = item.UserId } )">
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </a>
+                                </h5>
+                                <div class="post-meta">
+                                    <div class="asker-meta">
+                                        <span class="qa-message-what"></span>
+                                        <span class="qa-message-when">
+                                            <span class="qa-message-when-data">
+                                                @Html.DisplayFor(modelItem => item.DataPostagem)
+                                            </span>
                                         </span>
-                                    </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="qa-message-content">
-                        @Html.DisplayFor(modelItem => item.TextoPostagem)
+                        <div class="qa-message-content">
+                            @Html.DisplayFor(modelItem => item.TextoPostagem)
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    }   
-</div>
+        }
+    </div>
 <div class="col-sm-2 sidenav">
     <div class="well">
         <p>ADS</p>
     </div>
 </div>
-
 

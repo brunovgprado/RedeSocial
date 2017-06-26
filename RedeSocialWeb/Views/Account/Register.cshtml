@@ -9,13 +9,13 @@
         <div class="col-sm-4">
             <div class="">
                 <div class="container">
-                    <h2>Cadastro</h2>
+                    <h2>Crie uma conta</h2>
                     <section id="loginForm">
 
                         @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form", role = "form" }))
                         {
                             @Html.AntiForgeryToken()
-                            <h4>Criar uma nova conta.</h4>
+                            <h4>É rápido e fácil.</h4>
 
                             @Html.ValidationSummary("", new { @class = "text-danger" })
                             <div class="col-md-12 col-xs-12">

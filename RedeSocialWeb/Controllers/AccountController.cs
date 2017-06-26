@@ -367,7 +367,7 @@ namespace RedeSocialWeb.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Login");
+            return RedirectToAction("Register");
         }
 
         //
