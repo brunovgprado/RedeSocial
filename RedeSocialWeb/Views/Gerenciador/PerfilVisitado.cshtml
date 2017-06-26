@@ -53,7 +53,7 @@
     </div>
     <hr />
     <div class="thumbnail">
-        <span class="painel-title">Seguindo <a href="#">@Model.PerfisSeguidos.Count().ToString()</a></span>
+        <span class="painel-title">Seguindo <a href="#">@Model.PerfisSeguidos.Count()</a></span>
     </div>
 
     <div class="lista-amigos">
@@ -73,7 +73,7 @@
     </div>
     <hr />
     <div class="thumbnail">
-        <span class="painel-title">Seguidores <a href="#">@Model.PerfisSeguidores.Count().ToString()</a></span>
+        <span class="painel-title">Seguidores <a href="#">@Model.PerfisSeguidores.Count()</a></span>
     </div>
     <div class="lista-amigos">
         <div class="row">
@@ -94,7 +94,7 @@
 
 <div class="col-sm-6 text-left">
     <div class="thumbnail">
-        <span class="painel-title">Minhas atividades <span class="badge">@Model.TotPostagens</span></span>
+        <span class="painel-title">Minhas atividades <span class="badge">@Model.postagens.Count()</span></span>
     </div>
     <hr />
     @foreach (var post in Model.postagens)

@@ -61,7 +61,6 @@ namespace RedeSocialWeb.ServicoWeb
                 perfisSeguidores.Add(perfilSeguidor);
             }
 
-
             // Convertendo Postagem em PostagemViewModel
             var PostagensSeguidosView = PostagemViewModel.GetModel(postagensSeguidos);
             // Ordenando por data
