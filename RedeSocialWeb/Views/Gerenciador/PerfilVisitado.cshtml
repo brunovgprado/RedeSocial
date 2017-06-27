@@ -34,7 +34,7 @@
                 {
                     if (Model.ChecaSeSeguePerfil)
                     {
-                        <a href="@Url.Action("../Seguirs/DeixarDeSeguir", new { IdSeguido = Model.idPerfil })" title="Seguir" class="btn btn-primary btn-sm">
+                        <a href="@Url.Action("../Seguirs/DeixarDeSeguir", new { id = Model.idPerfil })" title="Seguir" class="btn btn-primary btn-sm">
                             <span aria-hidden="true">Desconectar</span>
                             <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                         </a>
@@ -133,16 +133,28 @@
             </div>
         </div>
     }
+    <span class="painel-title pull-right">Ver <span class="glyphicon">+ </span></span>
 </div>
 <div class="col-sm-2 sidenav">
     <div class="thumbnail">
-        <span class="painel-title">Minhas Hortas 0</span>
+        <span class="painel-title">Minhas Hortas <span class="badge">@Model.Hortas.Count()</span></span>
     </div>
-    <div class="well">
-        <p>ADS</p>
-    </div>
-    <div class="well">
-        <p>ADS</p>
+    @foreach (var horta in Model.Hortas)
+    {
+        <div class="thumbnail hortaThumb col-xs-5 col-md-12">
+            <div class="hortaContent">
+                <div class="thumbnail hortaText text-center">@horta.Nome</div>
+                <div>ADS</div>
+                <div>ADS</div>
+                <div>ADS</div>
+            </div>
+
+        </div>
+    }
+    <div>
+        <a href="#">
+            <h4><span class="label label-success pull-right">Criar horta</span></h4>
+        </a>
     </div>
 </div>
 

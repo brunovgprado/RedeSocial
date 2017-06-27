@@ -133,16 +133,28 @@
             </div>
         </div>
     }
+    <span class="painel-title pull-right">Ver <span class="glyphicon">+ </span></span>
 </div>
 <div class="col-sm-2 sidenav">
     <div class="thumbnail">
-        <span class="painel-title">Minhas Hortas 0</span>
+        <span class="painel-title">Minhas Hortas <span class="badge">@Model.Hortas.Count()</span></span>
     </div>
-    <div class="thumbnail">
-        <div class="hortaThumb">ADS</div>
-    </div>
-    <div class="well">
-        <p>ADS</p>
+    @foreach (var horta in Model.Hortas)
+    {
+        <div class="thumbnail hortaThumb col-xs-5 col-md-12">
+            <div class="hortaContent">
+                <div class="thumbnail hortaTitle text-center">@horta.Nome</div>
+                <div><span class="hortaPreTexto">Tipo: </span><span class="hortaTexto">@horta.Tipo</span></div>
+                <div><span class="hortaPreTexto">Plantas:</span><span class="hortaTexto">@horta.Plantas.Count()</span></div>
+                <div><span class="hortaPreTexto">Dono: </span><span class="hortaTexto">@horta.UserName</span></div>
+            </div>
+            
+        </div>
+    }
+    <div>
+        <a href="#">
+            <h5><span class="pull-right">Criar horta</span></h5>
+        </a>
     </div>
 </div>
 

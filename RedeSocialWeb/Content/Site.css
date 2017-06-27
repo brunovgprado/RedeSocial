@@ -29,6 +29,7 @@ textarea {
 .painel-title{
     font-weight: 600;
     margin-left: 3%;
+    color: rgba(0,0,0,0.50);
 }
 .badge{
     background: rgba(27,31,35,0.30)
@@ -40,6 +41,11 @@ font-weight:800;
 font-size: 2em;
 color: #ffffff !important;
 }
+
+.container{
+    margin-top:20px !important;
+}
+/* -----Estilo para timeline de postagens-----*/
 .message-item {
 margin-bottom: 25px;
 margin-left: 40px;
@@ -149,10 +155,7 @@ line-height: 22px;
  min-height: 40px;
  max-height: 40px;
 }
-
-.container{
-    margin-top:20px !important;
-}
+/* -----Estilo para edição de foto perfil-----*/
 .image-preview-input {
     position: relative !important;
     overflow: hidden !important;
@@ -175,16 +178,35 @@ line-height: 22px;
 .image-preview-input-title {
     margin-left:2px !important;
 }
-.nome-perfil{
-    margin-top : 1px !important;
-    font-size : 1.5em;
-    font-weight: 600;   
-}
+
+/* -----Estilo pata hortas-----*/
 .hortaThumb{
-    background-image: url("~/Content/img/horta.jpg") !important;
-
+    background-image: url("img/horta.jpg"); 
 }
 
+.hortaContent{
+    background-color: rgba(255,255,255,0.90);
+    padding:inherit;   
+}
+
+.hortaTitle{
+    color: rgba(0,0,0,0.50);
+    font-weight: 600;
+    margin-left: 3%;
+    padding:0;
+    margin:0;
+}
+
+.hortaPreTexto{
+    font-weight: 600;
+    margin-left: 3%;
+}
+
+.hortaTexto{
+    margin-left: 3%;
+}
+
+/* -----Estilo para nome e foto perfil-----*/
 #img-perfil{
     width: 150px;
     height: 150px;
@@ -192,11 +214,17 @@ line-height: 22px;
     object-position: center;
 }
 
+.nome-perfil{
+    margin-top : 1px !important;
+    font-size : 1.5em;
+    font-weight: 600;   
+}
+
 .img-perfil{
     min-height: 150px;
     max-height: 150px;
 }
-
+/* -----Estilo pata foto perfil thumbnails seguidos-----*/
 #foto-thumb-seguir {
     width: 75px;
     height: 75px;
@@ -208,7 +236,7 @@ line-height: 22px;
     min-height: 75px;
     max-height: 75px;
 }
-
+/* -----Estilo pata foto perfil thumbnails em postagens-----*/
 #foto-post {
     width: 40px;
     height: 40px;
