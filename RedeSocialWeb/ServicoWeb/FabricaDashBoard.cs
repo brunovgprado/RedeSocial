@@ -73,20 +73,20 @@ namespace RedeSocialWeb.ServicoWeb
             // Ordenando por data
             var PostagensSeguidosOrdenadas = PostagensSeguidosView.OrderByDescending(x => x.DataPostagem).ToList();
 
-            // Montando o DashBord para enviar à View
-            DashBoardModel dashBorad = new DashBoardModel();
-            dashBorad.postagens = PostagemViewModel.GetModel(PostagensUsuario);
-            dashBorad.postagensSeguidos = PostagensSeguidosOrdenadas;
-            dashBorad.TotPostagens = servicoPostagem.TotalPostagens();
-            dashBorad.PerfisSeguidos = perfisSeguidos;
-            dashBorad.PerfisSeguidores = perfisSeguidores;
-            dashBorad.Hortas = HortaViewModel.GetModel(listaHortas);
-            dashBorad.nomePerfil = perfil.NomeExibicao;
-            dashBorad.fotoPerfil = perfil.FotoPerfil;
-            dashBorad.idPerfil = perfil.id;
-            dashBorad.UserId = perfil.UserID;
+            // Montando o DashBoard para enviar à View
+            DashBoardModel dashBoard = new DashBoardModel();
+            dashBoard.postagens = PostagemViewModel.GetModel(PostagensUsuario);
+            dashBoard.postagensSeguidos = PostagensSeguidosOrdenadas;
+            dashBoard.TotPostagens = servicoPostagem.TotalPostagens();
+            dashBoard.PerfisSeguidos = perfisSeguidos;
+            dashBoard.PerfisSeguidores = perfisSeguidores;
+            dashBoard.Hortas = HortaViewModel.GetModel(listaHortas);
+            dashBoard.nomePerfil = perfil.NomeExibicao;
+            dashBoard.fotoPerfil = perfil.FotoPerfil;
+            dashBoard.idPerfil = perfil.id;
+            dashBoard.UserId = perfil.UserID;
 
-            return dashBorad;
+            return dashBoard;
         }
     }
 }
