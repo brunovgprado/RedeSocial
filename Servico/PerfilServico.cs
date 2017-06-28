@@ -49,6 +49,11 @@ namespace Servico
             repositorio.executaExclusao(UserId, PerfilId);
         }
 
+        public List<Perfil> BuscaDePerfis(string TermosBusca)
+        {
+            return repositorio.BuscaDePerfis(TermosBusca);
+        }
+
         public void dispose()
         {
             repositorio.dispose();

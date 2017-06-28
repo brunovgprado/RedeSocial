@@ -1,0 +1,25 @@
+﻿@model RedeSocialWeb.Models.BuscaDePerfis
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Buscar usuarios</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                <span>Nome a ser buscado</span>
+            </div>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.termoDeBusca, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.termoDeBusca, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                <input type="submit" value="Buscar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}

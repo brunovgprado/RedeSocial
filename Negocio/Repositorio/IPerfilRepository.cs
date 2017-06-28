@@ -13,5 +13,6 @@ namespace Negocio.Repositorio
         void dispose();
         Perfil ObterPerfilUsuario(string UserID);
         void executaExclusao(string UserId, int PerfilId);
+        List<Perfil> BuscaDePerfis(string TermosBusca);
     }
 }

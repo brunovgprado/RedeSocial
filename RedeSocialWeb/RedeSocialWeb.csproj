@@ -238,6 +238,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BuscaPerfisController.cs" />
     <Compile Include="Controllers\GerenciadorController.cs" />
     <Compile Include="Controllers\HortasController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -376,9 +377,12 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Perfils\Delete.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\BuscaPerfis\BuscarPerfil.cshtml" />
+    <Content Include="Views\BuscaPerfis\BuscaDePerfis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Atividades\" />
+    <Folder Include="Views\BuscaPerfil\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

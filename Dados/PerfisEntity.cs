@@ -53,6 +53,12 @@ namespace Dados
             db.SaveChanges();        
         }
 
+        public List<Perfil> BuscaDePerfis(string TermosBusca)
+        {
+            var perfis = db.Perfils.Where(x => x.NomeExibicao.Contains(TermosBusca)).OrderBy(x => x.NomeExibicao);
+            return perfis.ToList();
+        }
+
         public void dispose()
         {
             db.Dispose();
