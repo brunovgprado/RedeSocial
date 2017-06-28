@@ -29,7 +29,7 @@
                 @Html.ActionLink("HortoHome", "Index", "Gerenciador", new { area = "" }, new { @class = "navbar-brand" })
             }else
             {
-                @Html.ActionLink("HortoHome", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("HortoHome", "Register", "Account", new { area = "" }, new { @class = "navbar-brand" })
             }
             <img src="~/Content/img/Logo_HortoHome.png" />
             </div>
@@ -58,7 +58,7 @@
             else
             {
                 <ul class="nav pull-right">
-                    <li class="">@Html.Partial("_LoginPartial")</li>
+                    <li class="">@Html.Partial("_LoginPartial", new ViewDataDictionary())</li>
                 </ul>
            }
 

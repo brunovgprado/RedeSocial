@@ -249,6 +249,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BuscaDePerfis.cs" />
     <Compile Include="Models\DashBoardModel.cs" />
     <Compile Include="Models\HortaViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -274,6 +275,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\horta.jpg" />
+    <Content Include="Content\img\HortoHome-brasil.JPG" />
     <Content Include="Content\img\Logo_HortoHome.png" />
     <Content Include="Content\RedeSocial.css" />
     <Content Include="favicon.ico" />

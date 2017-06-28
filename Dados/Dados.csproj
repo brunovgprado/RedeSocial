@@ -89,6 +89,10 @@
     <Compile Include="Migrations\201706261952202_AtualizadasPropriedadesDeHorta2.Designer.cs">
       <DependentUpon>201706261952202_AtualizadasPropriedadesDeHorta2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706270351147_RelacaoHortaPlanta.cs" />
+    <Compile Include="Migrations\201706270351147_RelacaoHortaPlanta.Designer.cs">
+      <DependentUpon>201706270351147_RelacaoHortaPlanta.cs</DependentUpon>
+    </Compile>
     <Compile Include="PostagensEntity.cs" />
     <Compile Include="HortasEntity.cs" />
     <Compile Include="Migrations\201706052222333_Adicionado modelo Perfil.cs" />
@@ -168,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706261952202_AtualizadasPropriedadesDeHorta2.resx">
       <DependentUpon>201706261952202_AtualizadasPropriedadesDeHorta2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706270351147_RelacaoHortaPlanta.resx">
+      <DependentUpon>201706270351147_RelacaoHortaPlanta.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

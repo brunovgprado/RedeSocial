@@ -1,4 +1,5 @@
 ﻿@model RedeSocialWeb.Models.DashBoardModel
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Index";
@@ -21,7 +22,7 @@
             <h5>Ações <span class="badge">0</span></h5>
             <h5>Seguindo <span class="badge">@Model.PerfisSeguidos.Count().ToString()</span></h5>
             <div class="text-right pull-left">
-                @if (Model.UserId.ToString() == Session["UserId"].ToString())
+                @if (Model.UserId.ToString() == User.Identity.GetUserId())
                 {
                     <a href="@Url.Action("../Perfils/Edit", new { id = Model.idPerfil })" title="Editar">
                         <span class="btn btn-primary btn-sm">
@@ -147,14 +148,16 @@
                 <div><span class="hortaPreTexto">Tipo: </span><span class="hortaTexto">@horta.Tipo</span></div>
                 <div><span class="hortaPreTexto">Capacidade:</span><span class="hortaTexto">@horta.Capacidade</span></div>
                 <div><span class="hortaPreTexto">Dono: </span><span class="hortaTexto">@horta.UserName</span></div>
-            </div>
-            
+            </div>           
         </div>
     }
     <div>
-        <a href="#">
-            <h5><span class="pull-right">Criar horta</span></h5>
-        </a>
+        @if (Model.UserId.ToString() == User.Identity.GetUserId())
+        {
+            <a href="#">
+                <h5><span class="pull-right">Criar horta</span></h5>
+            </a>
+        }
     </div>
 </div>
 

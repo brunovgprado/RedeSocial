@@ -1,4 +1,5 @@
 ﻿@model RedeSocialWeb.Models.DashBoardModel
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Index";
@@ -143,18 +144,20 @@
     {
         <div class="thumbnail hortaThumb col-xs-5 col-md-12">
             <div class="hortaContent">
-                <div class="thumbnail hortaText text-center">@horta.Nome</div>
-                <div>ADS</div>
-                <div>ADS</div>
-                <div>ADS</div>
+                <div class="thumbnail hortaTitle text-center">@horta.Nome</div>
+                <div><span class="hortaPreTexto">Tipo: </span><span class="hortaTexto">@horta.Tipo</span></div>
+                <div><span class="hortaPreTexto">Capacidade:</span><span class="hortaTexto">@horta.Capacidade</span></div>
+                <div><span class="hortaPreTexto">Dono: </span><span class="hortaTexto">@horta.UserName</span></div>
             </div>
-
         </div>
     }
     <div>
-        <a href="#">
-            <h4><span class="label label-success pull-right">Criar horta</span></h4>
-        </a>
+        @if (Model.UserId.ToString() == User.Identity.GetUserId())
+        {
+            <a href="#">
+                <h5><span class="pull-right">Criar horta</span></h5>
+            </a>
+        }
     </div>
 </div>
 
