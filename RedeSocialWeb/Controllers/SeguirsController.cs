@@ -32,14 +32,14 @@ namespace SocialNetwork.web.Controllers
             return RedirectToAction("PerfilPorUserId", "Gerenciador", new { perfilId = id });
         }
         // Action que desfaz a ação de seguir um perfil
-        public ActionResult DeixarDeSeguir(int IdSeguido)
+        public ActionResult DeixarDeSeguir(int id)
         {
             if (Session["UserId"] == null)
                 Session["UserId"] = User.Identity.GetUserId();
 
             var UserId = Session["UserId"].ToString();
-            servico.DeixarDeSeguir(UserId, IdSeguido);
-            return RedirectToAction("PerfilPorUserId", "Gerenciador", new { perfilId = IdSeguido });
+            servico.DeixarDeSeguir(UserId, id);
+            return RedirectToAction("PerfilPorUserId", "Gerenciador", new { perfilId = id });
         }
 
         protected override void Dispose(bool disposing)
