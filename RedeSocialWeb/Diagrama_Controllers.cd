@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RedeSocialWeb.Controllers.AccountController">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <NestedTypes>
+      <Class Name="RedeSocialWeb.Controllers.AccountController.ChallengeResult" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controllers\AccountController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAABAChACAAAAAAAAFgEgAABAABMKIAAAMQAIQgAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RedeSocialWeb.Controllers.BuscaPerfisController">
+    <Position X="2.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAIAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Controllers\BuscaPerfisController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RedeSocialWeb.Controllers.GerenciadorController">
+    <Position X="4.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABACgAAAAAAAAAAAAACAAAAgAAAAAAABEAAIAAAAA=</HashCode>
+      <FileName>Controllers\GerenciadorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RedeSocialWeb.Controllers.HortasController">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACABAACAAAAAAAAAAAEAAEACEAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HortasController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RedeSocialWeb.Controllers.PerfilsController">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAwAACABAACAAAIACAAAAQEAAEACEAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\PerfilsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RedeSocialWeb.Controllers.PostagemsController">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAACABAAAAAAAAAAAAAAEAAEACABEAAAAAAAA=</HashCode>
+      <FileName>Controllers\PostagemsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.web.Controllers.SeguirsController">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAACAAAAAAAAAAAAAAAAAAAAAAEAAAAABAAAA=</HashCode>
+      <FileName>Controllers\SeguirsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

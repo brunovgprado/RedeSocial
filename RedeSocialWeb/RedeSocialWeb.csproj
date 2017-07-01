@@ -296,6 +296,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Diagrama_Casse_View.cd" />
+    <Content Include="Diagrama_Classe_ViewModels.cd" />
     <None Include="Properties\PublishProfiles\HortoHome - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\HortoHome - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\HortoHome - Web Deploy.pubxml" />

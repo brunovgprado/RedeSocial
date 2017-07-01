@@ -6,7 +6,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Postagems", FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
     
@@ -16,18 +16,36 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FotoPostagem, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FotoPostagem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FotoPostagem, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.TextoPostagem, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TextoPostagem, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TextoPostagem, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FotoPostagem, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-4 col-sm-4">
+
+                        <div class="input-group image-preview">
+                            <input type="text" class="form-control image-preview-filename" disabled="disabled">
+                            <span class="input-group-btn">
+
+                                <button type="button" class="btn btn-danger image-preview-clear" style="display:none;">
+                                    <span class="glyphicon glyphicon-remove"></span> Excluir
+                                </button>
+
+                                <div class="btn btn-default image-preview-input">
+                                    <span class="glyphicon glyphicon-folder-open"></span>
+                                    <span class="image-preview-input-title">Buscar</span>
+                                    <input type="file" accept="image/png, image/jpeg, image/gif" name="imgPostagem" />
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

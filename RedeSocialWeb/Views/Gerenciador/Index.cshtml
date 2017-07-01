@@ -13,8 +13,8 @@
 <div class="col-sm-4 sidenav">
     <div class="thumbnail text-left row">
         <a href="@Url.Action("PerfilVisitado", new { userId = Model.UserId } )" title="@Html.DisplayFor(model => model.nomePerfil)">
-            <div class="thumbnail col-sm-6 col-md-6 col-xs-6">
-                <img id="img-perfil" src="@Html.DisplayFor(model => model.fotoPerfil)" alt="Lights" class="img-perfil">
+            <div class="col-sm-6 col-md-6 col-xs-6">
+                <img id="img-perfil" src="@Html.DisplayFor(model => model.fotoPerfil)" alt="Lights" class="img-perfil img-thumbnail">
             </div>
         </a>
         <div class="caption col-sm-6 col-md-6 col-xs-6">
@@ -91,6 +91,25 @@
             }
         </div>
     </div>
+    <hr />
+    <div class="thumbnail">
+        <span class="painel-title">Galeria de fotos <a href="#">@Model.postagens.Where(x=>x.FotoPostagem != null).Count()</a></span>
+    </div>
+    <div class="lista-amigos">
+        <div class="row">
+            @foreach (var postagem in Model.postagens)
+            {
+                if (postagem.FotoPostagem != null)
+                {                
+                    <div class="thumbnail col-sm-6 col-xs-6">
+                        <a href="#">
+                            <img id="foto-thumb-post" src="@postagem.FotoPostagem" title="Foto postagem" class="foto-thumb-post" />
+                        </a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
 </div>
 
 <div class="col-sm-6 text-left">
@@ -127,6 +146,11 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="qa-message-content">
+                        @if(post.FotoPostagem != null){
+                            <img class="img-responsive img-thumbnail" src="@post.FotoPostagem" />
+                        }
                     </div>
                     <div class="qa-message-content">
                         @Html.DisplayFor(modelItem => post.TextoPostagem)
