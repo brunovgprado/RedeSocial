@@ -42,7 +42,7 @@ namespace Dados
             db.Dispose();
         }
 
-        public bool ChecaSeguido(string UserId, int IdSeguido)
+        public bool ChecarSeSeguePerfil(string UserId, int IdSeguido)
         {
             var lista = db.Seguirs.ToList();
             var seguindo = lista.Exists(x => x.SeguidorId == UserId && x.PerfilID == IdSeguido);

@@ -5,6 +5,7 @@ using Dados;
 using Negocio.Dominio;
 using Servico;
 using Microsoft.AspNet.Identity;
+using System;
 
 namespace SocialNetwork.web.Controllers
 {
@@ -20,17 +21,15 @@ namespace SocialNetwork.web.Controllers
         // Action que registra a ação de seguir um perfil
         public ActionResult SeguirPerfil(int id)
         {
-            Seguir seguir = new Seguir();
-            if (Session["UserId"] == null)
-                Session["UserId"] = User.Identity.GetUserId();
-
-            seguir.SeguidorId = Session["UserId"].ToString();
-            seguir.PerfilID = id;
+            Seguir seguir = InstanciarObjetoSeguir(id);
 
             servico.SeguirPerfil(seguir);
 
             return RedirectToAction("PerfilPorUserId", "Gerenciador", new { perfilId = id });
         }
+
+
+
         // Action que desfaz a ação de seguir um perfil
         public ActionResult DeixarDeSeguir(int id)
         {
@@ -49,6 +48,18 @@ namespace SocialNetwork.web.Controllers
                 servico.dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private Seguir InstanciarObjetoSeguir(int id)
+        {
+            Seguir seguir = new Seguir();
+            if (Session["UserId"] == null)
+                Session["UserId"] = User.Identity.GetUserId();
+
+            seguir.SeguidorId = Session["UserId"].ToString();
+            seguir.PerfilID = id;
+
+            return seguir;
         }
     }
 }

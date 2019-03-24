@@ -34,7 +34,7 @@ namespace Servico
         }
         public bool checarSeguido(string UserId, int SeguidoId)
         {
-            return repositorio.ChecaSeguido(UserId, SeguidoId);
+            return repositorio.ChecarSeSeguePerfil(UserId, SeguidoId);
         }
 
         //Metodo que apaga registro de seguidos de um usuario

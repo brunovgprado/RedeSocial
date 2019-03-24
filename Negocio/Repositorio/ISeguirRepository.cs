@@ -9,7 +9,7 @@ namespace Negocio.Repositorio
         void DeixarDeSeguir(string UserId, int IdSeguido);
         List<Seguir> ObterSeguidos(string userId);
         void dispose();
-        bool ChecaSeguido(string UserId, int IdSeguido);
+        bool ChecarSeSeguePerfil(string UserId, int IdSeguido);
         void executaExclusao(string UserId, int PerfilId);
         List<Seguir> ObterSeguidores(int perfilId);
     }

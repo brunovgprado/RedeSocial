@@ -67,7 +67,6 @@ namespace RedeSocialWeb.Controllers
         // Action da pagina inicial do usuario
         public ActionResult Inicio()
         {
-            // Verifica se a variavel de sessão UserId é nula
             var UserSessionId = User.Identity.GetUserId();
             if (Session["UserId"] == null)
                 Session["UserId"] = UserSessionId;

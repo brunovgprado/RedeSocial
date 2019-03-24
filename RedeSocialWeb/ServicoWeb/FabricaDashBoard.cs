@@ -77,7 +77,7 @@ namespace RedeSocialWeb.ServicoWeb
             DashBoardModel dashBoard = new DashBoardModel();
             dashBoard.postagens = PostagemViewModel.GetModel(PostagensUsuario);
             dashBoard.postagensSeguidos = PostagensSeguidosOrdenadas;
-            dashBoard.TotPostagens = servicoPostagem.TotalPostagens();
+            dashBoard.TotalDePostagens = servicoPostagem.TotalPostagens();
             dashBoard.PerfisSeguidos = perfisSeguidos;
             dashBoard.PerfisSeguidores = perfisSeguidores;
             dashBoard.Hortas = HortaViewModel.GetModel(listaHortas);
