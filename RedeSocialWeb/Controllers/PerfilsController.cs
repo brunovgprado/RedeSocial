@@ -17,20 +17,24 @@ namespace RedeSocialWeb.Controllers
     public class PerfilsController : Controller
     {
 
-        private PerfilServico servico;
+        private PerfilServico   servico;
         private PostagemServico servicoPostagem;
-        private SeguirServico servicoSeguir;
-        private string IdUsuario;
-        private BlobServico servicoBlob;
+        private SeguirServico   servicoSeguir;
+        private string          IdUsuario;
+        private BlobServico     servicoBlob;
         
 
 
         public PerfilsController()
         {     
-            servico = new PerfilServico(new PerfisEntity());
-            servicoPostagem = new PostagemServico(new PostagensEntity());
-            servicoSeguir = new SeguirServico(new SeguirEntity());
-            servicoBlob = new BlobServico();
+            var parfilEntity    = new PerfisEntity();
+            var postagensEntity = new PostagensEntity();
+            var seguirEntity    = new SeguirEntity();
+
+            servico         = new PerfilServico(parfilEntity);
+            servicoPostagem = new PostagemServico(postagensEntity);
+            servicoSeguir   = new SeguirServico(seguirEntity);
+            servicoBlob     = new BlobServico();
         }
 
         // Action que busca um perfil para o usuario ou cria um novo perfil
@@ -38,7 +42,7 @@ namespace RedeSocialWeb.Controllers
         {
             var userId = User.Identity.GetUserId(); // Obtém o id do user logado
             var PerfilUser = servico.RetornaPerfilUsuario(userId); // Busca um perfil existente para o user logado
-            if(PerfilUser != null) // Manda para o perfil existente caso seja true
+            if(PerfilUser != null) // Caso Perfil não seja nulo, encaminha para páina com o perfil carregado
                 return RedirectToAction("Index", "Gerenciador");
 
             CriaPerfilPadrao.Criar(userId); // Cria um perfil padrão caso a condição acima seja false
