@@ -4,6 +4,7 @@ using RedeSocialWeb.Models;
 using Servico;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System;
 
 namespace RedeSocialWeb.Controllers
 {
@@ -24,9 +25,16 @@ namespace RedeSocialWeb.Controllers
             if (TermoDeBusca != null)
                 resultadoBusca = servicoPerfil.BuscaDePerfis(TermoDeBusca.ToString());
 
-            IEnumerable<PerfilViewModel> resultadoBuscaView = new List<PerfilViewModel>();
-            resultadoBuscaView = PerfilViewModel.GetModel(resultadoBusca);
+            List<PerfilViewModel> resultadoBuscaView = ConverterListaPerfilParaPerfilViewModel(resultadoBusca);
             return View(resultadoBuscaView);
+        }
+
+        private List<PerfilViewModel> ConverterListaPerfilParaPerfilViewModel(List<Perfil> resultadoBusca)
+        {
+            List<PerfilViewModel> resultadoBuscaView = new List<PerfilViewModel>();
+            resultadoBuscaView = PerfilViewModel.GetModel(resultadoBusca);
+
+            return resultadoBuscaView;
         }
 
         [HttpPost]

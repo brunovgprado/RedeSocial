@@ -22,9 +22,11 @@ namespace RedeSocialWeb.ServicoWeb
 
         public TodaRedeModel MontaPaginaTodaRede()
         {
+            const int QUANTIDADE = 16;
+
             TodaRedeModel paginaGeral = new TodaRedeModel();
-            paginaGeral.TodosOsPerfis = servicoPerfil.RetornaPerfis(16);// Obtém uma lista de perfis do banco
-            var PostagensBanco = servicoPostagem.RetornaPostagens(16).ToList();// Obtém uma lista de postagens do banco
+            paginaGeral.TodosOsPerfis = servicoPerfil.RetornaPerfis(QUANTIDADE);// Obtém uma lista de perfis do banco
+            var PostagensBanco = servicoPostagem.RetornaPostagens(QUANTIDADE).ToList();// Obtém uma lista de postagens do banco
             var postagensConvertidas = PostagemViewModel.GetModel(PostagensBanco);// Converte as postagens de 'Postagem' para 'PostViewModel'
             paginaGeral.TodasAsPostagens = postagensConvertidas;// Adiciona a lista de postagens convertidas à entidade 'TodaRedeModel'
 
