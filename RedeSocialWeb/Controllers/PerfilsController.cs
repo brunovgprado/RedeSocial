@@ -10,6 +10,7 @@ using Negocio.Repositorio;
 using System;
 using System.Collections.Generic;
 using RedeSocialWeb.Models;
+using RedeSocialWeb.Exceptions;
 
 namespace RedeSocialWeb.Controllers
 {
@@ -102,12 +103,18 @@ namespace RedeSocialWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (imgPerfil != null)// Se a foto vindo da view não for nula 
+                if (imgPerfil != null) 
                 {
-                    // Envia a foto para o blob
-                    var imgUri = await servicoBlob.UploadImageAsync(imgPerfil);
-                    // Guarda a Uri da foto salva no blob
-                    perfil.FotoPerfil = imgUri.ToString();
+                    try { 
+                        // Envia a foto para o blob
+                        var imgUri = await servicoBlob.UploadImageAsync(imgPerfil, "fotoperfil");
+
+                        perfil.FotoPerfil = imgUri.ToString();
+                    }
+                    catch (Exception) {
+                        //Se houver excessão, atribui a foto que foi guardada na sessão             
+                        perfil.FotoPerfil = Session["FotoPerfil"].ToString();
+                    }
                 }
                 else
                 {   // Se for nula, atribui a foto que foi guardada na sessão             
