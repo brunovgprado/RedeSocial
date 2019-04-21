@@ -11,7 +11,7 @@ namespace RedeSocialWeb.ServicoWeb
 {
     public class BlobServico
     {
-        public async Task<string> UploadImageAsync(HttpPostedFileBase fileToUpload, string containerName)
+        public async Task<string> UploadFileAsync(HttpPostedFileBase fileToUpload, string containerName)
         {
             string filePath = null;
             if (fileToUpload == null || fileToUpload.ContentLength == 0)
