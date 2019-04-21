@@ -5,25 +5,22 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using System.IO;
 using System.Web;
 using Microsoft.Azure;
+using RedeSocialWeb.Exceptions;
 
 namespace RedeSocialWeb.ServicoWeb
 {
     public class BlobServico
     {
-        public async Task<string> UploadImageAsync(HttpPostedFileBase imageToUpload)
+        public async Task<string> UploadImageAsync(HttpPostedFileBase fileToUpload, string containerName)
         {
-            string imagePath = null;
-            if (imageToUpload == null || imageToUpload.ContentLength == 0)
+            string filePath = null;
+            if (fileToUpload == null || fileToUpload.ContentLength == 0)
             {
-                return null;
+                throw new EmptyFileException("Arquivo vazio ou inválido");
             }
             try
             {
-                CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(
-                CloudConfigurationManager.GetSetting("StorageConnectionString"));
-
-                CloudBlobClient cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
-                CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference("fotoperfil");
+                CloudBlobContainer cloudBlobContainer = ObterBlobContainer(containerName);
 
                 if (await cloudBlobContainer.CreateIfNotExistsAsync())
                 {
@@ -31,22 +28,32 @@ namespace RedeSocialWeb.ServicoWeb
                         new BlobContainerPermissions
                         {
                             PublicAccess = BlobContainerPublicAccessType.Blob
-                        }
-                        );
+                        });
                 }
-                string imageName = Guid.NewGuid().ToString() + "-" + Path.GetExtension(imageToUpload.FileName);
+                string fileName = Guid.NewGuid().ToString() + "-" + Path.GetExtension(fileToUpload.FileName);
 
-                CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(imageName);
-                cloudBlockBlob.Properties.ContentType = imageToUpload.ContentType;
-                await cloudBlockBlob.UploadFromStreamAsync(imageToUpload.InputStream);
+                CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(fileName);
+                cloudBlockBlob.Properties.ContentType = fileToUpload.ContentType;
+                await cloudBlockBlob.UploadFromStreamAsync(fileToUpload.InputStream);
 
-                imagePath = cloudBlockBlob.Uri.ToString();
+                filePath = cloudBlockBlob.Uri.ToString();
             }
             catch (Exception e)
             {
                 throw e;
             }
-            return imagePath;
+            return filePath;
+        }
+
+        private CloudBlobContainer ObterBlobContainer(string containerName)
+        {
+            CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(
+                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+            CloudBlobClient cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
+            CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference(containerName);
+
+            return cloudBlobContainer;
         }
     }
 }
