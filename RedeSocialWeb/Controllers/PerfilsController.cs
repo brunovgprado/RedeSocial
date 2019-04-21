@@ -41,8 +41,8 @@ namespace RedeSocialWeb.Controllers
         // Action que busca um perfil para o usuario ou cria um novo perfil
         public ActionResult CheckIn()
         {
-            var userId = User.Identity.GetUserId(); // Obtém o id do user logado
-            var PerfilUser = servico.RetornaPerfilUsuario(userId); // Busca um perfil existente para o user logado
+            var userId = User.Identity.GetUserId();
+            var PerfilUser = servico.RetornaPerfilUsuario(userId); 
             if(PerfilUser != null) // Caso Perfil não seja nulo, encaminha para páina com o perfil carregado
                 return RedirectToAction("Index", "Gerenciador");
 
@@ -107,7 +107,7 @@ namespace RedeSocialWeb.Controllers
                 {
                     try { 
                         // Envia a foto para o blob
-                        var imgUri = await servicoBlob.UploadImageAsync(imgPerfil, "fotoperfil");
+                        var imgUri = await servicoBlob.UploadFileAsync(imgPerfil, "fotoperfil");
 
                         perfil.FotoPerfil = imgUri.ToString();
                     }
