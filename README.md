@@ -25,6 +25,6 @@ Sinta-se a vontade para criar sua conta e ingrassar na rede. Lembrando que diver
 **[Link da demo](https://hortohome.azurewebsites.net)**
 
 ### Quem é o responsável pelo projeto?
-**[Bruno Prado](https://github.com/brunovitorprado)**, Estudante de Engenharia de Software no instituto INFNET
+**[Bruno Prado](https://github.com/brunovitorprado)**, formado em Engenharia de Software pelo instituto INFNET
 
 
