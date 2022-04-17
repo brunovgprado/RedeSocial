@@ -10,7 +10,7 @@ A HortoHome é uma rede social que tem como público alvo pessoas que cultivam h
 
 ### Quais linguagens, Tecnologias e Metodologias estão sendo empregadas?
 
-O projeto está sendo implementado utilizando-se a linguagem C# e Asp.Net MVC. 
+O projeto está sendo implementado utilizando-se a linguagem C# e Asp.Net MVC (.Net full). 
 
 
 ### Em quê ponto estamos agora?
@@ -23,6 +23,9 @@ Atualmente há uma demo disponivel utilizando um servidor free que acaba por afe
 Sinta-se a vontade para criar sua conta e ingrassar na rede. Lembrando que diversos ajustes ainda estão sendo feitos para um melhor funcionamento.
 
 **[Link da demo](https://hortohome.azurewebsites.net)**
+
+### Qaul o objetivo do projeto?
+Trata-se de um projeto recreativo, com fim somente de aprendizado.
 
 ### Quem é o responsável pelo projeto?
 **[Bruno Prado](https://github.com/brunovitorprado)**, formado em Engenharia de Software pelo instituto INFNET
