@@ -5,7 +5,7 @@ Repositório para desenvolvimento da rede social HortoHome.
 
 ### O que é a HortoHome?
 
-A HortoHome é uma rede social que tem como público alvo pessoas que cultivam hotas indoor
+A HortoHome é uma rede social que tem como público alvo pessoas que cultivam hortas indoor
 
 
 ### Quais linguagens, Tecnologias e Metodologias estão sendo empregadas?
